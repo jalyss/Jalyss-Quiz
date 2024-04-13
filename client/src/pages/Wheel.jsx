@@ -28,7 +28,6 @@ function WheelWinner() {
       prizeNumber={prizeNumber}
       data={data}
       outerBorderColor='white'
-optionSize={5}
 radiusLineColor='white'
       onStopSpinning={() => {
         setMustSpin(false);
