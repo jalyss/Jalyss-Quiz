@@ -12,3 +12,69 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Participant {
+  id                 Int                   @id @default(autoincrement())
+  fullName         String
+  age             Int
+  email          String 
+  PhoneNumber        String
+  Reading_Time       String
+  participantAnswer  ParticipantQuestion[]
+  WheelProposition   WheelProposition?     @relation(fields: [wheelPropositionId], references: [id])
+  wheelPropositionId Int?
+}
+
+model Question {
+  id                Int                   @id @default(autoincrement())
+  question          String
+  imageUrl          String
+  participantAnswer ParticipantQuestion[]
+  Admin             Admin?                @relation(fields: [adminId], references: [id])
+  adminId           Int?
+  Level             Level?                @relation(fields: [levelId], references: [id])
+  levelId           Int?
+  answers           Answer[]
+}
+
+model Answer {
+  id                Int                   @id @default(autoincrement())
+  answer            String
+  isTrue            Boolean
+  participantAnswer ParticipantQuestion[]
+  Question          Question?             @relation(fields: [questionId], references: [id])
+  questionId        Int?
+}
+
+model ParticipantQuestion {
+  id Int @id @default(autoincrement())
+
+  Answer        Answer?      @relation(fields: [answerId], references: [id])
+  answerId      Int?
+  Question      Question?    @relation(fields: [questionId], references: [id])
+  questionId    Int?
+  Participant   Participant? @relation(fields: [participantId], references: [id])
+  participantId Int?
+}
+
+model Admin {
+  id        Int        @id @default(autoincrement())
+  email     String
+  password  String
+  fullName  String
+  questions Question[]
+}
+
+model WheelProposition {
+  id     Int           @id @default(autoincrement())
+  slogan String
+  label  String
+  reward String
+  winner Participant[]
+}
+
+model Level {
+  id       Int        @id @default(autoincrement())
+  type     String
+  question Question[]
+}
