@@ -14,16 +14,20 @@ export class LevelsService {
     })
   }
 
-  async findAll() {
-    return this.prisma.level.findMany({
+  async findAll(level:number) {
+  const randomNumber = Math.floor(Math.random()*8)
+
+    let levels = await this.prisma.level.findMany({
       include : {
         question:{
-          select : {
-            answers : true
-          }
+         include : {
+          answers : true,
+          Level:true
+         }
         }
       }
     })
+    return levels[level]?.question[randomNumber]
   }
 
   async findOne(id: number) {
