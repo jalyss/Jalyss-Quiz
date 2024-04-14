@@ -1,11 +1,21 @@
-import React from 'react'
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-function Router() {
+import App from './../App';
+import Quesrions from "../pages/Quesrions";
+import Formulaire from "../pages/Formulaire";
+
+export default function Router() {
   return (
-    <div>
+    <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<App />}>
       
-    </div>
+        <Route index element={<Formulaire />}/>
+        <Route path="Questions" element={<Quesrions />} />
+       
+      </Route>
+    </Routes>
+  </BrowserRouter>
   )
 }
-
-export default Router
