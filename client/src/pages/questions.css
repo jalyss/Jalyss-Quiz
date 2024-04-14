@@ -60,8 +60,33 @@ input::placeholder {
   display: flex;
   align-items: center;
   border: solid 1px #48184c;
+  cursor: pointer;
+  transition: ease 1s;
+}
+.background:hover {
+  transform: scale(1.03);
+  
+}
+
+.backgroundWinner {
+  background-color: #00b846;
+  border: solid 1px #00b846;
+  box-shadow: "0px 0px 10px 5px #00b846" ;
+}
+.backgroundLoser {
+  background-color: #ff142b;
+  border: solid 1px #ff142b;
+  box-shadow: "0px 0px 10px 5px rgba(255, 20, 43, 0.5)";
 }
 
 .width-100 {
   width: 100% !important;
+}
+
+
+.bhdLno {
+  width: 600px !important;
+    max-width: 1000px !important;
+    height: 600px !important;
+    max-height: 1000px !important;
 }

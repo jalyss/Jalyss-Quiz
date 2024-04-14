@@ -1,17 +1,31 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Wheel } from 'react-custom-roulette'
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchWheelProp } from '../store/wheelProp';
 function WheelWinner() {
+  const wheelPropositions = useSelector(state=>state.wheelProp.wheelprop)
+  console.log(wheelPropositions,"those are wheel propostitions");
+  const dispatch = useDispatch()
   const [mustSpin, setMustSpin] = useState(false);
   const [prizeNumber, setPrizeNumber] = useState(0);
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
+
+useEffect(()=>{
+  dispatch(fetchWheelProp())
+},[])
+
   const data = [
-    { option: 'كن مبادراٌ', style: { backgroundColor: '#64113F', textColor: 'white' } },
-    { option: 'ابدأ والغاية في ذهنك', style: { backgroundColor: '#F29CA3' } },
-    { option: 'ابدأ بالأهم قبل المهم', style: { backgroundColor: '#F29CA3' } },
-    { option: 'تفكير مكسب', style: { backgroundColor: '#119FB8' } },
-    { option: 'شحذ المنشار', style: { backgroundColor: '#F7cacd' } },
-    { option: 'التآزر والتكاتف', style: { backgroundColor: '#3b70b3' } },
-    { option: 'الفهم يؤدي إلى التفهُّم', style: { backgroundColor: '#E6C440' } },
-    { option: 'حظ موفق المره القادمه', style: { backgroundColor: '#ed2024' } },
+    { option: wheelPropositions[0]?.label , style: { backgroundColor: '#64113F', textColor: 'white' } },
+    { option: wheelPropositions[1]?.label, style: { backgroundColor: 'white' } },
+    { option: wheelPropositions[2]?.label, style: { backgroundColor: '#64113F', textColor: 'white' } },
+    { option: wheelPropositions[3]?.label, style: { backgroundColor: 'white' } },
+    { option: wheelPropositions[4]?.label, style: { backgroundColor: '#64113F', textColor: 'white' } },
+    { option: wheelPropositions[5]?.label, style: { backgroundColor: 'white' } },
+    { option: wheelPropositions[6]?.label, style: { backgroundColor: '#64113F', textColor: 'white' } },
+    { option: 'حظ موفق المره القادمه', style: { backgroundColor: 'white' } },
   ]
   const handleSpinClick = () => {
     if (!mustSpin) {
@@ -21,21 +35,25 @@ function WheelWinner() {
     }
   }
   return (
-    <div className='d-flex justify-content-center align-items-center ' style={{height:"100vh"}}>
+    <div className='d-flex justify-content-center align-items-center '>
       <div>
     <Wheel
+    
       mustStartSpinning={mustSpin}
       prizeNumber={prizeNumber}
       data={data}
-      outerBorderColor='white'
-      radiusLineColor='white'
+      fontSize={17}
+      fontWeight={"bold"}
+      radiusLineWidth={2}
+      outerBorderColor="white"
+      radiusLineColor="white"
       onStopSpinning={() => {
         setMustSpin(false);
-        alert(prizeNumber)
+        alert(wheelPropositions[prizeNumber]?.slogan)
       }}
     />
     <div className='d-flex justify-content-center'>
-    <button className="btn btn-warning" style={{backgroundColor:"#64113F",color:"white"}} onClick={handleSpinClick}>ابدأ</button>
+    <button className="btn btn-light mt-5 w-50 fs-5" style={{backgroundColor:"#64113F",color:"white"}} onClick={handleSpinClick}>ابدأ</button>
     </div>
   </div>
   </div>

@@ -14,9 +14,9 @@ export class LevelsController {
     return this.levelsService.create(createLevelDto);
   }
 
-  @Get()
-  findAll() {
-    return this.levelsService.findAll();
+  @Get(':level')
+  findAll(@Param('level') level: number) {
+    return this.levelsService.findAll(level);
   }
 
   @Get(':id')

@@ -13,20 +13,23 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import jalyss from "../assets/images/jalyss.png";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 
-import Modal from 'react-bootstrap/Modal';
+import Modal from "react-bootstrap/Modal";
+import { createPartcipant } from "../store/participantSlice";
 
 // TODO remove, this demo shouldn't need to reset the theme.
 
 const defaultTheme = createTheme();
 export default function Formulaire() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [candidateInfo, setCandidateInfo] = useState({
     fullName: "",
     age: "",
     tel: "",
     email: "",
-    readingTime: "",
+    readingTime: ""
   });
   const [show, setShow] = useState(false);
 
@@ -36,27 +39,32 @@ export default function Formulaire() {
     const { name, value } = event.target;
     setCandidateInfo({ ...candidateInfo, [name]: value });
   };
-  console.log(candidateInfo, "candidateInfo");
-  const handleSubmit = (event) => {
+  const  handleSubmit = async (event) => {
     event.preventDefault();
-  
+
     // Check if required fields are filled out
     if (
-      candidateInfo.fullName.trim() === '' ||
-      candidateInfo.age.trim() === '' ||
-      candidateInfo.tel.trim() === '' ||
-      candidateInfo.email.trim() === '' ||
-      candidateInfo.readingTime.trim() === ''
+      candidateInfo.fullName.trim() === "" ||
+      candidateInfo.age.trim() === "" ||
+      candidateInfo.tel.trim() === "" ||
+      candidateInfo.email.trim() === "" ||
+      candidateInfo.readingTime.trim() === ""
     ) {
       // Handle validation error, e.g., display error message or mark required fields
-      console.log('Please fill out all required fields');
-      setShow(true)
+      setShow(true);
       return; // Prevent form submission if validation fails
     }
-  
+
     // Proceed with form submission
-    console.log(candidateInfo);
-    navigate('Questions');
+   await dispatch(createPartcipant({
+      email:candidateInfo.email,
+      fullName:candidateInfo.fullName,
+      age:+candidateInfo.age,
+      PhoneNumber:candidateInfo.tel,
+      Reading_Time:candidateInfo.readingTime
+
+    }))
+    navigate("Questions");
   };
 
   return (
@@ -76,7 +84,7 @@ export default function Formulaire() {
                 ? t.palette.grey[50]
                 : t.palette.grey[900],
             backgroundSize: "cover",
-            backgroundPosition: "center left",
+            backgroundPosition: "center left"
           }}
         />
 
@@ -87,7 +95,7 @@ export default function Formulaire() {
               mx: 4,
               display: "flex",
               flexDirection: "column",
-              alignItems: "center",
+              alignItems: "center"
             }}
           >
             <Avatar sx={{ m: 1, bgcolor: "#48184c" }}>
@@ -114,13 +122,13 @@ export default function Formulaire() {
                 autoFocus
                 sx={{
                   "& .MuiInputLabel-root.Mui-focused": {
-                    color: "purple",
+                    color: "purple"
                   },
                   "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
                     {
-                      borderColor: "purple",
+                      borderColor: "purple"
                     },
-                  direction: "rtl",
+                  direction: "rtl"
                 }}
                 onChange={handleInputChange}
               />
@@ -137,12 +145,12 @@ export default function Formulaire() {
                 dir="rtl"
                 sx={{
                   "& .MuiInputLabel-root.Mui-focused": {
-                    color: "purple",
+                    color: "purple"
                   },
                   "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
                     {
-                      borderColor: "purple",
-                    },
+                      borderColor: "purple"
+                    }
                 }}
                 onChange={handleInputChange}
               />
@@ -159,12 +167,12 @@ export default function Formulaire() {
                 dir="rtl"
                 sx={{
                   "& .MuiInputLabel-root.Mui-focused": {
-                    color: "purple",
+                    color: "purple"
                   },
                   "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
                     {
-                      borderColor: "purple",
-                    },
+                      borderColor: "purple"
+                    }
                 }}
                 onChange={handleInputChange}
               />
@@ -181,12 +189,12 @@ export default function Formulaire() {
                 dir="rtl"
                 sx={{
                   "& .MuiInputLabel-root.Mui-focused": {
-                    color: "purple",
+                    color: "purple"
                   },
                   "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
                     {
-                      borderColor: "purple",
-                    },
+                      borderColor: "purple"
+                    }
                 }}
                 onChange={handleInputChange}
               />
@@ -203,12 +211,12 @@ export default function Formulaire() {
                 dir="rtl"
                 sx={{
                   "& .MuiInputLabel-root.Mui-focused": {
-                    color: "purple",
+                    color: "purple"
                   },
                   "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
                     {
-                      borderColor: "purple",
-                    },
+                      borderColor: "purple"
+                    }
                 }}
                 onChange={handleInputChange}
               />
@@ -227,23 +235,27 @@ export default function Formulaire() {
         </Grid>
       </Grid>
 
-
       <>
-      {/* <Button variant="primary" onClick={handleShow}>
+        {/* <Button variant="primary" onClick={handleShow}>
         Launch demo modal
       </Button> */}
 
-      <Modal show={show} onHide={handleClose}>
-        
-        <Modal.Body style={{padding:30}}>الرجاء تعمير كل الفراغات</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" className="btn" style={{backgroundColor:"#48184c" , color:"white"}} onClick={handleClose}>
-            Close
-          </Button>
-         
-        </Modal.Footer>
-      </Modal>
-    </>
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Body style={{ padding: 30 }}>
+            الرجاء تعمير كل الفراغات
+          </Modal.Body>
+          <Modal.Footer>
+            <Button
+              variant="secondary"
+              className="btn"
+              style={{ backgroundColor: "#48184c", color: "white" }}
+              onClick={handleClose}
+            >
+              Close
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </>
     </ThemeProvider>
   );
 }
