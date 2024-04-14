@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://jalyss.com/ar/" target="blank"><img src="./client//public/jalyssLogo rdm.png" width="2000" alt="jalyss logo" /></a>
+  <a href="https://jalyss.com/ar/" target="blank"><img src="./client//public/jalyssLogo rdm.png" width="2000 " alt="jalyss logo" /></a>
 </p>
 
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
