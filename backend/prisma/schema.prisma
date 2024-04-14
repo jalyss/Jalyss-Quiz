@@ -15,8 +15,9 @@ datasource db {
 
 model Participant {
   id                 Int                   @id @default(autoincrement())
-  firstName          String
-  LastName           String
+  fullName         String
+  age             Int
+  email          String 
   PhoneNumber        String
   Reading_Time       String
   participantAnswer  ParticipantQuestion[]
