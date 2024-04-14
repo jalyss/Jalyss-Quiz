@@ -21,10 +21,8 @@ import { IoIosArrowBack } from "react-icons/io";
 // import InboxIcon from '@mui/icons-material/MoveToInbox';
 // import MailIcon from '@mui/icons-material/Mail';
 import { CiMenuBurger } from "react-icons/ci";
-import { BsPatchQuestionFill } from "react-icons/bs";
-import { RiAdminFill } from "react-icons/ri";
-import { HiMiniGift } from "react-icons/hi2";
-import { FaBookReader } from "react-icons/fa";
+
+import { sidebarData } from './constant/sideBarData';
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -94,7 +92,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 
 function App() {
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -105,9 +103,9 @@ function App() {
   };
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: 'flex' }} >
     <CssBaseline />
-    <AppBar position="fixed" open={open}>
+    <AppBar position="fixed" open={open} >
       <Toolbar>
         <IconButton
           color="inherit"
@@ -136,7 +134,7 @@ function App() {
       </DrawerHeader>
       <Divider />
       <List>
-        {[{name:'Questions',icon:"<BsPatchQuestionFill/>"},{name:'Admins',icon:"<RiAdminFill/>"},{name:'Rewards',icon:"HiMiniGift"},{name:'condidates',icon:"FaBookReader"}].map((text, index) => (
+        {sidebarData.map((text, index) => (
           <ListItem key={text.name} disablePadding sx={{ display: 'block' }}>
             <ListItemButton
               sx={{
@@ -153,7 +151,6 @@ function App() {
                 }}
               >
                 {text.icon}
-                {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
               </ListItemIcon>
               <ListItemText primary={text.name} sx={{ opacity: open ? 1 : 0 }} />
             </ListItemButton>
@@ -162,7 +159,7 @@ function App() {
       </List>
       
     </Drawer>
-    <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+    <Box component="main" sx={{ flexGrow: 1, p: 3  }}>
       <DrawerHeader />
       <Typography paragraph>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
