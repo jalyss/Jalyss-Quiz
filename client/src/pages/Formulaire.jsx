@@ -7,6 +7,10 @@ import TextField from "@mui/material/TextField";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
+import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
@@ -39,7 +43,7 @@ export default function Formulaire() {
     const { name, value } = event.target;
     setCandidateInfo({ ...candidateInfo, [name]: value });
   };
-  const  handleSubmit = async (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     // Check if required fields are filled out
@@ -56,14 +60,15 @@ export default function Formulaire() {
     }
 
     // Proceed with form submission
-   await dispatch(createPartcipant({
-      email:candidateInfo.email,
-      fullName:candidateInfo.fullName,
-      age:+candidateInfo.age,
-      PhoneNumber:candidateInfo.tel,
-      Reading_Time:candidateInfo.readingTime
-
-    }))
+    await dispatch(
+      createPartcipant({
+        email: candidateInfo.email,
+        fullName: candidateInfo.fullName,
+        age: +candidateInfo.age,
+        PhoneNumber: candidateInfo.tel,
+        Reading_Time: candidateInfo.readingTime
+      })
+    );
     navigate("Questions");
   };
 
@@ -88,14 +93,15 @@ export default function Formulaire() {
           }}
         />
 
-        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square >
           <Box
             sx={{
               my: 8,
               mx: 4,
               display: "flex",
               flexDirection: "column",
-              alignItems: "center"
+              alignItems: "center",
+              justifyContent:"center"
             }}
           >
             <Avatar sx={{ m: 1, bgcolor: "#48184c" }}>
@@ -154,6 +160,25 @@ export default function Formulaire() {
                 }}
                 onChange={handleInputChange}
               />
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <DemoContainer components={["DatePicker"]}>
+                  <DatePicker
+                     dir="rtl"
+                     fullWidth
+                    label="تاريج الميلاد"
+                    sx={{
+                      "& .MuiInputLabel-root.Mui-focused": {
+                        color: "purple"
+                      },
+                      "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                        {
+                          borderColor: "purple"
+                        },
+                        width:"100%"
+                    }}
+                  />
+                </DemoContainer>
+              </LocalizationProvider>
               <TextField
                 margin="normal"
                 required
@@ -202,12 +227,12 @@ export default function Formulaire() {
                 margin="normal"
                 required
                 fullWidth
-                name="readingTime"
-                value={candidateInfo.readingTime}
-                label="كم تخصص من وقتك للقراءة في الأسبوع "
-                type="q"
-                id="q"
-                autoComplete="current-q"
+                name="work"
+                value={candidateInfo.work}
+                label="المهنة"
+                type="text"
+                id="work"
+                autoComplete="current-email"
                 dir="rtl"
                 sx={{
                   "& .MuiInputLabel-root.Mui-focused": {
@@ -220,6 +245,7 @@ export default function Formulaire() {
                 }}
                 onChange={handleInputChange}
               />
+          
 
               <button
                 className="btn btn-light w-100 mt-4 "

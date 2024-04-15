@@ -7,7 +7,7 @@ import Typography from "@mui/material/Typography";
 const style = {
   position: "absolute",
   color:"white",
-  top: "92%",
+  top: "10%",
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: "72%",

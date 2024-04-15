@@ -6,7 +6,7 @@ import Typography from "@mui/material/Typography";
 
 const style = {
   position: "absolute",
-  top: "92%",
+  top: "10%",
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: "72%",
@@ -46,7 +46,7 @@ export default function Rmodal({
             component="h2"
             sx={{ textAlign: "center", fontSize: 30 }}
           >
-            {niveau!==2?"احسنت 🥳 لقد اصبت ، انقر للتنتقل للمستوى التاني":`ان ستيفن كوفي فخور جدا الان 🥇
+            {niveau!==2?"احسنت 🥳 لقد اصبت ، انقر للتنتقل للمستوى التالي":`ان ستيفن كوفي فخور جدا الان 🥇
 انقر لتلعب و تفوز بجائزة`}
           </Typography>
           <Typography

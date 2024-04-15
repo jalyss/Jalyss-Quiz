@@ -26,6 +26,12 @@ useEffect(()=>{
     { option: wheelPropositions[5]?.label, style: { backgroundColor: 'white' } },
     { option: wheelPropositions[6]?.label, style: { backgroundColor: '#64113F', textColor: 'white' } },
     { option: 'حظ موفق المره القادمه', style: { backgroundColor: 'white' } },
+    { option: 'حظ موفق المره القادمه', style:  { backgroundColor: '#64113F', textColor: 'white' } },
+    { option: 'حظ موفق المره القادمه', style: { backgroundColor: 'white' } },
+    { option: 'حظ موفق المره القادمه', style:  { backgroundColor: '#64113F', textColor: 'white' } },
+    { option: 'حظ موفق المره القادمه', style: { backgroundColor: 'white' } },
+    { option: 'حظ موفق المره القادمه', style:  { backgroundColor: '#64113F', textColor: 'white' } },
+    { option: 'حظ موفق المره القادمه', style: { backgroundColor: 'white' } },
   ]
   const handleSpinClick = () => {
     if (!mustSpin) {
@@ -49,7 +55,7 @@ useEffect(()=>{
       radiusLineColor="white"
       onStopSpinning={() => {
         setMustSpin(false);
-        alert(wheelPropositions[prizeNumber]?.slogan)
+        alert(wheelPropositions[prizeNumber]?.slogan || 'حظ موفق المره القادمه')
       }}
     />
     <div className='d-flex justify-content-center'>
