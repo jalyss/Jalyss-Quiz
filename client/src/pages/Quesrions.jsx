@@ -32,7 +32,7 @@ export default function Quesrions() {
             <div
               className="progress-bar "
               role="progressbar"
-              style={{ width: progress, background: "#e6c440" }}
+              style={{ width: progress, background: "#48184c" }}
               aria-valuenow="25"
               aria-valuemin="0"
               aria-valuemax="100"
@@ -47,7 +47,7 @@ export default function Quesrions() {
                 fontWeight: 70,
                 whiteSpace: "no-wrap",
                 direction: "rtl",
-                color: "white"
+                color: "#000"
               }}
             >
               {questions?.question}
@@ -66,9 +66,9 @@ export default function Quesrions() {
             <div className="d-flex flex-wrap gap-2 justify-content-between mt-4 ">
               {questions?.answers?.map((elem, i) => (
                 <p
-                  className={`background col-5 text-center rounded text-white fs-4 ${
+                  className={`background col-5 text-center rounded text-dark fs-4 ${
                     clicked &&
-                    (elem.isTrue ? "backgroundWinner" : "backgroundLoser")
+                    (elem.isTrue ? "backgroundWinner text-white" : "backgroundLoser text-white")
                   }`}
                   key={i}
                   onClick={() => {

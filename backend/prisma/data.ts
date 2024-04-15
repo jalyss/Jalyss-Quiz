@@ -273,7 +273,7 @@ export const answer = [
   },
   {
     answer: 'مكتبة جرير ',
-    isTrue: false,
+    isTrue: true,
     questionId: 7,
   },
   {
@@ -338,7 +338,7 @@ export const answer = [
   },
   {
     answer: 'كل ما سبق ',
-    isTrue: false,
+    isTrue: true,
     questionId: 11,
   },
   {
