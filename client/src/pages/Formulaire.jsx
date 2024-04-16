@@ -38,7 +38,6 @@ export default function Formulaire() {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setCandidateInfo({ ...candidateInfo, [name]: value });
@@ -46,19 +45,16 @@ export default function Formulaire() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    // Check if required fields are filled out
     if (
       candidateInfo.fullName.trim() === "" ||
       candidateInfo.age.trim() === "" ||
       candidateInfo.tel.trim() === "" ||
       candidateInfo.email.trim() === "" 
     ) {
-      // Handle validation error, e.g., display error message or mark required fields
       setShow(true);
-      return; // Prevent form submission if validation fails
+      return;
     }
 
-    // Proceed with form submission
     await dispatch(
       createPartcipant({
         email: candidateInfo.email,
@@ -104,7 +100,6 @@ export default function Formulaire() {
             }}
           >
             <Avatar sx={{ m: 1, bgcolor: "#48184c" }}>
-              {/* <LockOutlinedIcon /> */}
             </Avatar>
             <Typography component="h1" variant="h5">
               سجل الآن 
