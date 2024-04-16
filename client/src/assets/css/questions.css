@@ -1,10 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap");
 
 .contain {
-  /* background: url("https://jalyss.com/modules/cz_imageslider/views/img/8bfc9742770a973a3b69ba57f8092478b23fad17_25555-03.jpg");
+  background: url("https://jalyss.com/modules/cz_imageslider/views/img/8bfc9742770a973a3b69ba57f8092478b23fad17_25555-03.jpg");
   background-size: cover;
-  background-repeat: no-repeat; */
-  /* background: #e9d4df; */
+  /* background-repeat: no-repeat; */
+  /* background: #3b0240; */
   color: #f6f8fc !important;
   padding-top: 2rem;
   height: 100vh;
@@ -87,9 +87,4 @@ input::placeholder {
 }
 
 
-.bhdLno {
-  width: 600px !important;
-    max-width: 1000px !important;
-    height: 600px !important;
-    max-height: 1000px !important;
-}
+

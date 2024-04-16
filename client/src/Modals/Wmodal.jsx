@@ -22,7 +22,6 @@ export default function WModal({handleClose,open}) {
 
   return (
     <div>
-      {/* <Button onClick={handleOpen}>Open modal</Button> */}
       <Modal
         keepMounted
         open={open}

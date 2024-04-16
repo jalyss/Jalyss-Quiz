@@ -70,10 +70,11 @@ function WheelWinner({ setOpen, setPrize, prize }) {
     <div className="d-flex justify-content-center align-items-center ">
       <div>
         <Wheel
+        
           mustStartSpinning={mustSpin}
           prizeNumber={prizeNumber}
           data={data}
-          fontSize={17}
+          fontSize={14}
           fontWeight={"bold"}
           radiusLineWidth={2}
           outerBorderColor="#64113F"

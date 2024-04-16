@@ -8,8 +8,8 @@ export default function Router() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}>
-          <Route index element={<Formulaire />} />
-          <Route path="Questions" element={<Quesrions />} />
+          <Route path="Questions" element={<Formulaire />} />
+          <Route  index element={<Quesrions />} />
         </Route>
       </Routes>
     </BrowserRouter>
