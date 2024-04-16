@@ -1,12 +1,13 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { url } from "./constant";
 
 
 export const createPartcipant = createAsyncThunk(
   "createParticipants",
   async (body) => {
     const response = await axios.post(
-      "http://localhost:5000/participants",
+      `http://${url}/participants`,
       body
     );
     return response.data;

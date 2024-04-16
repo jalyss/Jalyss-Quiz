@@ -1,26 +1,42 @@
 import React, { useEffect, useState } from "react";
-import { answers } from "../constants/answers";
 import Rmodal from "../components/Rmodal";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchQuestions } from "../store/levels";
 import WModal from "../components/Wmodal";
 import WheelWinner from "./Wheel";
+import Lottie from 'react-lottie';
+import winner from "../lotties/Animation - 1713232910020.json"
+
 import Wheelmodal from "../components/WheelModal";
 export default function Quesrions() {
   const [clicked, setClicked] = useState(false);
   const [niveau, setNiveau] = useState(0);
-  const [progress,setProgress]=useState("25%")
+  const [progress,setProgress]=useState("25ck%")
   const [openR, setOpenR] = React.useState(false);
-  const handleOpenR = () => setOpenR(true);
   const handleCloseR = () => setOpenR(false);
+  const [openWM, setOpenWM] = React.useState(false);
+  const handleCloseWM = () => setOpenWM(false);
   const [openW, setOpenW] = React.useState(false);
-  const handleOpenW = () => setOpenW(true);
   const handleCloseW = () => setOpenW(false);
+  const [prize,setPrize]= useState({
+    slogan : "", 
+    reward :""
+  })
   const questions = useSelector((state) => state.level?.levels);
+
+  const defaultOptionsWinner = {
+    loop: true,
+    autoplay: true,
+    animationData: winner,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice"
+    }
+  };
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchQuestions(niveau));
-  }, [questions?.length,niveau]);
+  }, [questions?.length,niveau,dispatch]);
 
   return (
     <div className="contain  ">
@@ -54,13 +70,13 @@ export default function Quesrions() {
             </p>
           </div>
           <div className="d-flex justify-content-center align-items-center ">
-            <img
+             <img
               src={questions?.imageUrl}
               alt=""
               width="100%"
               style={{ maxHeight: 350, objectFit: "cover" }}
               className="rounded img-fluid"
-            />
+            /> 
           </div>
           <div>
             <div className="d-flex flex-wrap gap-2 justify-content-between mt-4 ">
@@ -83,10 +99,22 @@ export default function Quesrions() {
           </div>
         </div>:
 <div style={{ padding: 30,height:"80vh" ,display:"flex" , justifyContent:"center" , alignItems:"center"}}>
-  <WheelWinner/>
+  <WheelWinner setOpen={setOpenWM} setPrize={setPrize} prize={prize}/>
+{openWM&&  <Lottie 
+	    options={defaultOptionsWinner}
+        height={700}
+        width={700}
+        style={{
+          position:"fixed",
+          top:"10%",
+          zIndex:5
+        }}
+       
+      />}
 </div>}
         <Rmodal handleClose={handleCloseR} open={openR} setNiveau={setNiveau} setProgress={setProgress} niveau={niveau} progress={progress} setClicked={setClicked} clicked={clicked} setOpen={setOpenR}/>
         <WModal handleClose={handleCloseW} open={openW} />
+        <Wheelmodal handleClose={handleCloseWM} open={openWM} setOpen={setOpenWM} prize={prize}/>
       </div>
     </div>
   );

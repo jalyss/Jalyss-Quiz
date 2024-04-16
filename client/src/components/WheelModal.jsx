@@ -3,10 +3,30 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import Lottie from 'react-lottie';
+import party from "../lotties/party.json"
+import winner from "../lotties/winnerwinner.json"
 
+
+const defaultOptionsParty = {
+  loop: true,
+  autoplay: true,
+  animationData: party,
+  rendererSettings: {
+    preserveAspectRatio: "xMidYMid slice"
+  }
+};
+const defaultOptionsWinner = {
+  loop: true,
+  autoplay: true,
+  animationData: winner,
+  rendererSettings: {
+    preserveAspectRatio: "xMidYMid slice"
+  }
+};
 const style = {
   position: "absolute",
-  top: "92%",
+  top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: "72%",
@@ -21,12 +41,12 @@ export default function Wheelmodal({
   handleClose,
   setOpen,
   open,
-  slogan,
-  reward
+  prize
 }) {
   
   return (
     <div>
+    
       <Modal
         keepMounted
         open={open}
@@ -34,6 +54,7 @@ export default function Wheelmodal({
         aria-labelledby="keep-mounted-modal-title"
         aria-describedby="keep-mounted-modal-description"
       >
+        
         <Box sx={style}>
           <Typography
             id="keep-mounted-modal-title"
@@ -41,27 +62,27 @@ export default function Wheelmodal({
             component="h2"
             sx={{ textAlign: "center", fontSize: 30 }}
           >
-            {slogan}
+           {prize.slogan? <>{prize.slogan}
             <br/>
-            {reward}
+            {prize.reward} </>: "حظا موفقا المرة القادمة"}
           </Typography>
           <Typography
             id="keep-mounted-modal-description"
             sx={{ mt: 2, textAlign: "center" }}
           >
-            <button
-              onClick={() => {
-                setOpen(!open);
-              }}
-              className="btn btn-light fs-5"
-            >
-              {
-                 `العب و اربح مع جليسكم 📚
-`}
-            </button>
+        
+             <Lottie 
+	    options={defaultOptionsParty}
+        height={70}
+        width={70}
+      />
+         
           </Typography>
+       
         </Box>
+      
       </Modal>
+
     </div>
   );
 }

@@ -1,18 +1,16 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
 const style = {
   position: "absolute",
   color:"white",
-  top: "10%",
+  top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: "72%",
  padding: "15px",
-  boxShadow: 24,
  backgroundColor: "#ff142b",
 
 boxShadow: "0px 0px 10px 5px rgba(255, 20, 43, 0.5)",
