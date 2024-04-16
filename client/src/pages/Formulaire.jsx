@@ -51,8 +51,7 @@ export default function Formulaire() {
       candidateInfo.fullName.trim() === "" ||
       candidateInfo.age.trim() === "" ||
       candidateInfo.tel.trim() === "" ||
-      candidateInfo.email.trim() === "" ||
-      candidateInfo.readingTime.trim() === ""
+      candidateInfo.email.trim() === "" 
     ) {
       // Handle validation error, e.g., display error message or mark required fields
       setShow(true);
