@@ -1,15 +1,12 @@
-
-import 'bootstrap/dist/css/bootstrap.min.css'
-
-import './pages/questions.css'
-import './assets/css/colors.css'
-import Quesrions from './pages/Quesrions';
-import { Outlet } from 'react-router-dom';
+import "./pages/questions.css";
+import "./assets/css/colors.css";
+import { Outlet } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
     <div className="App">
-     <Outlet/>
+      <Outlet />
     </div>
   );
 }

@@ -1,12 +1,13 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { url } from "./constant";
 
 
 export const fetchWheelProp = createAsyncThunk(
   "fetchprop",
   async () => {
     const response = await axios.get(
-      "http://localhost:5000/wheel-propositions",
+      `http://${url}/wheel-propositions`,
     );
     return response.data;
   }

@@ -106,7 +106,7 @@ function App() {
     <Box sx={{ display: 'flex' }} >
     <CssBaseline />
     <AppBar position="fixed" open={open} >
-      <Toolbar>
+      <Toolbar sx={{backgroundColor:"#48184c"}}>
         <IconButton
           color="inherit"
           aria-label="open drawer"

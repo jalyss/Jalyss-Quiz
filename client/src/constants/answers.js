@@ -1,1 +1,0 @@
-export const answers=["Tunis","Ottawa","Taranto","Italy"]

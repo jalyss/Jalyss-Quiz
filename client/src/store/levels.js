@@ -1,12 +1,13 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { url } from "./constant";
 
 
 export const fetchQuestions = createAsyncThunk(
   "fetchQuestions",
   async (level) => {
     const response = await axios.get(
-      `http://localhost:5000/levels/${level}`,
+      `http://${url}/levels/${level}`,
     );
     return response.data;
   }

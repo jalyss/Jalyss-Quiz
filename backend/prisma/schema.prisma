@@ -19,7 +19,7 @@ model Participant {
   age             Int
   email          String 
   PhoneNumber        String
-  Reading_Time       String
+  birthday          DateTime
   participantAnswer  ParticipantQuestion[]
   WheelProposition   WheelProposition?     @relation(fields: [wheelPropositionId], references: [id])
   wheelPropositionId Int?
