@@ -1,5 +1,4 @@
-import "./pages/questions.css";
-import "./assets/css/colors.css";
+import "./assets/css/questions.css"
 import { Outlet } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 

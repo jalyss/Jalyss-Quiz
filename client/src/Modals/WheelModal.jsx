@@ -1,11 +1,9 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Lottie from 'react-lottie';
 import party from "../lotties/party.json"
-import winner from "../lotties/winnerwinner.json"
 
 
 const defaultOptionsParty = {
@@ -16,14 +14,7 @@ const defaultOptionsParty = {
     preserveAspectRatio: "xMidYMid slice"
   }
 };
-const defaultOptionsWinner = {
-  loop: true,
-  autoplay: true,
-  animationData: winner,
-  rendererSettings: {
-    preserveAspectRatio: "xMidYMid slice"
-  }
-};
+
 const style = {
   position: "absolute",
   top: "50%",
@@ -32,14 +23,12 @@ const style = {
   width: "72%",
   color: "white",
   padding: "15px",
-  boxShadow: 24,
   backgroundColor: "#00b849",
   boxShadow: "0px 0px 10px 5px rgba(0, 255, 0, 0.5)"
 };
 
 export default function Wheelmodal({
   handleClose,
-  setOpen,
   open,
   prize
 }) {
@@ -71,11 +60,11 @@ export default function Wheelmodal({
             sx={{ mt: 2, textAlign: "center" }}
           >
         
-             <Lottie 
+        {  prize.reward &&   <Lottie 
 	    options={defaultOptionsParty}
         height={70}
         width={70}
-      />
+      />}
          
           </Typography>
        

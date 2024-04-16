@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
-import Rmodal from "../components/Rmodal";
+import Rmodal from "../Modals/Rmodal";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchQuestions } from "../store/levels";
-import WModal from "../components/Wmodal";
+import WModal from "../Modals/Wmodal";
 import WheelWinner from "./Wheel";
 import Lottie from 'react-lottie';
 import winner from "../lotties/Animation - 1713232910020.json"
 
-import Wheelmodal from "../components/WheelModal";
+import Wheelmodal from "../Modals/WheelModal";
 export default function Quesrions() {
   const [clicked, setClicked] = useState(false);
   const [niveau, setNiveau] = useState(0);
-  const [progress,setProgress]=useState("25ck%")
+  const [progress,setProgress]=useState("25%")
   const [openR, setOpenR] = React.useState(false);
   const handleCloseR = () => setOpenR(false);
   const [openWM, setOpenWM] = React.useState(false);
@@ -48,7 +48,7 @@ export default function Quesrions() {
             <div
               className="progress-bar "
               role="progressbar"
-              style={{ width: progress, background: "#48184c" }}
+              style={{ width: progress, background: "#E6C440" }}
               aria-valuenow="25"
               aria-valuemin="0"
               aria-valuemax="100"
@@ -59,7 +59,7 @@ export default function Quesrions() {
           <div>
             <p
               style={{
-                fontSize: 60,
+                fontSize: 30,
                 fontWeight: 70,
                 whiteSpace: "no-wrap",
                 direction: "rtl",
@@ -82,7 +82,7 @@ export default function Quesrions() {
             <div className="d-flex flex-wrap gap-2 justify-content-between mt-4 ">
               {questions?.answers?.map((elem, i) => (
                 <p
-                  className={`background col-5 text-center rounded text-dark fs-4 ${
+                  className={`background col-5 text-center p-1 rounded text-dark fs-5 ${
                     clicked &&
                     (elem.isTrue ? "backgroundWinner text-white" : "backgroundLoser text-white")
                   }`}
@@ -100,13 +100,13 @@ export default function Quesrions() {
         </div>:
 <div style={{ padding: 30,height:"80vh" ,display:"flex" , justifyContent:"center" , alignItems:"center"}}>
   <WheelWinner setOpen={setOpenWM} setPrize={setPrize} prize={prize}/>
-{openWM&&  <Lottie 
+{openWM&&prize.reward&&  <Lottie 
 	    options={defaultOptionsWinner}
-        height={700}
-        width={700}
+        height={200}
+        width={200}
         style={{
           position:"fixed",
-          top:"10%",
+          top:"2%",
           zIndex:5
         }}
        
@@ -114,7 +114,7 @@ export default function Quesrions() {
 </div>}
         <Rmodal handleClose={handleCloseR} open={openR} setNiveau={setNiveau} setProgress={setProgress} niveau={niveau} progress={progress} setClicked={setClicked} clicked={clicked} setOpen={setOpenR}/>
         <WModal handleClose={handleCloseW} open={openW} />
-        <Wheelmodal handleClose={handleCloseWM} open={openWM} setOpen={setOpenWM} prize={prize}/>
+        <Wheelmodal handleClose={handleCloseWM} open={openWM}  prize={prize}/>
       </div>
     </div>
   );
