@@ -28,7 +28,7 @@ model Participant {
 model Question {
   id                Int                   @id @default(autoincrement())
   question          String
-  imageUrl          String
+  imageUrl          String?
   participantAnswer ParticipantQuestion[]
   Admin             Admin?                @relation(fields: [adminId], references: [id])
   adminId           Int?
