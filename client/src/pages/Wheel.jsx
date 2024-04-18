@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Wheel } from "react-custom-roulette";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchWheelProp } from "../store/wheelProp";
+import { participantReward } from "../store/participantSlice";
 function WheelWinner({ setOpen, setPrize, prize }) {
   const wheelPropositions = useSelector((state) => state.wheelProp.wheelprop);
   console.log(wheelPropositions, "those are wheel propostitions");
@@ -72,7 +73,7 @@ function WheelWinner({ setOpen, setPrize, prize }) {
         <Wheel
         
           mustStartSpinning={mustSpin}
-          prizeNumber={prizeNumber}
+          prizeNumber={2}
           data={data}
           fontSize={14}
           fontWeight={"bold"}
@@ -83,8 +84,11 @@ function WheelWinner({ setOpen, setPrize, prize }) {
             setMustSpin(false);
             setPrize({
               slogan: wheelPropositions[prizeNumber]?.slogan,
-              reward: wheelPropositions[prizeNumber]?.reward
+              reward: wheelPropositions[prizeNumber]?.reward,
             });
+            wheelPropositions[prizeNumber]?.slogan && dispatch(participantReward(
+              {id:JSON.parse(localStorage.getItem("participantId")),reward :wheelPropositions[prizeNumber].id }
+            ))
             setOpen(true);
           }}
         />

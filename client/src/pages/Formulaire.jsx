@@ -30,26 +30,34 @@ export default function Formulaire() {
   const navigate = useNavigate();
   const [candidateInfo, setCandidateInfo] = useState({
     fullName: "",
-    age: "",
-    tel: "",
+    phoneNumber: "",
     email: "",
-    readingTime: ""
+    birthday: "",
+    work :""
   });
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setCandidateInfo({ ...candidateInfo, [name]: value });
+    if(event.target?.name) {
+      const { name, value } = event.target;
+      setCandidateInfo({ ...candidateInfo, [name]: value });
+    }
+    else {
+      setCandidateInfo({...candidateInfo,birthday:event.$d})
+    }
+    
+   
   };
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     if (
       candidateInfo.fullName.trim() === "" ||
-      candidateInfo.age.trim() === "" ||
-      candidateInfo.tel.trim() === "" ||
-      candidateInfo.email.trim() === "" 
+      candidateInfo.work.trim() === "" ||
+      candidateInfo.phoneNumber.trim() === "" ||
+      !candidateInfo.birthday ||
+      candidateInfo.email.trim() === ""
     ) {
       setShow(true);
       return;
@@ -59,9 +67,9 @@ export default function Formulaire() {
       createPartcipant({
         email: candidateInfo.email,
         fullName: candidateInfo.fullName,
-        age: +candidateInfo.age,
-        PhoneNumber: candidateInfo.tel,
-        Reading_Time: candidateInfo.readingTime
+        phoneNumber: candidateInfo.phoneNumber,
+        birthday: candidateInfo.birthday,
+        work : candidateInfo.work
       })
     );
     navigate("Questions");
@@ -88,7 +96,7 @@ export default function Formulaire() {
           }}
         />
 
-        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square >
+        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
           <Box
             sx={{
               my: 8,
@@ -96,11 +104,10 @@ export default function Formulaire() {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              justifyContent:"center"
+              justifyContent: "center"
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: "#48184c" }}>
-            </Avatar>
+            <Avatar sx={{ m: 1, bgcolor: "#48184c" }}></Avatar>
             <Typography component="h1" variant="h5">
               سجل الآن 
             </Typography>
@@ -132,33 +139,11 @@ export default function Formulaire() {
                 }}
                 onChange={handleInputChange}
               />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                name="age"
-                value={candidateInfo.age}
-                label="العمر"
-                type="number"
-                id="age"
-                autoComplete="current-age"
-                dir="rtl"
-                sx={{
-                  "& .MuiInputLabel-root.Mui-focused": {
-                    color: "purple"
-                  },
-                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-                    {
-                      borderColor: "purple"
-                    }
-                }}
-                onChange={handleInputChange}
-              />
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DemoContainer components={["DatePicker"]}>
                   <DatePicker
-                     dir="rtl"
-                     fullWidth
+                    dir="rtl"
+                    fullWidth
                     label="تاريج الميلاد"
                     sx={{
                       "& .MuiInputLabel-root.Mui-focused": {
@@ -168,8 +153,9 @@ export default function Formulaire() {
                         {
                           borderColor: "purple"
                         },
-                        width:"100%"
+                      width: "100%"
                     }}
+                    onChange={handleInputChange}
                   />
                 </DemoContainer>
               </LocalizationProvider>
@@ -177,8 +163,8 @@ export default function Formulaire() {
                 margin="normal"
                 required
                 fullWidth
-                name="tel"
-                value={candidateInfo.tel}
+                name="phoneNumber"
+                value={candidateInfo.phoneNumber}
                 label="رقم الهاتف"
                 type="number"
                 id="tel"
@@ -239,7 +225,6 @@ export default function Formulaire() {
                 }}
                 onChange={handleInputChange}
               />
-          
 
               <button
                 className="btn btn-light w-100 mt-4 "
@@ -256,10 +241,6 @@ export default function Formulaire() {
       </Grid>
 
       <>
-        {/* <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
-      </Button> */}
-
         <Modal show={show} onHide={handleClose}>
           <Modal.Body style={{ padding: 30 }}>
             الرجاء تعمير كل الفراغات

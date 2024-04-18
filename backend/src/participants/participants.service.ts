@@ -26,8 +26,14 @@ export class ParticipantsService {
     return `This action returns a #${id} participant`;
   }
 
-  async update(id: number, updateParticipantDto: UpdateParticipantDto) {
-    return `This action updates a #${id} participant`;
+  async update(id: number, dto: UpdateParticipantDto) {
+    return await this.prisma.participant.update({
+      where : {
+        id
+      },
+      data : dto
+      
+    })
   }
 
   async remove(id: number) {

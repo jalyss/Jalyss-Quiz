@@ -15,11 +15,11 @@ datasource db {
 
 model Participant {
   id                 Int                   @id @default(autoincrement())
-  fullName         String
-  age             Int
-  email          String 
-  PhoneNumber        String
-  birthday          DateTime
+  fullName           String
+  email              String
+  work               String
+  phoneNumber        String
+  birthday           DateTime
   participantAnswer  ParticipantQuestion[]
   WheelProposition   WheelProposition?     @relation(fields: [wheelPropositionId], references: [id])
   wheelPropositionId Int?
