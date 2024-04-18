@@ -33,7 +33,7 @@ export default function Rmodal({
       <Modal
         keepMounted
         open={open}
-        onClose={handleClose}
+        // onClose={handleClose}
         aria-labelledby="keep-mounted-modal-title"
         aria-describedby="keep-mounted-modal-description"
       >

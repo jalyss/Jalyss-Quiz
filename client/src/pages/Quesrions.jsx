@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Rmodal from "../Modals/Rmodal";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchQuestions } from "../store/levels";
+import { fetchQuestions, participantQuestion } from "../store/levels";
 import WModal from "../Modals/Wmodal";
 import WheelWinner from "./Wheel";
 import Lottie from 'react-lottie';
@@ -11,19 +11,20 @@ import Wheelmodal from "../Modals/WheelModal";
 export default function Quesrions() {
   const [clicked, setClicked] = useState(false);
   const [niveau, setNiveau] = useState(0);
-  const [progress,setProgress]=useState("25%")
+  const [progress,setProgress]=useState("100%")
   const [openR, setOpenR] = React.useState(false);
   const handleCloseR = () => setOpenR(false);
   const [openWM, setOpenWM] = React.useState(false);
   const handleCloseWM = () => setOpenWM(false);
   const [openW, setOpenW] = React.useState(false);
   const handleCloseW = () => setOpenW(false);
+  const [participantAnswer,SetParticipantAnswer] = useState(null)
   const [prize,setPrize]= useState({
     slogan : "", 
     reward :""
   })
   const questions = useSelector((state) => state.level?.levels);
-
+console.log(questions,"those are questions")
   const defaultOptionsWinner = {
     loop: true,
     autoplay: true,
@@ -89,6 +90,12 @@ export default function Quesrions() {
                   key={i}
                   onClick={() => {
                     setClicked(true);
+                    SetParticipantAnswer(elem.id)
+                    dispatch(participantQuestion({
+                      answerId : elem.id,
+                      questionId : questions.id,
+                      participantId : JSON.parse(localStorage.getItem("participantId"))
+                    }))
                     elem.isTrue ? setOpenR(true) : setOpenW(true);
                   }}
                 >

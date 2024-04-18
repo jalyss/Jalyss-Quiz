@@ -5,37 +5,44 @@ import Typography from "@mui/material/Typography";
 
 const style = {
   position: "absolute",
-  color:"white",
+  color: "white",
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: "72%",
- padding: "15px",
- backgroundColor: "#ff142b",
+  padding: "15px",
+  backgroundColor: "#ff142b",
 
-boxShadow: "0px 0px 10px 5px rgba(255, 20, 43, 0.5)",
- 
+  boxShadow: "0px 0px 10px 5px rgba(255, 20, 43, 0.5)"
 };
 
-export default function WModal({handleClose,open}) {
- 
-
+export default function WModal({ handleClose, open }) {
   return (
     <div>
       <Modal
         keepMounted
         open={open}
-        onClose={handleClose}
+        // onClose={handleClose}
         aria-labelledby="keep-mounted-modal-title"
         aria-describedby="keep-mounted-modal-description"
       >
         <Box sx={style}>
-          <Typography id="keep-mounted-modal-title" variant="h6" component="h2" sx={{textAlign:"center",fontSize:30}} >
-          شكرا لمشاركتك معنا ❤ نتمنى لك حظا موفق في المرة القادمة . انقر لزيارة موقعنا
+          <Typography
+            id="keep-mounted-modal-title"
+            variant="h6"
+            component="h2"
+            sx={{ textAlign: "center", fontSize: 30 }}
+          >
+            شكرا لمشاركتك معنا ❤ نتمنى لك حظا موفق في المرة القادمة .
+            انقر لزيارة موقعنا
           </Typography>
-          <Typography id="keep-mounted-modal-description" sx={{ mt: 2 ,textAlign:"center"}}>
-          <a href="http://jalyss.com" className="btn btn-light fs-5">موقع جليسكم{">"}</a>
-
+          <Typography
+            id="keep-mounted-modal-description"
+            sx={{ mt: 2, textAlign: "center" }}
+          >
+            <a href="http://jalyss.com" className="btn btn-light fs-5">
+              موقع جليسكم{">"}
+            </a>
           </Typography>
         </Box>
       </Modal>
