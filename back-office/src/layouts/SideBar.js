@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { FaBars } from "react-icons/fa";
+import { IoIosArrowDroprightCircle,IoIosArrowDropleftCircle   } from "react-icons/io";
+import { } from "react-icons/io";
+
 import { Link, useLocation } from "react-router-dom";
 import { sidebarData } from "../constant/sideBarData";
 
@@ -15,10 +17,10 @@ function SideBar({ toggle, isOpen }) {
   return (
     <div style={{ width: isOpen ? "250px" : "50px" }} className="sidebar">
       <div className="top_section">
-        <img src="../assets/img/jalyssCOM.jpeg" alt="logo jalysscom" loading="lazy" style={{ display: isOpen ? "block" : "none" }} className="logo" />
+        <img src={require("../assets/img/jalyssCOM.jpg")} alt="logo jalysscom" loading="lazy" style={{ display: isOpen ? "block" : "none" }} className="img-fluid"  width={100}/>
        
         <div style={{ marginLeft: isOpen ? "80px" : "0px" }} className="bars">
-          <FaBars onClick={toggle} />
+         {!isOpen? <IoIosArrowDroprightCircle  onClick={toggle} className="hover-overlay" />:<IoIosArrowDropleftCircle onClick={toggle} className="hover-overlay"/>}
         </div>
       </div>
       {sidebarData.map((item, index) => (
@@ -42,7 +44,7 @@ function SideBar({ toggle, isOpen }) {
                 </div>
               </button>
               <div
-                className={`accordion-collapse collapse ${
+                className={`accordion-collapse collapse   ${
                   activeSubMenu === index ? "show" : ""
                 } `}
               >
@@ -51,7 +53,7 @@ function SideBar({ toggle, isOpen }) {
                     <Link to={child.path} className="linkText" key={childIndex}>
                       <div
                         key={childIndex}
-                        className={`links ${
+                        className={`links  ${
                           location.pathname === child.path ? "active" : ""
                         } `}
                       >
@@ -59,7 +61,7 @@ function SideBar({ toggle, isOpen }) {
 
                         <div
                           style={{ display: isOpen ? "block" : "none" }}
-                          className="mt-1"
+                          className="mt-1 "
                         >
                           {child.name}
                         </div>
@@ -73,7 +75,7 @@ function SideBar({ toggle, isOpen }) {
             <Link
               onClick={() => handleSubMenuClick(index)}
               to={item.path}
-              className={`links  
+              className={`links text-decoration-none 
               ${activeSubMenu === index ? "active" : ""}
               `}
             >

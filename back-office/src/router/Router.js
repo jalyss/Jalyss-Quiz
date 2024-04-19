@@ -4,25 +4,27 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
 import { me } from "../store/auth";
+import Main from "../domains/Main";
+import Dashboard from "../domains/Dashboard";
 
 function Router() {
   const dispatch = useDispatch();
-  const user = useSelector(state => state.auth.me);
+  // const user = useSelector(state => state.auth?.me);
 
   const [loading, setLoading] = useState(true);
 
-  useEffect(
-    () => {
-      const token = JSON.parse(localStorage.getItem("token"));
-      if (token) {
-        const Authorization = token.Authorization;
-        dispatch(me(Authorization)).then(res => setLoading(false));
-      } else {
-        setLoading(false);
-      }
-    },
-    [dispatch]
-  );
+  // useEffect(
+  //   () => {
+  //     const token = JSON.parse(localStorage.getItem("token"));
+  //     if (token) {
+  //       const Authorization = token.Authorization;
+  //       dispatch(me(Authorization)).then(res => setLoading(false));
+  //     } else {
+  //       setLoading(false);
+  //     }
+  //   },
+  //   [dispatch]
+  // );
   return (
     <div>
       {loading &&

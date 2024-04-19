@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
 
 function Header({ isOpen }) {
   const navigate = useNavigate();
-  const me = useSelector(state => state.auth.me)
+  const me = useSelector(state => state.auth?.me)
 
 
 
@@ -31,7 +31,7 @@ function Header({ isOpen }) {
                   style={{ width: "40px", marginRight: "10px" }}
                   alt="Avatar"
                 />
-                {meme?.employee?.name?me?.employee?.name:"BASMA"}
+                {me?.employee?.name?me?.employee?.name:"BASMA"}
               </Dropdown.Toggle>
 
               <Dropdown.Menu>
