@@ -6,7 +6,7 @@ import { FaBookReader } from "react-icons/fa";
 
 export const sidebarData = [
   { name: "Questions", icon: <BsPatchQuestionFill />, path: "questions" },
-  { name: "Admins", icon: <RiAdminFill /> },
-  { name: "Rewards", icon: <HiMiniGift /> },
-  { name: "condidates", icon: <FaBookReader /> },
+  { name: "Admins", icon: <RiAdminFill /> , path: "admins"},
+  { name: "Rewards", icon: <HiMiniGift />,path: "rewards" },
+  { name: "participants", icon: <FaBookReader /> ,path: "participants" },
 ];
