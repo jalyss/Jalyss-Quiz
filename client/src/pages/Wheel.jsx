@@ -3,7 +3,7 @@ import { Wheel } from "react-custom-roulette";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchWheelProp } from "../store/wheelProp";
 import { participantReward } from "../store/participantSlice";
-function WheelWinner({ setOpen, setPrize, prize }) {
+function WheelWinner({ setOpen, setPrize }) {
   const wheelPropositions = useSelector((state) => state.wheelProp.wheelprop);
   console.log(wheelPropositions, "those are wheel propostitions");
   const dispatch = useDispatch();
@@ -17,48 +17,48 @@ function WheelWinner({ setOpen, setPrize, prize }) {
   const data = [
     {
       option: wheelPropositions[0]?.label,
-      style: { backgroundColor: "#64113F", textColor: "white" },
+      style: { backgroundColor: "#64113F", textColor: "white" }
     },
     {
       option: wheelPropositions[1]?.label,
-      style: { backgroundColor: "white" },
+      style: { backgroundColor: "white" }
     },
     {
       option: wheelPropositions[2]?.label,
-      style: { backgroundColor: "#64113F", textColor: "white" },
+      style: { backgroundColor: "#64113F", textColor: "white" }
     },
     {
       option: wheelPropositions[3]?.label,
-      style: { backgroundColor: "white" },
+      style: { backgroundColor: "white" }
     },
     {
       option: wheelPropositions[4]?.label,
-      style: { backgroundColor: "#64113F", textColor: "white" },
+      style: { backgroundColor: "#64113F", textColor: "white" }
     },
     {
       option: wheelPropositions[5]?.label,
-      style: { backgroundColor: "white" },
+      style: { backgroundColor: "white" }
     },
     {
       option: wheelPropositions[6]?.label,
-      style: { backgroundColor: "#64113F", textColor: "white" },
+      style: { backgroundColor: "#64113F", textColor: "white" }
     },
     { option: "حظ موفق المره القادمه", style: { backgroundColor: "white" } },
     {
       option: "حظ موفق المره القادمه",
-      style: { backgroundColor: "#64113F", textColor: "white" },
+      style: { backgroundColor: "#64113F", textColor: "white" }
     },
     { option: "حظ موفق المره القادمه", style: { backgroundColor: "white" } },
     {
       option: "حظ موفق المره القادمه",
-      style: { backgroundColor: "#64113F", textColor: "white" },
+      style: { backgroundColor: "#64113F", textColor: "white" }
     },
     { option: "حظ موفق المره القادمه", style: { backgroundColor: "white" } },
     {
       option: "حظ موفق المره القادمه",
-      style: { backgroundColor: "#64113F", textColor: "white" },
+      style: { backgroundColor: "#64113F", textColor: "white" }
     },
-    { option: "حظ موفق المره القادمه", style: { backgroundColor: "white" } },
+    { option: "حظ موفق المره القادمه", style: { backgroundColor: "white" } }
   ];
   const handleSpinClick = () => {
     if (!mustSpin) {
@@ -72,7 +72,7 @@ function WheelWinner({ setOpen, setPrize, prize }) {
       <div>
         <Wheel
           mustStartSpinning={mustSpin}
-          prizeNumber={2}
+          prizeNumber={prizeNumber}
           data={data}
           fontSize={14}
           fontWeight={"bold"}
@@ -81,14 +81,13 @@ function WheelWinner({ setOpen, setPrize, prize }) {
           radiusLineColor="white"
           onStopSpinning={() => {
             setMustSpin(false);
-            setPrize(wheelPropositions[prizeNumber]);
-            wheelPropositions[prizeNumber]?.slogan &&
-              dispatch(
-                participantReward({
-                  id: JSON.parse(localStorage.getItem("participantId")),
-                  reward: wheelPropositions[prizeNumber].id,
-                })
-              );
+
+       wheelPropositions[prizeNumber] && setPrize(wheelPropositions[prizeNumber])&& dispatch(
+              participantReward({
+                id: JSON.parse(localStorage.getItem("participantId")),
+                reward: wheelPropositions[prizeNumber].id
+              })
+            )
             setOpen(true);
           }}
         />
