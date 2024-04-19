@@ -5,9 +5,11 @@ import { Outlet } from "react-router-dom";
 
 
 import { useDispatch, useSelector } from "react-redux";
+import SideBar from "../layouts/SideBar";
+import Header from "../layouts/Header";
 
 function Main() {
-  const me = useSelector((state) => state.auth.me);
+//   const me = useSelector((state) => state.auth.me);
   const [isOpen, setIsOpen] = useState(true);
 
   const toggle = () => {
