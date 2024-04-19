@@ -13,7 +13,7 @@ const style = {
   padding: "15px",
   backgroundColor: "#ff142b",
 
-  boxShadow: "0px 0px 10px 5px rgba(255, 20, 43, 0.5)"
+  boxShadow: "0px 0px 10px 5px rgba(255, 20, 43, 0.5)",
 };
 
 export default function WModal({ handleClose, open }) {
@@ -40,9 +40,15 @@ export default function WModal({ handleClose, open }) {
             id="keep-mounted-modal-description"
             sx={{ mt: 2, textAlign: "center" }}
           >
-            <a href="http://jalyss.com" className="btn btn-light fs-5">
-              موقع جليسكم{">"}
-            </a>
+            <button
+              className="btn btn-light fs-5"
+              onClick={() => {
+                localStorage.clear();
+                window.location.reload();
+              }}
+            >
+              العودة الى الرئيسية{">"}
+            </button>
           </Typography>
         </Box>
       </Modal>

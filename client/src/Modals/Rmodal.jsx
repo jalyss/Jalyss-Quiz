@@ -54,7 +54,7 @@ export default function Rmodal({
             <button
               onClick={() => {
                 niveau<=2&&setNiveau(niveau + 1);
-                setProgress(String(Number(progress.slice(0, 2)) + 25) + "%");
+                setProgress(String(Number(progress.slice(0, 2)) + 33) + "%");
                 setClicked(!clicked);
                 setOpen(!open);
               }}

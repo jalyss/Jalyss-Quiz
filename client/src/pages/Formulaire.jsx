@@ -15,39 +15,37 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import jalyss from "../assets/images/jalyss.png";
-import { useNavigate } from "react-router-dom";
+
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 
 import Modal from "react-bootstrap/Modal";
 import { createPartcipant } from "../store/participantSlice";
+import { showErrorToast } from "../utils/toast";
 
 // TODO remove, this demo shouldn't need to reset the theme.
 
 const defaultTheme = createTheme();
 export default function Formulaire() {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+
   const [candidateInfo, setCandidateInfo] = useState({
     fullName: "",
     phoneNumber: "",
     email: "",
     birthday: "",
-    work :""
+    work: "",
   });
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleInputChange = (event) => {
-    if(event.target?.name) {
+    if (event.target?.name) {
       const { name, value } = event.target;
       setCandidateInfo({ ...candidateInfo, [name]: value });
+    } else {
+      setCandidateInfo({ ...candidateInfo, birthday: event.$d });
     }
-    else {
-      setCandidateInfo({...candidateInfo,birthday:event.$d})
-    }
-    
-   
   };
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -69,10 +67,14 @@ export default function Formulaire() {
         fullName: candidateInfo.fullName,
         phoneNumber: candidateInfo.phoneNumber,
         birthday: candidateInfo.birthday,
-        work : candidateInfo.work
+        work: candidateInfo.work,
       })
-    );
-    navigate("Questions");
+    ).then((res) => {
+      if (res.error) {
+        console.log(res);
+        showErrorToast("الرجاء التثبت من البربد الاكتروني");
+      }
+    });
   };
 
   return (
@@ -82,7 +84,7 @@ export default function Formulaire() {
         <Grid
           item
           xs={false}
-          sm={4}
+          sm={0}
           md={7}
           sx={{
             backgroundImage: `url(${jalyss})`,
@@ -92,151 +94,321 @@ export default function Formulaire() {
                 ? t.palette.grey[50]
                 : t.palette.grey[900],
             backgroundSize: "cover",
-            backgroundPosition: "center left"
+            backgroundPosition: "center left",
           }}
         />
 
-        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-          <Box
-            sx={{
-              my: 8,
-              mx: 4,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center"
+        <Grid
+          item
+          xs={12}
+          sm={12}
+          md={5}
+          component={Paper}
+          elevation={6}
+          square
+        >
+          <div
+            className="position-fixed w-100 h-100 d-md-none"
+            style={{
+              backgroundImage: `url(${jalyss})`,
+              backgroundRepeat: "no-repeat",
+              backgroundColor: (t) =>
+                t.palette.mode === "light"
+                  ? t.palette.grey[50]
+                  : t.palette.grey[900],
+              backgroundSize: "cover",
+              backgroundPosition: "center left",
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: "#48184c" }}></Avatar>
-            <Typography component="h1" variant="h5">
-              سجل الآن 
-            </Typography>
             <Box
-              component="form"
-              noValidate
-              onSubmit={handleSubmit}
-              sx={{ mt: 1 }}
+              sx={{
+                my: 8,
+                mx: 4,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                backgroundColor:'white',
+                padding:5,
+                borderRadius:3
+              }}
             >
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="age"
-                label="الإسم و اللقب"
-                name="fullName"
-                value={candidateInfo.fullName}
-                autoComplete="age"
-                autoFocus
-                sx={{
-                  "& .MuiInputLabel-root.Mui-focused": {
-                    color: "purple"
-                  },
-                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-                    {
-                      borderColor: "purple"
-                    },
-                  direction: "rtl"
-                }}
-                onChange={handleInputChange}
-              />
-              <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <DemoContainer components={["DatePicker"]}>
-                  <DatePicker
-                    dir="rtl"
-                    fullWidth
-                    label="تاريج الميلاد"
-                    sx={{
-                      "& .MuiInputLabel-root.Mui-focused": {
-                        color: "purple"
-                      },
-                      "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-                        {
-                          borderColor: "purple"
-                        },
-                      width: "100%"
-                    }}
-                    onChange={handleInputChange}
-                  />
-                </DemoContainer>
-              </LocalizationProvider>
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                name="phoneNumber"
-                value={candidateInfo.phoneNumber}
-                label="رقم الهاتف"
-                type="number"
-                id="tel"
-                autoComplete="current-tel"
-                dir="rtl"
-                sx={{
-                  "& .MuiInputLabel-root.Mui-focused": {
-                    color: "purple"
-                  },
-                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-                    {
-                      borderColor: "purple"
-                    }
-                }}
-                onChange={handleInputChange}
-              />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                name="email"
-                value={candidateInfo.email}
-                label="البريد الإلكتروني "
-                type="email"
-                id="email"
-                autoComplete="current-email"
-                dir="rtl"
-                sx={{
-                  "& .MuiInputLabel-root.Mui-focused": {
-                    color: "purple"
-                  },
-                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-                    {
-                      borderColor: "purple"
-                    }
-                }}
-                onChange={handleInputChange}
-              />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                name="work"
-                value={candidateInfo.work}
-                label="المهنة"
-                type="text"
-                id="work"
-                autoComplete="current-email"
-                dir="rtl"
-                sx={{
-                  "& .MuiInputLabel-root.Mui-focused": {
-                    color: "purple"
-                  },
-                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-                    {
-                      borderColor: "purple"
-                    }
-                }}
-                onChange={handleInputChange}
-              />
-
-              <button
-                className="btn btn-light w-100 mt-4 "
-                type="submit"
-                variant="contained"
-                style={{ backgroundColor: "#48184c", color: "white" }}
-                onClick={handleSubmit}
+              <Avatar sx={{ m: 1, bgcolor: "#48184c" }}></Avatar>
+              <Typography component="h1" variant="h5">
+                سجل الآن 
+              </Typography>
+              <Box
+                component="form"
+                noValidate
+                onSubmit={handleSubmit}
+                sx={{ mt: 1 }}
               >
-                سجل
-              </button>
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="age"
+                  label="الإسم و اللقب"
+                  name="fullName"
+                  value={candidateInfo.fullName}
+                  autoComplete="age"
+                  autoFocus
+                  sx={{
+                    "& .MuiInputLabel-root.Mui-focused": {
+                      color: "purple",
+                    },
+                    "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                      {
+                        borderColor: "purple",
+                      },
+                    direction: "rtl",
+                  }}
+                  onChange={handleInputChange}
+                />
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <DemoContainer components={["DatePicker"]}>
+                    <DatePicker
+                      dir="rtl"
+                      fullWidth
+                      label="تاريج الميلاد"
+                      sx={{
+                        "& .MuiInputLabel-root.Mui-focused": {
+                          color: "purple",
+                        },
+                        "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                          {
+                            borderColor: "purple",
+                          },
+                        width: "100%",
+                      }}
+                      onChange={handleInputChange}
+                    />
+                  </DemoContainer>
+                </LocalizationProvider>
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  name="phoneNumber"
+                  value={candidateInfo.phoneNumber}
+                  label="رقم الهاتف"
+                  type="number"
+                  id="tel"
+                  autoComplete="current-tel"
+                  dir="rtl"
+                  sx={{
+                    "& .MuiInputLabel-root.Mui-focused": {
+                      color: "purple",
+                    },
+                    "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                      {
+                        borderColor: "purple",
+                      },
+                  }}
+                  onChange={handleInputChange}
+                />
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  name="email"
+                  value={candidateInfo.email}
+                  label="البريد الإلكتروني "
+                  type="email"
+                  id="email"
+                  autoComplete="current-email"
+                  dir="rtl"
+                  sx={{
+                    "& .MuiInputLabel-root.Mui-focused": {
+                      color: "purple",
+                    },
+                    "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                      {
+                        borderColor: "purple",
+                      },
+                  }}
+                  onChange={handleInputChange}
+                />
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  name="work"
+                  value={candidateInfo.work}
+                  label="المهنة"
+                  type="text"
+                  id="work"
+                  autoComplete="current-email"
+                  dir="rtl"
+                  sx={{
+                    "& .MuiInputLabel-root.Mui-focused": {
+                      color: "purple",
+                    },
+                    "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                      {
+                        borderColor: "purple",
+                      },
+                  }}
+                  onChange={handleInputChange}
+                />
+
+                <button
+                  className="btn btn-light w-100 mt-4 "
+                  type="submit"
+                  variant="contained"
+                  style={{ backgroundColor: "#48184c", color: "white" }}
+                  onClick={handleSubmit}
+                >
+                  سجل
+                </button>
+              </Box>
             </Box>
-          </Box>
+          </div>
+          
+            <Box
+              sx={{
+                my: 8,
+                mx: 4,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                backgroundColor:'white',
+                padding:5,
+                borderRadius:3
+              }}
+            >
+              <Avatar sx={{ m: 1, bgcolor: "#48184c" }}></Avatar>
+              <Typography component="h1" variant="h5">
+                سجل الآن 
+              </Typography>
+              <Box
+                component="form"
+                noValidate
+                onSubmit={handleSubmit}
+                sx={{ mt: 1 }}
+              >
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="age"
+                  label="الإسم و اللقب"
+                  name="fullName"
+                  value={candidateInfo.fullName}
+                  autoComplete="age"
+                  autoFocus
+                  sx={{
+                    "& .MuiInputLabel-root.Mui-focused": {
+                      color: "purple",
+                    },
+                    "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                      {
+                        borderColor: "purple",
+                      },
+                    direction: "rtl",
+                  }}
+                  onChange={handleInputChange}
+                />
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <DemoContainer components={["DatePicker"]}>
+                    <DatePicker
+                      dir="rtl"
+                      fullWidth
+                      label="تاريج الميلاد"
+                      sx={{
+                        "& .MuiInputLabel-root.Mui-focused": {
+                          color: "purple",
+                        },
+                        "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                          {
+                            borderColor: "purple",
+                          },
+                        width: "100%",
+                      }}
+                      onChange={handleInputChange}
+                    />
+                  </DemoContainer>
+                </LocalizationProvider>
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  name="phoneNumber"
+                  value={candidateInfo.phoneNumber}
+                  label="رقم الهاتف"
+                  type="number"
+                  id="tel"
+                  autoComplete="current-tel"
+                  dir="rtl"
+                  sx={{
+                    "& .MuiInputLabel-root.Mui-focused": {
+                      color: "purple",
+                    },
+                    "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                      {
+                        borderColor: "purple",
+                      },
+                  }}
+                  onChange={handleInputChange}
+                />
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  name="email"
+                  value={candidateInfo.email}
+                  label="البريد الإلكتروني "
+                  type="email"
+                  id="email"
+                  autoComplete="current-email"
+                  dir="rtl"
+                  sx={{
+                    "& .MuiInputLabel-root.Mui-focused": {
+                      color: "purple",
+                    },
+                    "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                      {
+                        borderColor: "purple",
+                      },
+                  }}
+                  onChange={handleInputChange}
+                />
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  name="work"
+                  value={candidateInfo.work}
+                  label="المهنة"
+                  type="text"
+                  id="work"
+                  autoComplete="current-email"
+                  dir="rtl"
+                  sx={{
+                    "& .MuiInputLabel-root.Mui-focused": {
+                      color: "purple",
+                    },
+                    "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                      {
+                        borderColor: "purple",
+                      },
+                  }}
+                  onChange={handleInputChange}
+                />
+
+                <button
+                  className="btn btn-light w-100 mt-4 "
+                  type="submit"
+                  variant="contained"
+                  style={{ backgroundColor: "#48184c", color: "white" }}
+                  onClick={handleSubmit}
+                >
+                  سجل
+                </button>
+              </Box>
+            </Box>
+       
         </Grid>
       </Grid>
 

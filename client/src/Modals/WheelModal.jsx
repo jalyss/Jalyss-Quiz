@@ -10,8 +10,8 @@ const defaultOptionsParty = {
   autoplay: true,
   animationData: party,
   rendererSettings: {
-    preserveAspectRatio: "xMidYMid slice"
-  }
+    preserveAspectRatio: "xMidYMid slice",
+  },
 };
 
 export default function Wheelmodal({ handleClose, open, prize }) {
@@ -26,7 +26,7 @@ export default function Wheelmodal({ handleClose, open, prize }) {
     backgroundColor: prize.slogan ? "#00b849" : "#ff142b",
     boxShadow: prize.slogan
       ? "0px 0px 10px 5px rgba(0, 255, 0, 0.5)"
-      : "0px 0px 10px 5px rgba(255, 20, 43, 0.5)"
+      : "0px 0px 10px 5px rgba(255, 20, 43, 0.5)",
   };
 
   return (
@@ -47,6 +47,8 @@ export default function Wheelmodal({ handleClose, open, prize }) {
           >
             {prize.slogan ? (
               <>
+                {`لتعزيز ${prize.label}`}
+                <br />
                 {prize.slogan}
                 <br />
                 {prize.reward}{" "}
@@ -62,6 +64,15 @@ export default function Wheelmodal({ handleClose, open, prize }) {
             {prize.reward && (
               <Lottie options={defaultOptionsParty} height={70} width={70} />
             )}
+            <button
+              className="btn btn-light fs-5 m-3"
+              onClick={() => {
+                localStorage.clear();
+                window.location.reload();
+              }}
+            >
+              العودة الى الرئيسية{">"}
+            </button>
           </Typography>
         </Box>
       </Modal>

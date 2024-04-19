@@ -16,7 +16,7 @@ datasource db {
 model Participant {
   id                 Int                   @id @default(autoincrement())
   fullName           String
-  email              String
+  email              String                @unique
   work               String
   phoneNumber        String
   birthday           DateTime
@@ -66,11 +66,12 @@ model Admin {
 }
 
 model WheelProposition {
-  id     Int           @id @default(autoincrement())
-  slogan String
-  label  String
-  reward String
-  winner Participant[]
+  id       Int           @id @default(autoincrement())
+  slogan   String
+  label    String
+  reward   String
+  isActive Boolean       @default(true)
+  winner   Participant[]
 }
 
 model Level {

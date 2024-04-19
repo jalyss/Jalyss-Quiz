@@ -5,24 +5,29 @@ import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
 export class WheelPropositionsService {
-  constructor(private readonly prisma:PrismaService){}
+  constructor(private readonly prisma: PrismaService) {}
 
-  
- async create(createWheelPropositionDto: CreateWheelPropositionDto) {
+  async create(createWheelPropositionDto: CreateWheelPropositionDto) {
     return this.prisma.wheelProposition.create({
-      data:createWheelPropositionDto
-    })
+      data: createWheelPropositionDto,
+    });
   }
 
- async findAll() {
+  async findAll() {
     return this.prisma.wheelProposition.findMany({});
   }
+  async findAllIsActive() {
+    return this.prisma.wheelProposition.findMany({ where: { isActive: true } });
+  }
 
- async findOne(id: number) {
+  async findOne(id: number) {
     return `This action returns a #${id} wheelProposition`;
   }
 
- async update(id: number, updateWheelPropositionDto: UpdateWheelPropositionDto) {
+  async update(
+    id: number,
+    updateWheelPropositionDto: UpdateWheelPropositionDto,
+  ) {
     return `This action updates a #${id} wheelProposition`;
   }
 

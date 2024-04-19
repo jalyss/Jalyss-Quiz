@@ -12,53 +12,53 @@ function WheelWinner({ setOpen, setPrize, prize }) {
 
   useEffect(() => {
     dispatch(fetchWheelProp());
-  }, []);
+  }, [dispatch]);
 
   const data = [
     {
       option: wheelPropositions[0]?.label,
-      style: { backgroundColor: "#64113F", textColor: "white" }
+      style: { backgroundColor: "#64113F", textColor: "white" },
     },
     {
       option: wheelPropositions[1]?.label,
-      style: { backgroundColor: "white" }
+      style: { backgroundColor: "white" },
     },
     {
       option: wheelPropositions[2]?.label,
-      style: { backgroundColor: "#64113F", textColor: "white" }
+      style: { backgroundColor: "#64113F", textColor: "white" },
     },
     {
       option: wheelPropositions[3]?.label,
-      style: { backgroundColor: "white" }
+      style: { backgroundColor: "white" },
     },
     {
       option: wheelPropositions[4]?.label,
-      style: { backgroundColor: "#64113F", textColor: "white" }
+      style: { backgroundColor: "#64113F", textColor: "white" },
     },
     {
       option: wheelPropositions[5]?.label,
-      style: { backgroundColor: "white" }
+      style: { backgroundColor: "white" },
     },
     {
       option: wheelPropositions[6]?.label,
-      style: { backgroundColor: "#64113F", textColor: "white" }
+      style: { backgroundColor: "#64113F", textColor: "white" },
     },
     { option: "حظ موفق المره القادمه", style: { backgroundColor: "white" } },
     {
       option: "حظ موفق المره القادمه",
-      style: { backgroundColor: "#64113F", textColor: "white" }
+      style: { backgroundColor: "#64113F", textColor: "white" },
     },
     { option: "حظ موفق المره القادمه", style: { backgroundColor: "white" } },
     {
       option: "حظ موفق المره القادمه",
-      style: { backgroundColor: "#64113F", textColor: "white" }
+      style: { backgroundColor: "#64113F", textColor: "white" },
     },
     { option: "حظ موفق المره القادمه", style: { backgroundColor: "white" } },
     {
       option: "حظ موفق المره القادمه",
-      style: { backgroundColor: "#64113F", textColor: "white" }
+      style: { backgroundColor: "#64113F", textColor: "white" },
     },
-    { option: "حظ موفق المره القادمه", style: { backgroundColor: "white" } }
+    { option: "حظ موفق المره القادمه", style: { backgroundColor: "white" } },
   ];
   const handleSpinClick = () => {
     if (!mustSpin) {
@@ -71,7 +71,6 @@ function WheelWinner({ setOpen, setPrize, prize }) {
     <div className="d-flex justify-content-center align-items-center ">
       <div>
         <Wheel
-        
           mustStartSpinning={mustSpin}
           prizeNumber={2}
           data={data}
@@ -82,13 +81,14 @@ function WheelWinner({ setOpen, setPrize, prize }) {
           radiusLineColor="white"
           onStopSpinning={() => {
             setMustSpin(false);
-            setPrize({
-              slogan: wheelPropositions[prizeNumber]?.slogan,
-              reward: wheelPropositions[prizeNumber]?.reward,
-            });
-            wheelPropositions[prizeNumber]?.slogan && dispatch(participantReward(
-              {id:JSON.parse(localStorage.getItem("participantId")),reward :wheelPropositions[prizeNumber].id }
-            ))
+            setPrize(wheelPropositions[prizeNumber]);
+            wheelPropositions[prizeNumber]?.slogan &&
+              dispatch(
+                participantReward({
+                  id: JSON.parse(localStorage.getItem("participantId")),
+                  reward: wheelPropositions[prizeNumber].id,
+                })
+              );
             setOpen(true);
           }}
         />

@@ -7,7 +7,7 @@ export const fetchWheelProp = createAsyncThunk(
   "fetchprop",
   async () => {
     const response = await axios.get(
-      `http://${url}/wheel-propositions`,
+      `http://${url}/wheel-propositions/isActive`,
     );
     return response.data;
   }
