@@ -7,7 +7,7 @@ import { useEffect } from "react";
 import { getPartcipant } from "../store/participantSlice";
 import Questions from "../pages/Questions";
 import { useState } from "react";
-import logoSfectoria from '../assets/images/logo.png'
+import logoSfectoria from '../assets/images/sfectoria.png'
 import logoJalyss from '../assets/images/jalyssCom.png'
 
 export default function Router() {
