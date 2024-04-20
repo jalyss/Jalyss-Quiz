@@ -128,9 +128,9 @@ export default function Formulaire() {
                 flexDirection: "column",
                 alignItems: "center",
                 justifyContent: "center",
-                backgroundColor:'white',
-                padding:5,
-                borderRadius:3
+                backgroundColor: "white",
+                padding: 5,
+                borderRadius: 3,
               }}
             >
               <Avatar sx={{ m: 1, bgcolor: "#48184c" }}></Avatar>
@@ -264,7 +264,7 @@ export default function Formulaire() {
               </Box>
             </Box>
           </div>
-          
+          <div className="d-none d-md-block">
             <Box
               sx={{
                 my: 2,
@@ -273,9 +273,9 @@ export default function Formulaire() {
                 flexDirection: "column",
                 alignItems: "center",
                 justifyContent: "center",
-                backgroundColor:'white',
-                padding:5,
-                borderRadius:3
+                backgroundColor: "white",
+                padding: 5,
+                borderRadius: 3,
               }}
             >
               <Avatar sx={{ m: 1, bgcolor: "#48184c" }}></Avatar>
@@ -408,7 +408,7 @@ export default function Formulaire() {
                 </button>
               </Box>
             </Box>
-       
+          </div>
         </Grid>
       </Grid>
 
