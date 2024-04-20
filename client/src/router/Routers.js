@@ -33,7 +33,7 @@ export default function Router() {
             <Spinner animation="border" />
           </div>
         )}
-        <div className="d-flex justify-content-between">
+        <div className="d-flex justify-content-between bg-white">
         <img src={logoSfectoria} width={100} alt="sfectoria"/>
         </div>
       <Routes>
