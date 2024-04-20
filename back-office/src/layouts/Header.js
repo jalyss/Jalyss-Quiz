@@ -1,5 +1,4 @@
 import React from 'react';
-import { FaBell, FaUser, FaCommentAlt } from "react-icons/fa";
 import { Dropdown } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import avatar from "../assets/img/avatar.jpeg";
@@ -16,15 +15,10 @@ function Header({ isOpen }) {
     <div className="header" style={{ paddingLeft: isOpen ? 250 : 50 }}>
       <div className="d-flex flex-row-reverse justify-content-between">
         <div className="d-flex mt-2 dropdownHeader ">
-          <div className="p-2 icon" style={{ color: "#1a408c" }}>
-            <FaBell />
-          </div>
-          <div className="p-2 icon" style={{ color: "#1a408c" }}>
-            <FaCommentAlt />
-          </div>
+          
           <div className="icon" style={{ color: "#1a408c" }}>
             <Dropdown>
-              <Dropdown.Toggle variant="secondary" id="dropdownMenu2">
+              <Dropdown.Toggle variant="light" id="dropdownMenu2">
                 <img
                   src={avatar}
                   className="rounded-circle"

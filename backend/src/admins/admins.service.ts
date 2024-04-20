@@ -1,15 +1,23 @@
 import { Injectable } from '@nestjs/common';
 import { CreateAdminDto } from './dto/create-admin.dto';
 import { UpdateAdminDto } from './dto/update-admin.dto';
+import * as bcrypt from 'bcrypt';
+import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
 export class AdminsService {
-  create(createAdminDto: CreateAdminDto) {
-    return 'This action adds a new admin';
+  constructor(private readonly prisma: PrismaService) {}
+ async create(createAdminDto: CreateAdminDto) {
+  const { password, ...rest } = createAdminDto;
+  const salt = await bcrypt.genSalt();
+  const passwordHash = await bcrypt.hash(password, salt);
+  return this.prisma.admin.create({
+    data: { password: passwordHash, ...rest },
+  });
   }
 
-  findAll() {
-    return `This action returns all admins`;
+  async findAll() {
+   return await this.prisma.admin.findMany({})
   }
 
   findOne(id: number) {

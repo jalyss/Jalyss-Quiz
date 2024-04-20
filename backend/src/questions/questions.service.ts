@@ -26,10 +26,19 @@ export class QuestionsService {
   }
 
   async update(id: number, updateQuestionDto: UpdateQuestionDto) {
-    return `This action updates a #${id} question`;
+    return await this.prisma.question.update({
+      where : {
+        id
+      },
+      data : updateQuestionDto
+    })
   }
 
   async remove(id: number) {
-    return `This action removes a #${id} question`;
+    return await this.prisma.question.delete({
+      where : {
+        id
+      }
+    });
   }
 }
