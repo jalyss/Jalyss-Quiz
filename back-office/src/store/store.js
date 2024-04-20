@@ -1,12 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
-import participantSlice from './participantSlice'
-import levelSlice from "./levels"
-import wheelProp from './wheelProp'
+
+import auth from './auth';
+import userSlice from './UserInfo'
+
+
 
 export const store = configureStore({
-  reducer: {
-    participant:participantSlice,
-    level : levelSlice,
-    wheelProp : wheelProp
-  },
+    reducer: {
+        userSlice  , auth
+    }
 })

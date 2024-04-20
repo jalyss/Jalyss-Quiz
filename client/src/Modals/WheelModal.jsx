@@ -23,8 +23,8 @@ export default function Wheelmodal({ handleClose, open, prize }) {
     width: "72%",
     color: "white",
     padding: "15px",
-    backgroundColor: prize.slogan ? "#00b849" : "#ff142b",
-    boxShadow: prize.slogan
+    backgroundColor: prize?.slogan ? "#00b849" : "#ff142b",
+    boxShadow: prize?.slogan
       ? "0px 0px 10px 5px rgba(0, 255, 0, 0.5)"
       : "0px 0px 10px 5px rgba(255, 20, 43, 0.5)",
   };
@@ -45,7 +45,7 @@ export default function Wheelmodal({ handleClose, open, prize }) {
             component="h2"
             sx={{ textAlign: "center", fontSize: 30 }}
           >
-            {prize.slogan ? (
+            {prize?.slogan ? (
               <>
                 {`لتعزيز ${prize.label}`}
                 <br />
@@ -61,7 +61,7 @@ export default function Wheelmodal({ handleClose, open, prize }) {
             id="keep-mounted-modal-description"
             sx={{ mt: 2, textAlign: "center" }}
           >
-            {prize.reward && (
+            {prize?.reward && (
               <Lottie options={defaultOptionsParty} height={70} width={70} />
             )}
             <button

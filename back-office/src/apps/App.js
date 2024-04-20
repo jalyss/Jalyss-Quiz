@@ -6,6 +6,8 @@ import { Provider } from 'react-redux';
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+import { sidebarData } from '../constant/sideBarData';
+const drawerWidth = 240;
 
 
 

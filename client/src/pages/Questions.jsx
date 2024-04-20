@@ -23,7 +23,7 @@ export default function Questions() {
     reward: "",
   });
   const questions = useSelector((state) => state.level?.levels);
-  console.log(questions, "those are questions");
+ // console.log(questions, "those are questions");
   const defaultOptionsWinner = {
     loop: true,
     autoplay: true,
@@ -60,7 +60,7 @@ export default function Questions() {
           </div>
         </div>
         {progress !== "99%" ? (
-          <div style={{ padding: 30 }}>
+          <div style={{ padding: 30 ,backgroundColor:' #e27ae6' }} className="bg-light">
             <div>
               <p
                 style={{
