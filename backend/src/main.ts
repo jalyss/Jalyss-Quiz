@@ -8,7 +8,9 @@ async function bootstrap() {
   const config = new DocumentBuilder()
   .setTitle('Jalyss-Quiz')
   .setDescription('The Jalyss-Quiz API documentation')
-  .setVersion('0.1')
+  .setVersion('1.0')
+  .addApiKey({type:'apiKey',name:'Authorization',in:'header'},'apiKey')
+  .addTag('Jalyss quiz')
   .build();
 
 const document = SwaggerModule.createDocument(app, config);

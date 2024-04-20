@@ -28,7 +28,12 @@ export class WheelPropositionsService {
     id: number,
     updateWheelPropositionDto: UpdateWheelPropositionDto,
   ) {
-    return `This action updates a #${id} wheelProposition`;
+    return await this.prisma.wheelProposition.update({
+      where : {
+        id
+      },
+      data : updateWheelPropositionDto
+    })
   }
 
   async remove(id: number) {

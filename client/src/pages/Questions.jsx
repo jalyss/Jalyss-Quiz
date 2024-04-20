@@ -128,9 +128,9 @@ export default function Questions() {
             <WheelWinner
               setOpen={setOpenWM}
               setPrize={setPrize}
-              prize={prize}
+              
             />
-            {openWM && prize.reward && (
+            {openWM && prize?.reward && (
               <Lottie
                 options={defaultOptionsWinner}
                 height={200}

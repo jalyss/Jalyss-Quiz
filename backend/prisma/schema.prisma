@@ -59,7 +59,7 @@ model ParticipantQuestion {
 
 model Admin {
   id        Int        @id @default(autoincrement())
-  email     String
+  email     String      @unique
   password  String
   fullName  String
   questions Question[]

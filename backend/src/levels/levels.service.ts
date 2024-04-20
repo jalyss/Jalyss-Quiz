@@ -15,7 +15,7 @@ export class LevelsService {
   }
 
   async findAll(level:number) {
-  const randomNumber = Math.floor(Math.random()*8)
+  const randomNumber = Math.floor((Math.random()**2)*8)
 
     let levels = await this.prisma.level.findMany({
       include : {
@@ -35,7 +35,12 @@ export class LevelsService {
   }
 
   async update(id: number, updateLevelDto: UpdateLevelDto) {
-    return `This action updates a #${id} level`;
+    return await this.prisma.level.update({
+      where : {
+        id
+      } , 
+      data : updateLevelDto
+    })
   }
 
   async  remove(id: number) {
