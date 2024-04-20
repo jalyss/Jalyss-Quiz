@@ -22,7 +22,7 @@ import { IoIosArrowBack } from "react-icons/io";
 // import MailIcon from '@mui/icons-material/Mail';
 import { CiMenuBurger } from "react-icons/ci";
 
-import { sidebarData } from './constant/sideBarData';
+import { sidebarData } from '../constant/sideBarData';
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({

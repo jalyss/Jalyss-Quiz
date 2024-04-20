@@ -267,7 +267,7 @@ export default function Formulaire() {
           
             <Box
               sx={{
-                my: 8,
+                my: 2,
                 mx: 4,
                 display: "flex",
                 flexDirection: "column",
