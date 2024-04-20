@@ -4,10 +4,10 @@ import team from "../../assets/team.jpg";
 import Form from "react-bootstrap/Form";
 import logo from "../../assets/logo (1).png";
 import loginImg from '../../assets/4794658.jpg'
-import Header from "../../layout/Header";
-import Footer from "../../layout/Footer";
+import Header from "../../layouts/Header";
+import Footer from "../../layouts/Footer";
 import { useSelector, useDispatch } from "react-redux";
-import "../../css/auth.css";
+
 import { login } from '../../store/auth';
 
 export default function Login() {
@@ -40,7 +40,7 @@ export default function Login() {
                       fontFamily: "Brittany Signature",
                     }}
                   >
-                    Welcome to
+                    {'Welcome to '}
                   </h1>
                   <h1
                     style={{

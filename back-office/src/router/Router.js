@@ -1,5 +1,3 @@
-
-
 import React, { useState, createContext, useEffect } from "react";
 import App from "../apps/App";
 
@@ -20,65 +18,63 @@ import EditUser from "../pages/users/views/EditUser";
 import UserDetails from "../pages/users/views/UserDetails";
 import NotFound from "../pages/NotFound";
 import Auth from "../apps/auth";
+export const UserContext = createContext();
 export default function Router() {
-    const user = useSelector((store) => store.auth.me);
-    const [isLoading, setIsLoading] = useState(true);
-  
-    const dispatch = useDispatch();
-    useEffect(() => {
-      let token = localStorage.getItem("token");
-      if (token)
-        dispatch(getMe()).then((res) => {
-          setIsLoading(false);
-        });
-      else {
+  // const user = useSelector((store) => store.auth.me);
+  const user = true;
+  const [isLoading, setIsLoading] = useState(true);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    let token = localStorage.getItem("token");
+    if (token)
+      dispatch(getMe()).then((res) => {
         setIsLoading(false);
-      }
-    }, [dispatch]);
-    return (
-      <>
-        {isLoading && (
-          <div
-            className="position-fixed h-100 w-100 bg-white justify-content-center d-flex align-items-center"
-            style={{ zIndex: 6 }}
-          >
-            <Spinner animation="border" />
-          </div>
-        )}
-  
-        <BrowserRouter>
-          <Routes>
-            <Route>
-              {user ? (
-                <Route path="/" element={<App />}>
-                  <Route index element={<Dashboard />} />
-                  
-                  <Route path="profile" element={<Profile />}>
-                    <Route index element={<ProfileDetails />} />
-                    <Route path="edit" element={<EditProfile />} />
-                  </Route>
-                  
-  
-                  
-  
-                  <Route path="users" element={<Users />}>
-                    <Route index element={<AllUsers />} />
-                    <Route path="adduser" element={<AddUser />} />
-                    <Route path="userdetails/:id" element={<UserDetails />} />
-  
-                    <Route path="edituser/:id" element={<EditUser />} />
-                    
-                  </Route>
+      });
+    else {
+      setIsLoading(false);
+    }
+  }, [dispatch]);
+  return (
+    <>
+      {isLoading && (
+        <div
+          className="position-fixed h-100 w-100 bg-white justify-content-center d-flex align-items-center"
+          style={{ zIndex: 6 }}
+        >
+          <Spinner animation="border" />
+        </div>
+      )}
+
+      <BrowserRouter>
+        <Routes>
+          <Route>
+            {user ? (
+              <Route path="/" element={<App />}>
+                <Route index element={<Dashboard />} />
+
+                <Route path="profile" element={<Profile />}>
+                  <Route index element={<ProfileDetails />} />
+                  <Route path="edit" element={<EditProfile />} />
                 </Route>
-              ) : (
-                <Route path="/" element={<Auth />}>
-                  <Route index element={<Login />} />
+
+                <Route path="users" element={<Users />}>
+                  <Route index element={<AllUsers />} />
+                  <Route path="adduser" element={<AddUser />} />
+                  <Route path="userdetails/:id" element={<UserDetails />} />
+
+                  <Route path="edituser/:id" element={<EditUser />} />
                 </Route>
-              )}
-              <Route path="*" element={<NotFound />} />
-            </Route>
-          </Routes>
-        </BrowserRouter>
-      </>
-    );
-  }
+              </Route>
+            ) : (
+              <Route path="/" element={<Auth />}>
+                <Route index element={<Login />} />
+              </Route>
+            )}
+            <Route path="*" element={<NotFound />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </>
+  );
+}

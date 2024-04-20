@@ -1,26 +1,30 @@
-import React from "react";
-import Router from "./router/Router"
-import "./App.css";
-import { store } from './store/store.js';
-import { Provider } from 'react-redux';
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import React, { useState, createContext, useEffect } from "react";
 
-import { sidebarData } from '../constant/sideBarData';
-const drawerWidth = 240;
+import { Outlet } from "react-router-dom";
 
 
 
+import { useDispatch, useSelector } from "react-redux";
+import SideBar from "../layouts/SideBar";
+import Header from "../layouts/Header";
 
-function App() {
+function Main() {
+//   const me = useSelector((state) => state.auth.me);
+  const [isOpen, setIsOpen] = useState(true);
+
+  const toggle = () => {
+    setIsOpen(!isOpen);
+  };
   return (
-    <Provider store={store}>
-    <div>
-      <Router />
-      <ToastContainer />
+    <div className="">
+      <SideBar toggle={toggle} isOpen={isOpen} />
+      <Header toggle={toggle} isOpen={isOpen} />
+
+      <div className="pages" style={{ paddingLeft: isOpen ? 250 : 50 }}>
+        <Outlet />
+      </div>
     </div>
-    </Provider>
   );
 }
 
-export default App;
+export default Main;

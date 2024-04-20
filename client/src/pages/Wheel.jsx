@@ -89,22 +89,20 @@ function WheelWinner({ setOpen, setPrize }) {
           onStopSpinning={() => {
             setMustSpin(false);
 
-              console.log(data[prizeNumber],prizeNumber);
+            console.log(data[prizeNumber], prizeNumber);
             setPrize(data[prizeNumber]);
-            if (wheelPropositions[prizeNumber]?.reward) {
+            if (data[prizeNumber]?.reward) {
               dispatch(
                 participantReward({
                   id: JSON.parse(localStorage.getItem("participantId")),
-                  reward: wheelPropositions[prizeNumber].id,
+                  reward: data[prizeNumber].id,
                 })
-              ).then((res)=>{
-
+              ).then((res) => {
                 setOpen(true);
-              })
-              }else {
-
-                setOpen(true);
-              }
+              });
+            } else {
+              setOpen(true);
+            }
           }}
         />
         <div className="d-flex justify-content-center">

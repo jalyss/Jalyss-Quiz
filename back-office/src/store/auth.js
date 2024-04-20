@@ -1,31 +1,95 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { axiosGetWithHeaders } from "../helpers/axiosWithHeaders";
+import { url } from "./constant";
 
 
-export const login = createAsyncThunk("login", async (args, { dispatch }) => {
-  const response = await axios.post(
-    "http://localhost:5000/auth/login",
-    args
-  );
-  localStorage.setItem("token", response.data);
-  dispatch(getMe());
+export const getMe = createAsyncThunk("auth/meAdmin", async (token) => {
+  let configs = {
+    headers: {
+      Authorization: "Bearer " + token,
+    },
+  };
+  const response = await axios.get( `http://${url}/auth/me`, {
+    ...configs,
+  });
+
+  return response.data;
 });
-export const getMe = createAsyncThunk("getMe", async () => {
-  const response = await axiosGetWithHeaders('auth/me')
-  return response.data; 
-});
+// ${config.API_ENDPOINT}
+export const login = createAsyncThunk(
+  "auth/loginAdmin",
+  async (body, { dispatch }) => {
+    const response = await axios.post(
+      `http://${url}auth/login`,
+      body
+    );
+    let aux = JSON.stringify(response.data);
+    localStorage.setItem("token", aux);
 
-export const authSlice = createSlice({
+    dispatch(getMe(response.data.Authorization));
+    return response.data;
+  }
+);
+
+export const resetPassword = createAsyncThunk(
+  "auth/forgot-password",
+  async (body, { dispatch }) => {
+    const response = await axios.post(
+      `http://${url}forgot-password`,
+      body
+    );
+    return response.data;
+  }
+);
+
+export const verificationCode = createAsyncThunk(
+  "auth/verification-code",
+  async (body) => {
+    const response = await axios.post(
+      `http://${url}verification-code`,
+      body
+    );
+    let aux = JSON.stringify(response.data);
+    localStorage.setItem("tokenCode", aux);
+    return response.data;
+  }
+);
+
+export const changePassword = createAsyncThunk(
+  "auth/change-password",
+  async (body) => {
+    let token = JSON.parse(localStorage.getItem("tokenCode")).Authorization;
+    let configs = {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    };
+    const response = await axios.post(
+      `http://${url}change-password`,
+      body,
+      configs
+    );
+    return response.data;
+  }
+);
+
+export const AuthSlice = createSlice({
   name: "auth",
   initialState: {
     me: null,
+    error: null,
+    deleteError: null,
+    saveError: null,
+    registerError: null,
   },
   reducers: {},
   extraReducers(builder) {
     builder.addCase(getMe.fulfilled, (state, action) => {
       state.me = action.payload;
     });
+    builder.addCase(getMe.rejected, (state, action) => {
+      state.error = action.error.message;
+    });
   },
 });
-export default authSlice.reducer;
+export default AuthSlice.reducer;
