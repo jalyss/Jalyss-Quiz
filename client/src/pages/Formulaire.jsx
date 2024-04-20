@@ -22,6 +22,7 @@ import { useDispatch } from "react-redux";
 import Modal from "react-bootstrap/Modal";
 import { createPartcipant } from "../store/participantSlice";
 import { showErrorToast } from "../utils/toast";
+import Spinner from "react-bootstrap/Spinner";
 
 // TODO remove, this demo shouldn't need to reset the theme.
 
@@ -37,6 +38,7 @@ export default function Formulaire() {
     work: "",
   });
   const [show, setShow] = useState(false);
+  const [disableButton, setDisableButton] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleInputChange = (event) => {
@@ -49,7 +51,7 @@ export default function Formulaire() {
   };
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+    setDisableButton(true);
     if (
       candidateInfo.fullName.trim() === "" ||
       candidateInfo.work.trim() === "" ||
@@ -73,6 +75,7 @@ export default function Formulaire() {
       if (res.error) {
         console.log(res);
         showErrorToast("الرجاء التثبت من البربد الاكتروني");
+        setDisableButton(false);
       }
     });
   };
@@ -259,7 +262,7 @@ export default function Formulaire() {
                   style={{ backgroundColor: "#48184c", color: "white" }}
                   onClick={handleSubmit}
                 >
-                  سجل
+                  {disableButton&&<Spinner animation="border" />} سجل
                 </button>
               </Box>
             </Box>
@@ -403,6 +406,7 @@ export default function Formulaire() {
                   variant="contained"
                   style={{ backgroundColor: "#48184c", color: "white" }}
                   onClick={handleSubmit}
+                  disabled={disableButton}
                 >
                   سجل
                 </button>
