@@ -1,17 +1,35 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, Request } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { CreateAuthDto } from './dto/create-auth.dto';
+import { CreateAuthDto, LoginDto } from './dto/create-auth.dto';
 import { UpdateAuthDto } from './dto/update-auth.dto';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiSecurity, ApiTags } from '@nestjs/swagger';
+import { JwtAuthGuard } from './jwt-auth.guard';
+import { CurrentUser } from './decorator/current-user';
 
 @ApiTags("auth")
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
-  @Post()
-  create(@Body() createAuthDto: CreateAuthDto) {
-    return this.authService.create(createAuthDto);
+  @Post('login')
+  create(@Body() createAuthDto: LoginDto) {
+    return this.authService.login(createAuthDto);
+  }
+
+
+  @UseGuards(JwtAuthGuard)
+  @Post('update-me')
+  updateMe(@Body() dto: UpdateAuthDto,@CurrentUser() user) {
+    return this.authService.updateMe(dto,user.id);
+  }
+
+  @ApiSecurity('apiKey')
+  @Get('me')
+  async findMe(@Request() req, ) {
+   
+    return await this.authService.getMyInfo(
+      req.get('Authorization').replace('Bearer ', ''), 
+    );
   }
 
   @Get()

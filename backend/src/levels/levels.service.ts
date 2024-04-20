@@ -35,7 +35,12 @@ export class LevelsService {
   }
 
   async update(id: number, updateLevelDto: UpdateLevelDto) {
-    return `This action updates a #${id} level`;
+    return await this.prisma.level.update({
+      where : {
+        id
+      } , 
+      data : updateLevelDto
+    })
   }
 
   async  remove(id: number) {

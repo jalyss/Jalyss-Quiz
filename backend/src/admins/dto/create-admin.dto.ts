@@ -10,5 +10,5 @@ export class CreateAdminDto {
     password : string 
     @ApiProperty()
     @IsString()
-    fullname : string
+    fullName : string
 }
