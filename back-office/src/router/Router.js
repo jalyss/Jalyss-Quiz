@@ -27,10 +27,10 @@ function Router() {
   // );
   return (
     <div>
-      {loading &&
+      {/* {loading &&
         <div className="d-flex justify-content-center align-items-center position-fixed w-100 h-100 bg-white">
           Loading
-        </div>}
+        </div>} */}
       <BrowserRouter>
         <Routes>
           {/* {user && */}
