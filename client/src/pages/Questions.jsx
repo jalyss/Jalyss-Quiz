@@ -60,7 +60,7 @@ export default function Questions() {
           </div>
         </div>
         {progress !== "99%" ? (
-          <div style={{ padding: 30 }} className="bg-light">
+          <div style={{ padding: 30 ,backgroundColor:' #e2bae6' }} className="bg-light">
             <div>
               <p
                 style={{
