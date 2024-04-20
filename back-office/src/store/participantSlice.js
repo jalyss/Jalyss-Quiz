@@ -38,7 +38,7 @@ const participantSlice = createSlice({
       state.participant = action.payload;
     });
     builder.addCase(createPartcipant.rejected, (state, action) => {
-      console.log(action.error, "err");
+      //console.log(action.error, "err");
     });
     builder.addCase(getPartcipant.fulfilled, (state, action) => {
       state.participant = action.payload;

@@ -18,6 +18,7 @@ function WheelWinner({ setOpen, setPrize }) {
     {
       option: wheelPropositions[0]?.label,
       style: { backgroundColor: "#64113F", textColor: "white" },
+      ...wheelPropositions[0],
     },
     {
       option: "حظ موفق المره القادمه",
@@ -26,6 +27,7 @@ function WheelWinner({ setOpen, setPrize }) {
     {
       option: wheelPropositions[1]?.label,
       style: { backgroundColor: "#64113F", textColor: "white" },
+      ...wheelPropositions[1],
     },
     {
       option: "حظ موفق المره القادمه",
@@ -34,21 +36,25 @@ function WheelWinner({ setOpen, setPrize }) {
     {
       option: wheelPropositions[2]?.label,
       style: { backgroundColor: "#64113F", textColor: "white" },
+      ...wheelPropositions[2],
     },
     { option: "حظ موفق المره القادمه", style: { backgroundColor: "white" } },
     {
       option: wheelPropositions[3]?.label,
       style: { backgroundColor: "#64113F", textColor: "white" },
+      ...wheelPropositions[3],
     },
     { option: "حظ موفق المره القادمه", style: { backgroundColor: "white" } },
     {
       option: wheelPropositions[4]?.label,
       style: { backgroundColor: "#64113F", textColor: "white" },
+      ...wheelPropositions[4],
     },
     { option: "حظ موفق المره القادمه", style: { backgroundColor: "white" } },
     {
       option: wheelPropositions[5]?.label,
       style: { backgroundColor: "#64113F", textColor: "white" },
+      ...wheelPropositions[5],
     },
     {
       option: "حظ موفق المره القادمه",
@@ -57,6 +63,7 @@ function WheelWinner({ setOpen, setPrize }) {
     {
       option: wheelPropositions[6]?.label,
       style: { backgroundColor: "#64113F", textColor: "white" },
+      ...wheelPropositions[6],
     },
     { option: "حظ موفق المره القادمه", style: { backgroundColor: "white" } },
   ];
@@ -82,15 +89,22 @@ function WheelWinner({ setOpen, setPrize }) {
           onStopSpinning={() => {
             setMustSpin(false);
 
-            wheelPropositions[prizeNumber] &&
-              setPrize(wheelPropositions[prizeNumber]) &&
+              console.log(data[prizeNumber],prizeNumber);
+            setPrize(data[prizeNumber]);
+            if (wheelPropositions[prizeNumber]?.reward) {
               dispatch(
                 participantReward({
                   id: JSON.parse(localStorage.getItem("participantId")),
                   reward: wheelPropositions[prizeNumber].id,
                 })
-              );
-            setOpen(true);
+              ).then((res)=>{
+
+                setOpen(true);
+              })
+              }else {
+
+                setOpen(true);
+              }
           }}
         />
         <div className="d-flex justify-content-center">

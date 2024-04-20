@@ -23,7 +23,7 @@ export default function Questions() {
     reward: "",
   });
   const questions = useSelector((state) => state.level?.levels);
-  console.log(questions, "those are questions");
+ // console.log(questions, "those are questions");
   const defaultOptionsWinner = {
     loop: true,
     autoplay: true,
