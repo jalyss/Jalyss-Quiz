@@ -8,6 +8,7 @@ import { getPartcipant } from "../store/participantSlice";
 import Questions from "../pages/Questions";
 import { useState } from "react";
 import logoSfectoria from '../assets/images/logo.png'
+import logoJalyss from '../assets/images/jalyssCom.png'
 
 export default function Router() {
   const user = useSelector((state) => state.participant.participant);
@@ -33,8 +34,9 @@ export default function Router() {
             <Spinner animation="border" />
           </div>
         )}
-        <div className="d-flex justify-content-between bg-white">
-        <img src={logoSfectoria} width={100} alt="sfectoria"/>
+        <div className="d-flex justify-content-between bg-white px-2">
+        <img src={logoSfectoria} width={150} alt="Sfectoria" style={{objectFit:'contain'}}/>
+        <img src={logoJalyss} width={100} alt="JalyssCom" style={{objectFit:'contain'}}/>
         </div>
       <Routes>
         <Route path="/" element={<App />}>
