@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { getPartcipant } from "../store/participantSlice";
 import Questions from "../pages/Questions";
 import { useState } from "react";
+import logoSfectoria from '../assets/images/logo.png'
 
 export default function Router() {
   const user = useSelector((state) => state.participant.participant);
@@ -32,6 +33,9 @@ export default function Router() {
             <Spinner animation="border" />
           </div>
         )}
+        <div className="d-flex justify-content-between">
+        <img src={logoSfectoria} width={100} alt="sfectoria"/>
+        </div>
       <Routes>
         <Route path="/" element={<App />}>
           {user ? (
