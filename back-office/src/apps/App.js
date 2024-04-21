@@ -21,7 +21,17 @@ function Main() {
       <SideBar toggle={toggle} isOpen={isOpen} />
       <div style={{ paddingLeft: isOpen ? 250 : 50 }}>
 
-      <Footer />
+      <footer
+        className="footer p-2 d-flex justify-content-center align-items-center  position-fixed bottom-0 w-100"
+        
+      > 
+        <img
+          src={require(".././assets/img/sfectoria.png")}
+          alt="logo Sfectoria"
+          loading="lazy"
+          width={200}
+        />
+      </footer>
 
       </div>
       <Header toggle={toggle} isOpen={isOpen} />

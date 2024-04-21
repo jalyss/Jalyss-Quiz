@@ -55,6 +55,7 @@ model ParticipantQuestion {
   questionId    Int?
   Participant   Participant? @relation(fields: [participantId], references: [id])
   participantId Int?
+  createdAt DateTime @default(now())
 }
 
 model Admin {
