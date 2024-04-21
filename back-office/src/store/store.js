@@ -1,12 +1,18 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { configureStore } from "@reduxjs/toolkit";
 
-import auth from './auth';
-import userSlice from './UserInfo'
+import auth from "./auth";
+import questions from "./questions";
+import participantSlice from "./participantSlice";
 
 
 
 export const store = configureStore({
-    reducer: {
-        userSlice  , auth
-    }
-})
+  reducer: {
+
+   auth,
+  questions,
+  participantSlice
+    
+  
+  }
+});

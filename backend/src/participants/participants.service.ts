@@ -29,6 +29,7 @@ export class ParticipantsService {
     return this.prisma.participant.findMany({
       include: {
         participantAnswer: true,
+        WheelProposition : true
       },
     });
   }

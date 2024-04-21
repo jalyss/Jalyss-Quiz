@@ -11,21 +11,21 @@ export class AuthService {
     private readonly jwtService: JwtService,
   ) {}
   async login(dto: LoginDto) {
-    // const admin = await this.prisma.admin.findUnique({
-    //   where: {
-    //     email: dto.email,
-    //   },
-    // });
-    // if (!admin) {
-    //   throw new HttpException('invalid email', HttpStatus.BAD_REQUEST);
-    // }
-    // const { password, ...rest } = admin;
-    // if (await bcrypt.compare(dto.password, password)) {
-    //   const token = this.jwtService.sign(rest);
-    //   return token;
-    // } else {
-    //   throw new BadRequestException('invalid Email')
-    // }
+    const admin = await this.prisma.admin.findUnique({
+      where: {
+        email: dto.email,
+      },
+    });
+    if (!admin) {
+      throw new HttpException('invalid email', HttpStatus.BAD_REQUEST);
+    }
+    const { password, ...rest } = admin;
+    if (await bcrypt.compare(dto.password, password)) {
+      const token = this.jwtService.sign(rest);
+      return token;
+    } else {
+      throw new HttpException('invalid_credentials', HttpStatus.UNAUTHORIZED);
+    }
   }
 
   async getMyInfo(token: string) {
@@ -34,23 +34,23 @@ export class AuthService {
   }
 
   async updateMe(dto: UpdateAuthDto, id: number) {
-    // if (dto.email) {
-    //   const admin = await this.prisma.admin.findUnique({
-    //     where: {
-    //       email: dto.email,
-    //     },
-    //   });
-    //   if (!admin) {
-    //     throw new HttpException('invalid email', HttpStatus.BAD_REQUEST);
-    //   }
-    // }
-    // const admin = await this.prisma.admin.update({
-    //   where: { id: id },
-    //   data: dto,
-    // });
-    // const { password, ...rest } = admin;
-    // const token = this.jwtService.sign(rest);
-    // return token
+    if (dto.email) {
+      const admin = await this.prisma.admin.findUnique({
+        where: {
+          email: dto.email,
+        },
+      });
+      if (!admin) {
+        throw new HttpException('invalid email', HttpStatus.BAD_REQUEST);
+      }
+    }
+    const admin = await this.prisma.admin.update({
+      where: { id: id },
+      data: dto,
+    });
+    const { password, ...rest } = admin;
+    const token = this.jwtService.sign(rest);
+    return token
   }
 
   

@@ -7,24 +7,23 @@ import { url } from "./constant";
 export const fetchQuestions = createAsyncThunk(
   "fetchQuestions",
   async () => {
-    const response = await axios.post(
-      `http://${url}/levels`,
+    const response = await axios.get(
+      `http://${url}/questions`,
     );
     return response.data;
   }
 );
 
- const Slice = createSlice({
-  name: "participant",
+ const questionSlice = createSlice({
+  name: "question",
   initialState: {
-    participant: null,
-    participants: [],
+    questions: [],
   },
   reducers: {},
   extraReducers(builder) {
-    builder.addCase(createPartcipant.fulfilled, (state, action) => {
-      state.participants = action.payload;
+    builder.addCase(fetchQuestions.fulfilled, (state, action) => {
+      state.questions = action.payload;
     });
   },
 });
-export default participantSlice.reducer;
+export default questionSlice.reducer;
