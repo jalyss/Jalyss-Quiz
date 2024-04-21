@@ -4,7 +4,7 @@ import App from "../apps/App";
 import { useDispatch, useSelector } from "react-redux";
 
 import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
-import Login from "../pages/auth/Login";
+
 import Spinner from "react-bootstrap/Spinner";
 import { getMe } from "../store/auth";
 import Dashboard from "../pages/Dashboard";
@@ -18,10 +18,11 @@ import EditUser from "../pages/users/views/EditUser";
 import UserDetails from "../pages/users/views/UserDetails";
 import NotFound from "../pages/NotFound";
 import Auth from "../apps/auth";
+import Login from "../pages/Login";
 export const UserContext = createContext();
 export default function Router() {
   // const user = useSelector((store) => store.auth.me);
-  const user = true;
+  const user = false;
   const [isLoading, setIsLoading] = useState(true);
 
   const dispatch = useDispatch();
