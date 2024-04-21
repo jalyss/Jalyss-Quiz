@@ -3,7 +3,7 @@ import axios from "axios";
 import { url } from "./constant";
 
 
-export const getMe = createAsyncThunk("auth/meAdmin", async (token) => {
+export const getMe = createAsyncThunk("auth/me", async (token) => {
   let configs = {
     headers: {
       Authorization: "Bearer " + token,
@@ -19,15 +19,19 @@ export const getMe = createAsyncThunk("auth/meAdmin", async (token) => {
 export const login = createAsyncThunk(
   "auth/loginAdmin",
   async (body, { dispatch }) => {
-    const response = await axios.post(
-      `http://${url}auth/login`,
+   try {const response = await axios.post(
+      `http://${url}/auth/login`,
       body
     );
     let aux = JSON.stringify(response.data);
     localStorage.setItem("token", aux);
 
-    dispatch(getMe(response.data.Authorization));
-    return response.data;
+    dispatch(getMe(response.data)).then((res)=>console.log(res.data,"this is the res from store"))
+   
+    return response.data;}
+    catch(error) {
+      console.log(error)
+    }
   }
 );
 
@@ -73,7 +77,7 @@ export const changePassword = createAsyncThunk(
   }
 );
 
-export const AuthSlice = createSlice({
+ const AuthSlice = createSlice({
   name: "auth",
   initialState: {
     me: null,

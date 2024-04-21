@@ -10,6 +10,14 @@ export const createPartcipant = createAsyncThunk(
     return response.data;
   }
 );
+export const fetchParticipants  = createAsyncThunk("fetchParticipants",async ()=> {
+  try {
+    const res = await axios.get(`http://${url}/participants`);
+    return res.data
+  } catch (error) {
+    console.log(error);
+  }
+})
 export const getPartcipant = createAsyncThunk("getParticipants", async (id) => {
   const response = await axios.get(`http://${url}/participants/${id}`);
   return response.data;
@@ -31,6 +39,7 @@ const participantSlice = createSlice({
   initialState: {
     participant: null,
     participantReward: {},
+    participants : []
   },
   reducers: {},
   extraReducers(builder) {
@@ -45,6 +54,9 @@ const participantSlice = createSlice({
     });
     builder.addCase(participantReward.fulfilled, (state, action) => {
       state.participantReward = action.payload;
+    });
+    builder.addCase(fetchParticipants.fulfilled, (state, action) => {
+      state.participants = action.payload;
     });
   },
 });

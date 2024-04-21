@@ -1,3 +1,4 @@
+import { level } from './../../prisma/data';
 import { Injectable } from '@nestjs/common';
 import { CreateQuestionDto } from './dto/create-question.dto';
 import { UpdateQuestionDto } from './dto/update-question.dto';
@@ -16,7 +17,8 @@ export class QuestionsService {
   async findAll() {
     return this.prisma.question.findMany({
       include : {
-        answers : true
+        answers : true,
+        Level : true 
       }
     })
   }

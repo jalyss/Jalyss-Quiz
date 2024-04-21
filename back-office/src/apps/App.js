@@ -7,6 +7,7 @@ import { Outlet } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import SideBar from "../layouts/SideBar";
 import Header from "../layouts/Header";
+import Footer from "../layouts/Footer";
 
 function Main() {
 //   const me = useSelector((state) => state.auth.me);
@@ -18,9 +19,14 @@ function Main() {
   return (
     <div className="">
       <SideBar toggle={toggle} isOpen={isOpen} />
-      <Header toggle={toggle} isOpen={isOpen} />
+      <div style={{ paddingLeft: isOpen ? 250 : 50 }}>
 
-      <div className="pages" style={{ paddingLeft: isOpen ? 250 : 50 }}>
+      <Header toggle={toggle} isOpen={isOpen} />
+      <Footer />
+
+      </div>
+
+      <div className="pages" style={{ paddingLeft: isOpen ? 250 : 50,height:"90vh" }}>
         <Outlet />
       </div>
     </div>

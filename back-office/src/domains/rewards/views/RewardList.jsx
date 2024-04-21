@@ -8,13 +8,11 @@ import { Button } from "react-bootstrap";
 import { DataGrid, GridActionsCellItem } from "@mui/x-data-grid";
 import { Box } from "@mui/material";
 import { Dialog, DialogContent, DialogTitle, Typography } from "@mui/material";
-import { fetchParticipants } from '../../../store/participantSlice';
 
-const ParticipantsList = () => {
+const RewardList = () => {
     const [show, setShow] = useState(false);
     const [basicModal, setBasicModal] = useState(false);
-    const participantsProvider = useSelector((state) => state?.participantSlice);
-    console.log(participantsProvider,"those are participants")
+    const providerStore = useSelector((state) => state?.provider);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [rows, setRows] = useState([]);
@@ -39,24 +37,25 @@ const ParticipantsList = () => {
     };
   
     useEffect(() => {
-      dispatch(fetchParticipants());
+    //   dispatch(fetchProviders());
     }, [dispatch]);
   
     useEffect(() => {
-      if (participantsProvider?.participants) {
-        let aux = participantsProvider?.participants?.map((e) => {
+      if (providerStore?.providers?.items) {
+        let aux = providerStore?.providers?.items.map((e) => {
           return {
             id: e.id,
-            fullName: e.fullName,
+            logo: e.logo?.path,
+            name: e.name,
+            address: e.address,
+            tel: e.tel,
+            accountBalance: e.accountBalance,
             email: e.email,
-            PhoneNumber: e.phoneNumber,
-            birthday: (new Date(e.birthday)).toLocaleDateString("en-Us",{ year: 'numeric', month: 'long', day: 'numeric' }),
-            reward: e.WheelProposition?.reward
           };
         });
         setRows(aux);
       }
-    }, [participantsProvider?.participants]);
+    }, [providerStore?.providers?.items]);
     const [open, setOpen] = useState(false);
     const [selectedLogo, setSelectedLogo] = useState(null);
   
@@ -70,17 +69,46 @@ const ParticipantsList = () => {
     };
   
     const columns = [
-      
-      { field: "fullName", headerName: "fullName", width: 155, editable: false },
-      { field: "email", headerName: "Email", width: 155, editable: false },
-      { field: "PhoneNumber", headerName: "PhoneNumber", width: 155, editable: false },
       {
-        field: "birthday",
-        headerName: "Birthday",
+        field: "logo",
+        headerName: "Logo",
+        width: 120,
+        editable: false,
+        renderCell: (params) => (
+          <>
+            <img
+              src={params?.value}
+              alt="Logo"
+              style={{
+                width: "60%",
+                borderRadius: "40px",
+                height: "110%",
+                cursor: "pointer",
+              }}
+              onClick={() => handleClick(params.value)}
+            />
+            <Dialog open={open} onClose={handleClose} style={{ borderRadius: "50px" }}>
+              <DialogContent>
+                <img
+                  src={selectedLogo}
+                  alt="Logo"
+                  style={{ width: "100%", borderRadius: "40px" }}
+                />
+              </DialogContent>
+            </Dialog>
+          </>
+        ),
+      },
+      { field: "name", headerName: "Name", width: 155, editable: false },
+      { field: "address", headerName: "Address", width: 155, editable: false },
+      { field: "tel", headerName: "Tel", width: 155, editable: false },
+      {
+        field: "accountBalance",
+        headerName: "Account",
         width: 155,
         editable: false,
       },
-      { field: "reward", headerName: "Reward", width: 155, editable: false },
+      { field: "email", headerName: "Email", width: 155, editable: false },
       {
         field: "actions",
         type: "actions",
@@ -114,14 +142,14 @@ const ParticipantsList = () => {
       <div>
         <div>
           <div className="container">
-            <h2 style={{ paddingLeft: 10, paddingTop: 10 }}>Participants</h2>
+            <h2 style={{ paddingLeft: 10, paddingTop: 10 }}>Rewards</h2>
             <hr />
             <button
              
              className='btn btn-primary mb-5'
              style={{backgroundColor:"#4C1040",borderColor:"#4C1050"}}
               onClick={() => alert("create")}
-            >Add Participant </button>
+            >Add Reward </button>
             <Box sx={{ height: 400, width: "100%" }}>
               <DataGrid
                 rows={rows}
@@ -144,4 +172,4 @@ const ParticipantsList = () => {
     );
 }
 
-export default ParticipantsList
+export default RewardList

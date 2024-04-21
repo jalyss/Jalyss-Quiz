@@ -9,6 +9,7 @@ function Header({ isOpen }) {
   const navigate = useNavigate();
   const me = useSelector(state => state.auth?.me)
 
+  console.log(me,"this is me ")
 
 
   return (
@@ -25,7 +26,7 @@ function Header({ isOpen }) {
                   style={{ width: "40px", marginRight: "10px" }}
                   alt="Avatar"
                 />
-                {me?.employee?.name?me?.employee?.name:"BASMA"}
+                {me?.fullName?me?.fullName:"Si Flen"}
               </Dropdown.Toggle>
 
               <Dropdown.Menu>

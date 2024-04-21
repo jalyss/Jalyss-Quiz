@@ -3,22 +3,16 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
-
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import jalyss from "../assets/img/jalyss.png";
-
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-
 import Modal from "react-bootstrap/Modal";
-import { createPartcipant } from "../store/participantSlice";
-import { showErrorToast } from "../utils/toast";
+import { showErrorToast, showSuccessToast } from "../utils/toast";
 import Spinner from "react-bootstrap/Spinner";
 import { login } from "../store/auth";
 const defaultTheme = createTheme();
@@ -27,32 +21,22 @@ function Login() {
   const dispatch = useDispatch();
 
   const [candidateInfo, setCandidateInfo] = useState({
-    fullName: "",
-    phoneNumber: "",
     email: "",
-    birthday: "",
-    work: ""
+    password: ""
   });
   const [show, setShow] = useState(false);
   const [disableButton, setDisableButton] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleInputChange = (event) => {
-    if (event.target?.name) {
-      const { name, value } = event.target;
-      setCandidateInfo({ ...candidateInfo, [name]: value });
-    } else {
-      setCandidateInfo({ ...candidateInfo, birthday: event.$d });
-    }
+    const { name, value } = event.target;
+    setCandidateInfo({ ...candidateInfo, [name]: value });
   };
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setDisableButton(true);
+    setDisableButton(false);
     if (
-      candidateInfo.fullName.trim() === "" ||
-      candidateInfo.work.trim() === "" ||
-      candidateInfo.phoneNumber.trim() === "" ||
-      !candidateInfo.birthday ||
+      candidateInfo.password.trim() === "" ||
       candidateInfo.email.trim() === ""
     ) {
       setShow(true);
@@ -62,16 +46,15 @@ function Login() {
     await dispatch(
       login({
         email: candidateInfo.email,
-        fullName: candidateInfo.fullName,
-        phoneNumber: candidateInfo.phoneNumber,
-        birthday: candidateInfo.birthday,
-        work: candidateInfo.work
+        password: candidateInfo.password
       })
     ).then((res) => {
-      if (res.error) {
-        console.log(res);
+      console.log(res, "this after dispatch");
+      if (!res.payload) {
         showErrorToast("الرجاء التثبت من البربد الاكتروني");
         setDisableButton(false);
+      } else {
+        showSuccessToast("عسلامة");
       }
     });
   };
@@ -135,7 +118,7 @@ function Login() {
             >
               <Avatar sx={{ m: 1, bgcolor: "#48184c" }}></Avatar>
               <Typography component="h1" variant="h5">
-                سجل الآن 
+                 تسجيل الدخول
               </Typography>
               <Box
                 component="form"
@@ -169,10 +152,10 @@ function Login() {
                   margin="normal"
                   required
                   fullWidth
-                  name="work"
+                  name="password"
                   value={candidateInfo.work}
                   label="كلمة المرور"
-                  type="text"
+                  type="password"
                   id="work"
                   autoComplete="current-email"
                   dir="rtl"
@@ -214,9 +197,13 @@ function Login() {
                 borderRadius: 3
               }}
             >
-              <img src="https://scontent.ftun1-2.fna.fbcdn.net/v/t39.30808-6/307093306_155779117134409_2373459426750840518_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=5f2048&_nc_ohc=196OHdnUUYsAb7UV1VE&_nc_ht=scontent.ftun1-2.fna&oh=00_AfCcUwEgsktZfyi5aEcm9N3h_qGHLHptw4CNllSFVjhPlg&oe=662A24B1" alt="logo jalyss" width={100} />
+              <img
+                src="https://scontent.ftun1-2.fna.fbcdn.net/v/t39.30808-6/307093306_155779117134409_2373459426750840518_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=5f2048&_nc_ohc=196OHdnUUYsAb7UV1VE&_nc_ht=scontent.ftun1-2.fna&oh=00_AfCcUwEgsktZfyi5aEcm9N3h_qGHLHptw4CNllSFVjhPlg&oe=662A24B1"
+                alt="logo jalyss"
+                width={100}
+              />
               <Typography component="h1" variant="h5">
-                سجل الآن 
+                تسجيل الدخول{" "}
               </Typography>
               <Box
                 component="form"
@@ -224,9 +211,6 @@ function Login() {
                 onSubmit={handleSubmit}
                 sx={{ mt: 1 }}
               >
-               
-
-                
                 <TextField
                   margin="normal"
                   required
@@ -253,12 +237,12 @@ function Login() {
                   margin="normal"
                   required
                   fullWidth
-                  name="work"
-                  value={candidateInfo.work}
+                  name="password"
+                  value={candidateInfo.password}
                   label="كلمة المرور"
-                  type="text"
-                  id="work"
-                  autoComplete="current-email"
+                  type="password"
+                  id="password"
+                  autoComplete="current-password"
                   dir="rtl"
                   sx={{
                     "& .MuiInputLabel-root.Mui-focused": {
@@ -286,13 +270,17 @@ function Login() {
             </Box>
           </div>
           <div className="d-flex justify-content-center mb-2">
-
-          <img src={require("../assets/img/sfectoria.png")} alt="logo Sfectoria" loading="lazy" width={200}/>
+            <img
+              src={require("../assets/img/sfectoria.png")}
+              alt="logo Sfectoria"
+              loading="lazy"
+              width={200}
+            />
           </div>
         </Grid>
       </Grid>
 
-      <>    
+      <>
         <Modal show={show} onHide={handleClose}>
           <Modal.Body style={{ padding: 30 }}>
             الرجاء تعمير كل الفراغات
