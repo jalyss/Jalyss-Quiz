@@ -12,15 +12,27 @@ export const fetchWheelProp = createAsyncThunk(
     return response.data;
   }
 );
+export const fetchAllWheelProp = createAsyncThunk(
+  "fetchAllprop",
+  async () => {
+    const response = await axios.get(
+      `http://${url}/wheel-propositions`,
+    );
+    return response.data;
+  }
+);
 
  const WheelSlice = createSlice({
   name: "Wheel",
   initialState: {
-   wheelprop: [],
+   wheelprop: []
   },
   reducers: {},
   extraReducers(builder) {
     builder.addCase(fetchWheelProp.fulfilled, (state, action) => {
+      state.wheelprop = action.payload;
+    });
+    builder.addCase(fetchAllWheelProp.fulfilled, (state, action) => {
       state.wheelprop = action.payload;
     });
   },

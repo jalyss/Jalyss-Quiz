@@ -1,3 +1,5 @@
+import { ParticipantsController } from './../participants/participants.controller';
+import { Participant } from './../participants/entities/participant.entity';
 import { Injectable } from '@nestjs/common';
 import { CreateWheelPropositionDto } from './dto/create-wheel-proposition.dto';
 import { UpdateWheelPropositionDto } from './dto/update-wheel-proposition.dto';
@@ -14,7 +16,11 @@ export class WheelPropositionsService {
   }
 
   async findAll() {
-    return this.prisma.wheelProposition.findMany({});
+    return this.prisma.wheelProposition.findMany({
+      include : {
+      winner : true
+      }
+    });
   }
   async findAllIsActive() {
     return this.prisma.wheelProposition.findMany({ where: { isActive: true } });
