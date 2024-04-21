@@ -7,7 +7,7 @@ import { getMe } from "../store/auth";
 import Dashboard from "../pages/Dashboard";
 import NotFound from "../pages/NotFound";
 import Auth from "../apps/auth";
-import Login from "../pages/Login";
+import Login from "../pages/auth/Login.jsx";
 import Questions from "../domains/questions/Questions";
 import QuestionsList from "../domains/questions/views/QuestionsList";
 import QuestionsDetails from "../domains/questions/views/QuestionsDetails";
