@@ -8,11 +8,12 @@ import { Button } from "react-bootstrap";
 import { DataGrid, GridActionsCellItem } from "@mui/x-data-grid";
 import { Box } from "@mui/material";
 import { Dialog, DialogContent, DialogTitle, Typography } from "@mui/material";
+import { fetchAllWheelProp } from '../../../store/wheelProp';
 
 const RewardList = () => {
     const [show, setShow] = useState(false);
     const [basicModal, setBasicModal] = useState(false);
-    const providerStore = useSelector((state) => state?.provider);
+    const rewards = useSelector((state) => state?.wheelProp);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [rows, setRows] = useState([]);
@@ -37,25 +38,24 @@ const RewardList = () => {
     };
   
     useEffect(() => {
-    //   dispatch(fetchProviders());
+      dispatch(fetchAllWheelProp());
     }, [dispatch]);
   
     useEffect(() => {
-      if (providerStore?.providers?.items) {
-        let aux = providerStore?.providers?.items.map((e) => {
+      if (rewards?.wheelprop) {
+        let aux = rewards?.wheelprop.map((e) => {
           return {
             id: e.id,
-            logo: e.logo?.path,
-            name: e.name,
-            address: e.address,
-            tel: e.tel,
-            accountBalance: e.accountBalance,
-            email: e.email,
+            label: e.label,
+            slogan: e.slogan,
+            reward: e.reward,
+            winners: e.winner.length,
+            
           };
         });
         setRows(aux);
       }
-    }, [providerStore?.providers?.items]);
+    }, [rewards?.wheelprop]);
     const [open, setOpen] = useState(false);
     const [selectedLogo, setSelectedLogo] = useState(null);
   
@@ -69,46 +69,17 @@ const RewardList = () => {
     };
   
     const columns = [
+    
+      { field: "label", headerName: "Label", width: 155, editable: false },
+      { field: "slogan", headerName: "Slogan", width: 155, editable: false },
+      { field: "reward", headerName: "Reward", width: 155, editable: false },
       {
-        field: "logo",
-        headerName: "Logo",
-        width: 120,
-        editable: false,
-        renderCell: (params) => (
-          <>
-            <img
-              src={params?.value}
-              alt="Logo"
-              style={{
-                width: "60%",
-                borderRadius: "40px",
-                height: "110%",
-                cursor: "pointer",
-              }}
-              onClick={() => handleClick(params.value)}
-            />
-            <Dialog open={open} onClose={handleClose} style={{ borderRadius: "50px" }}>
-              <DialogContent>
-                <img
-                  src={selectedLogo}
-                  alt="Logo"
-                  style={{ width: "100%", borderRadius: "40px" }}
-                />
-              </DialogContent>
-            </Dialog>
-          </>
-        ),
-      },
-      { field: "name", headerName: "Name", width: 155, editable: false },
-      { field: "address", headerName: "Address", width: 155, editable: false },
-      { field: "tel", headerName: "Tel", width: 155, editable: false },
-      {
-        field: "accountBalance",
-        headerName: "Account",
+        field: "winners",
+        headerName: "Winners",
         width: 155,
         editable: false,
       },
-      { field: "email", headerName: "Email", width: 155, editable: false },
+     
       {
         field: "actions",
         type: "actions",

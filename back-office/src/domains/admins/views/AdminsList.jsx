@@ -8,10 +8,12 @@ import { Button } from "react-bootstrap";
 import { DataGrid, GridActionsCellItem } from "@mui/x-data-grid";
 import { Box } from "@mui/material";
 import { Dialog, DialogContent, DialogTitle, Typography } from "@mui/material";
+import { fetchAdmins } from '../../../store/admins';
 const AdminsList = () => {
     const [show, setShow] = useState(false);
     const [basicModal, setBasicModal] = useState(false);
-    const providerStore = useSelector((state) => state?.provider);
+    const adminProvider = useSelector((state) => state?.admins);
+    console.log(adminProvider,"this is admins")
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [rows, setRows] = useState([]);
@@ -36,25 +38,21 @@ const AdminsList = () => {
     };
   
     useEffect(() => {
-    //   dispatch(fetchProviders());
+      dispatch(fetchAdmins());
     }, [dispatch]);
   
     useEffect(() => {
-      if (providerStore?.providers?.items) {
-        let aux = providerStore?.providers?.items.map((e) => {
+      if (adminProvider?.admins) {
+        let aux = adminProvider?.admins.map((e) => {
           return {
             id: e.id,
-            logo: e.logo?.path,
-            name: e.name,
-            address: e.address,
-            tel: e.tel,
-            accountBalance: e.accountBalance,
-            email: e.email,
+           fullName:e.fullName,
+          email: e.email,
           };
         });
         setRows(aux);
       }
-    }, [providerStore?.providers?.items]);
+    }, [adminProvider?.admins]);
     const [open, setOpen] = useState(false);
     const [selectedLogo, setSelectedLogo] = useState(null);
   
@@ -68,45 +66,8 @@ const AdminsList = () => {
     };
   
     const columns = [
-      {
-        field: "logo",
-        headerName: "Logo",
-        width: 120,
-        editable: false,
-        renderCell: (params) => (
-          <>
-            <img
-              src={params?.value}
-              alt="Logo"
-              style={{
-                width: "60%",
-                borderRadius: "40px",
-                height: "110%",
-                cursor: "pointer",
-              }}
-              onClick={() => handleClick(params.value)}
-            />
-            <Dialog open={open} onClose={handleClose} style={{ borderRadius: "50px" }}>
-              <DialogContent>
-                <img
-                  src={selectedLogo}
-                  alt="Logo"
-                  style={{ width: "100%", borderRadius: "40px" }}
-                />
-              </DialogContent>
-            </Dialog>
-          </>
-        ),
-      },
-      { field: "name", headerName: "Name", width: 155, editable: false },
-      { field: "address", headerName: "Address", width: 155, editable: false },
-      { field: "tel", headerName: "Tel", width: 155, editable: false },
-      {
-        field: "accountBalance",
-        headerName: "Account",
-        width: 155,
-        editable: false,
-      },
+      
+      { field: "fullName", headerName: "FullName", width: 155, editable: false },
       { field: "email", headerName: "Email", width: 155, editable: false },
       {
         field: "actions",

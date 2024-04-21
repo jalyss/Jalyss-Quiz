@@ -21,10 +21,10 @@ function Main() {
       <SideBar toggle={toggle} isOpen={isOpen} />
       <div style={{ paddingLeft: isOpen ? 250 : 50 }}>
 
-      <Header toggle={toggle} isOpen={isOpen} />
       <Footer />
 
       </div>
+      <Header toggle={toggle} isOpen={isOpen} />
 
       <div className="pages" style={{ paddingLeft: isOpen ? 250 : 50,height:"90vh" }}>
         <Outlet />

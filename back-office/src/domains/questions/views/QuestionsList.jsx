@@ -52,7 +52,7 @@ const QuestionsList = () => {
       });
       setRows(aux);
     }
-  }, [questionProvider?.providers?.items]);
+  }, [questionProvider?.questions]);
   const [open, setOpen] = useState(false);
   const [selectedLogo, setSelectedLogo] = useState(null);
 
