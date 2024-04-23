@@ -9,6 +9,7 @@ import { DataGrid, GridActionsCellItem } from "@mui/x-data-grid";
 import { Box } from "@mui/material";
 import { Dialog, DialogContent, DialogTitle, Typography } from "@mui/material";
 import { fetchParticipants } from '../../../store/participantSlice';
+import { buttonColor } from '../../../colors/buttonsColor';
 
 const ParticipantsList = () => {
     const [show, setShow] = useState(false);
@@ -119,7 +120,7 @@ const ParticipantsList = () => {
             <button
              
              className='btn btn-primary mb-5'
-             style={{backgroundColor:"#4C1040",borderColor:"#4C1050"}}
+             style={{backgroundColor:buttonColor,borderColor:buttonColor}}
               onClick={() => alert("create")}
             >Add Participant </button>
             <Box sx={{ height: 400, width: "100%" }}>

@@ -6,9 +6,10 @@ import { AiFillDelete, AiFillEdit, AiOutlineEye } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { DataGrid, GridActionsCellItem } from "@mui/x-data-grid";
-import { Box, colors } from "@mui/material";
+import { Box, buttonGroupClasses, colors } from "@mui/material";
 import { Dialog, DialogContent, DialogTitle, Typography } from "@mui/material";
 import { fetchQuestions } from "../../../store/questions";
+import { buttonColor } from "../../../colors/buttonsColor";
 
 const QuestionsList = () => {
   const [show, setShow] = useState(false);
@@ -123,7 +124,7 @@ const QuestionsList = () => {
           <hr />
           <button
             className="btn btn-primary mb-5"
-            style={{ backgroundColor: "#4C1040", borderColor: "#4C1050" }}
+            style={{ backgroundColor: buttonColor, borderColor: buttonColor }}
             onClick={() => alert("create")}
           >
             Add Question{" "}

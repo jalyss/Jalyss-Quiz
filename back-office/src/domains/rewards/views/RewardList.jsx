@@ -9,6 +9,7 @@ import { DataGrid, GridActionsCellItem } from "@mui/x-data-grid";
 import { Box } from "@mui/material";
 import { Dialog, DialogContent, DialogTitle, Typography } from "@mui/material";
 import { fetchAllWheelProp } from '../../../store/wheelProp';
+import { buttonColor } from '../../../colors/buttonsColor';
 
 const RewardList = () => {
     const [show, setShow] = useState(false);
@@ -118,7 +119,7 @@ const RewardList = () => {
             <button
              
              className='btn btn-primary mb-5'
-             style={{backgroundColor:"#4C1040",borderColor:"#4C1050"}}
+             style={{backgroundColor:buttonColor,borderColor:buttonColor}}
               onClick={() => alert("create")}
             >Add Reward </button>
             <Box sx={{ height: 400, width: "100%" }}>
