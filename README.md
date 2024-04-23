@@ -1,8 +1,8 @@
 
-<img src="https://i.imgur.com/dBaSKWF.gif" height="30" width="100%">
 <div align="center">
     <img width="200px" src="./client/src/assets/images/sfectoria.png" loading="lazy"/>
 </div>
+<img src="https://i.imgur.com/dBaSKWF.gif" height="30" width="100%">
 <p align="center">
   <a href="https://jalyss.com/ar/" target="blank"><img src="./client//public/jalyssLogo rdm.png" width="2000 " alt="jalyss logo" /></a>
 </p>
