@@ -28,25 +28,25 @@ const AdminsList = () => {
   });
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setCandidateInfo({ ...candidateInfo, [name]: value });
+    setAdminInfo({ ...adminInfo, [name]: value });
   };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();    
-    await dispatch(
-      createPartcipant({
-        email: adminInfo.email,
-        fullName: adminInfo.fullName,
-        password : adminInfo.password
-      })
-    ).then((res) => {
-      if (res.error) {
-        console.log(res);
-        showErrorToast("الرجاء التثبت من البربد الاكتروني");
-        setDisableButton(false);
-      }
-    });
-  };
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault();    
+  //   await dispatch(
+  //     createPartcipant({
+  //       email: adminInfo.email,
+  //       fullName: adminInfo.fullName,
+  //       password : adminInfo.password
+  //     })
+  //   ).then((res) => {
+  //     if (res.error) {
+  //       console.log(res);
+  //       showErrorToast("الرجاء التثبت من البربد الاكتروني");
+  //       setDisableButton(false);
+  //     }
+  //   });
+  // };
 
   const toggleShow = () => {
     setBasicModal(!basicModal);
