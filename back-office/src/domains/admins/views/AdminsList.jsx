@@ -10,6 +10,7 @@ import { Box, TextField } from "@mui/material";
 import { Dialog, DialogContent, DialogTitle, Typography } from "@mui/material";
 import { fetchAdmins } from "../../../store/admins";
 import Modal from "react-bootstrap/Modal";
+import { buttonColor } from "../../../colors/buttonsColor";
 
 const AdminsList = () => {
   const [show, setShow] = useState(false);
@@ -132,7 +133,7 @@ const AdminsList = () => {
           <hr />
           <button
             className="btn btn-primary mb-5"
-            style={{ backgroundColor: "#4C1040", borderColor: "#4C1050" }}
+            style={{ backgroundColor: buttonColor, borderColor: buttonColor }}
             onClick={() => setShow(true)}
           >
             Add Admin{" "}

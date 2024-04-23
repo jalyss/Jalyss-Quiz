@@ -17,7 +17,7 @@ function SideBar({ toggle, isOpen }) {
   return (
     <div style={{ width: isOpen ? "250px" : "50px" }} className="sidebar">
       <div className="top_section">
-        <img src={require("../assets/img/jalyssCOM.jpg")} alt="logo jalysscom" loading="lazy" style={{ display: isOpen ? "block" : "none" }} className="img-fluid"  width={100}/>
+        <img src={require("../assets/sfectoria.png")} alt="logo jalysscom" loading="lazy" style={{ display: isOpen ? "block" : "none" }} className="img-fluid"  width={120}/>
        
         <div style={{ marginLeft: isOpen ? "80px" : "0px" }} className="bars">
          {!isOpen? <IoIosArrowDroprightCircle  onClick={toggle} className="hover-overlay" />:<IoIosArrowDropleftCircle onClick={toggle} className="hover-overlay"/>}
