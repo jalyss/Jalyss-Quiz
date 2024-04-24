@@ -19,7 +19,7 @@
 
 ## Stay in touch
 <p align="center">
-<img src="https://user-images.githubusercontent.com/74038190/212284068-b4ee9a5c-331c-4d18-9481-53dd6b9debd5.gif" width="200">
-</div>
+<img src="https://user-images.githubusercontent.com/74038190/212284087-bbe7e430-757e-4901-90bf-4cd2ce3e1852.gif" width="100">
+</p>
 Jalyss Quizz is Created by [@Sfectoria](https://www.sfectoria.com/).
 
