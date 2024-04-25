@@ -25,7 +25,7 @@ function Dashboard() {
         width={80}
       />
             <h5 className="card-title" style={{color:buttonColor,marginBottom:0,fontSize:"4rem"}}>4.1M</h5></div> 
-            <card className="card-text fs-1" >Total Participants</card>
+            <card className="card-text fs-1 "  style={{color:"gray"}}>Total Participants</card>
           </div>
         </div>
         <div className="card  align-items-center d-flex flex-column justify-content-center shadow" style={{width:"25rem",height:"16rem"}}>
