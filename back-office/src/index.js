@@ -8,14 +8,17 @@ import Router from './router/Router';
 import { Provider } from 'react-redux';
 import { store } from './store/store';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { PrimeReactProvider, PrimeReactContext } from 'primereact/api';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <React.StrictMode>
+  <PrimeReactProvider>
     <Provider store={store}>
       <Router />
     </Provider>
+    </PrimeReactProvider>
   // </React.StrictMode>
 );
 

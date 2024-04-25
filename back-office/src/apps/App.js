@@ -22,7 +22,7 @@ function Main() {
       <div style={{ paddingLeft: isOpen ? 250 : 50 }}>
 
       <footer
-        className="footer p-2 d-flex justify-content-center align-items-center  position-fixed bottom-0 w-100"
+        className="footer p-2 d-flex justify-content-center align-items-center  position-fixed bottom-0 w-100 z-3 shadow bg-light"
         
       > 
         <img
