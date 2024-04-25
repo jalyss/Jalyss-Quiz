@@ -9,7 +9,7 @@ export default function Footer() {
   return (
     <div>
       <footer
-        className="page-footer font-small text-white blue pt-2"
+        className="page-footer font-small text-white blue pt-2 shadow"
         style={{ backgroundColor: "#20374E", minHeight: "60vh" }}
       >
         <div className="container-fluid text-center text-md-left">
