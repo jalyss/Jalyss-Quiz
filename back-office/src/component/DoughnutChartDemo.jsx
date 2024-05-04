@@ -25,12 +25,13 @@ export default function DoughnutChartDemo() {
   }, []);
 
   return (
-    <div className="card flex justify-content-center rounded-5 p-3" style={{height:"550px"}}>
+    <div className="card rounded-5 p-4" style={{height:"550px"}}>
+      <h5 className='px-2' > Rewards Winners</h5>
       <Chart
         type="doughnut"
         data={chartData}
         options={chartOptions}
-        className="w-full md:w-10rem"
+        className="w-full md:w-10rem mt-5"
       />
     </div>
   );

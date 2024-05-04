@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Chart } from 'primereact/chart';
+import { RxOpacity, RxSize } from 'react-icons/rx';
 
 export default function LineDemo() {
     const [chartData, setChartData] = useState({});
@@ -11,20 +12,21 @@ export default function LineDemo() {
         const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
         const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
         const data = {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+            labels: ['Friday-19','Saturday-20','Sunday-21','Monday-22','Tuesday-23','Wednesday-24','Thursday-25','Friday-26','Saturday-27'],
             datasets: [
+                // {
+                //     label: 'Participants per day',
+                //     data: [65, 59, 80, 81, 56, 55, 40],
+                //     fill: false,
+                //     borderColor: "#00B8D9",
+                //     tension: 0.4,
+                    
+                // },
                 {
-                    label: 'First Dataset',
-                    data: [65, 59, 80, 81, 56, 55, 40],
-                    fill: false,
-                    borderColor: documentStyle.getPropertyValue('--blue-500'),
-                    tension: 0.4
-                },
-                {
-                    label: 'Second Dataset',
+                    label: 'Participants Per day',
                     data: [28, 48, 40, 19, 86, 27, 90],
                     fill: false,
-                    borderColor: documentStyle.getPropertyValue('--pink-500'),
+                    borderColor: "#FFAB00",
                     tension: 0.4
                 }
             ]
@@ -35,8 +37,11 @@ export default function LineDemo() {
             plugins: {
                 legend: {
                     labels: {
-                        color: textColor
+                        color: textColor,
+                        borderRadius : "400px",
+                        RxSize : "300px"
                     }
+                    
                 }
             },
             scales: {
@@ -45,15 +50,16 @@ export default function LineDemo() {
                         color: textColorSecondary
                     },
                     grid: {
-                        color: surfaceBorder
+                        color: ""
                     }
                 },
                 y: {
                     ticks: {
-                        color: textColorSecondary
+                        color: textColorSecondary,
+                       
                     },
                     grid: {
-                        color: surfaceBorder
+                        color: ""
                     }
                 }
             }
@@ -65,6 +71,7 @@ export default function LineDemo() {
 
     return (
         <div className="card rounded-5 p-3" style={{height:"550px"}}>
+            <h5 className='px-2'>Game Participants</h5>
             <Chart type="line" data={chartData} options={chartOptions} />
         </div>
     )
