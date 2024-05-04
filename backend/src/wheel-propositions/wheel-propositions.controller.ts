@@ -30,7 +30,7 @@ export class WheelPropositionsController {
   }
   @Get('isActive')
   findAllIsActive() {
-    return this.wheelPropositionsService.findAll();
+    return this.wheelPropositionsService.findAllIsActive();
   }
 
   @Get('one/:id')
