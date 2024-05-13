@@ -9,64 +9,31 @@ function WheelWinner({ setOpen, setPrize }) {
   const dispatch = useDispatch();
   const [mustSpin, setMustSpin] = useState(false);
   const [prizeNumber, setPrizeNumber] = useState(0);
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     dispatch(fetchWheelProp());
   }, [dispatch]);
 
-  const data = [
-    {
-      option: wheelPropositions[0]?.label,
-      style: { backgroundColor: "#64113F", textColor: "white" },
-      ...wheelPropositions[0],
-    },
-    {
-      option: "حظ موفق المره القادمه",
-      style: { backgroundColor: "white" },
-    },
-    {
-      option: wheelPropositions[1]?.label,
-      style: { backgroundColor: "#64113F", textColor: "white" },
-      ...wheelPropositions[1],
-    },
-    {
-      option: "حظ موفق المره القادمه",
-      style: { backgroundColor: "white" },
-    },
-    {
-      option: wheelPropositions[2]?.label,
-      style: { backgroundColor: "#64113F", textColor: "white" },
-      ...wheelPropositions[2],
-    },
-    { option: "حظ موفق المره القادمه", style: { backgroundColor: "white" } },
-    {
-      option: wheelPropositions[3]?.label,
-      style: { backgroundColor: "#64113F", textColor: "white" },
-      ...wheelPropositions[3],
-    },
-    { option: "حظ موفق المره القادمه", style: { backgroundColor: "white" } },
-    {
-      option: wheelPropositions[4]?.label,
-      style: { backgroundColor: "#64113F", textColor: "white" },
-      ...wheelPropositions[4],
-    },
-    { option: "حظ موفق المره القادمه", style: { backgroundColor: "white" } },
-    {
-      option: wheelPropositions[5]?.label,
-      style: { backgroundColor: "#64113F", textColor: "white" },
-      ...wheelPropositions[5],
-    },
-    {
-      option: "حظ موفق المره القادمه",
-      style: { backgroundColor: "white" },
-    },
-    {
-      option: wheelPropositions[6]?.label,
-      style: { backgroundColor: "#64113F", textColor: "white" },
-      ...wheelPropositions[6],
-    },
-    { option: "حظ موفق المره القادمه", style: { backgroundColor: "white" } },
-  ];
+  useEffect(() => {
+    let aux = [];
+    wheelPropositions?.forEach((e) => {
+      aux.push(
+        {
+          option: e?.label,
+          style: { backgroundColor: "#64113F", textColor: "white" },
+          ...e
+        },
+        {
+          option: "حظ موفق المره القادمه",
+          style: { backgroundColor: "white" }
+        }
+      );
+    });
+    setData(aux);
+  }, [wheelPropositions?.length]);
+  console.log(data, "this is data");
+
   const handleSpinClick = () => {
     if (!mustSpin) {
       const newPrizeNumber = Math.floor(Math.random() * data.length);
@@ -76,45 +43,47 @@ function WheelWinner({ setOpen, setPrize }) {
   };
   return (
     <div className="d-flex justify-content-center align-items-center ">
-      <div>
-        <Wheel
-          mustStartSpinning={mustSpin}
-          prizeNumber={prizeNumber}
-          data={data}
-          fontSize={14}
-          fontWeight={"bold"}
-          radiusLineWidth={2}
-          outerBorderColor="#64113F"
-          radiusLineColor="white"
-          onStopSpinning={() => {
-            setMustSpin(false);
+      {data.length && (
+        <div>
+          <Wheel
+            mustStartSpinning={mustSpin}
+            prizeNumber={prizeNumber}
+            data={data}
+            fontSize={14}
+            fontWeight={"bold"}
+            radiusLineWidth={2}
+            outerBorderColor="#64113F"
+            radiusLineColor="white"
+            onStopSpinning={() => {
+              setMustSpin(false);
 
-            console.log(data[prizeNumber], prizeNumber);
-            setPrize(data[prizeNumber]);
-            if (data[prizeNumber]?.reward) {
-              dispatch(
-                participantReward({
-                  id: JSON.parse(localStorage.getItem("participantId")),
-                  reward: data[prizeNumber].id,
-                })
-              ).then((res) => {
+              console.log(data[prizeNumber], prizeNumber);
+              setPrize(data[prizeNumber]);
+              if (data[prizeNumber]?.reward) {
+                dispatch(
+                  participantReward({
+                    id: JSON.parse(localStorage.getItem("participantId")),
+                    reward: data[prizeNumber].id
+                  })
+                ).then((res) => {
+                  setOpen(true);
+                });
+              } else {
                 setOpen(true);
-              });
-            } else {
-              setOpen(true);
-            }
-          }}
-        />
-        <div className="d-flex justify-content-center">
-          <button
-            className="btn btn-light mt-5 w-50 fs-5"
-            style={{ backgroundColor: "#64113F", color: "white" }}
-            onClick={handleSpinClick}
-          >
-            ابدأ
-          </button>
+              }
+            }}
+          />
+          <div className="d-flex justify-content-center">
+            <button
+              className="btn btn-light mt-5 w-50 fs-5"
+              style={{ backgroundColor: "#64113F", color: "white" }}
+              onClick={handleSpinClick}
+            >
+              ابدأ
+            </button>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
