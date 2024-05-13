@@ -1,6 +1,6 @@
 
 <div align="center">
-    <img width="200px" src="./client/src/assets/images/sfectoria.png" loading="lazy"/>
+    <img width="400px" src="./client/src/assets/images/sfectoria.png" loading="lazy"/>
 
 </div>
 <div align="center">
