@@ -43,7 +43,7 @@ function WheelWinner({ setOpen, setPrize }) {
   };
   return (
     <div className="d-flex justify-content-center align-items-center ">
-      {data.length && (
+      {data?.length && (
         <div>
           <Wheel
             mustStartSpinning={mustSpin}
