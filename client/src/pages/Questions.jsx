@@ -11,7 +11,7 @@ import Wheelmodal from "../Modals/WheelModal";
 export default function Questions() {
   const [clicked, setClicked] = useState(false);
   const [niveau, setNiveau] = useState(0);
-  const [progress, setProgress] = useState("99%");
+  const [progress, setProgress] = useState("33%");
   const [openR, setOpenR] = React.useState(false);
   const handleCloseR = () => setOpenR(false);
   const [openWM, setOpenWM] = React.useState(false);
@@ -52,7 +52,7 @@ export default function Questions() {
             <div
               className="progress-bar "
               role="progressbar"
-              style={{ width: progress, background: "#E6C440" }}
+              style={{ width: progress, background: "#5D87FF" }}
               aria-valuenow="25"
               aria-valuemin="0"
               aria-valuemax="100"

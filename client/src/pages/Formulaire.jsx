@@ -1,9 +1,8 @@
-import * as React from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-
+import lovinHeart from "../lotties/lovingHeart.json";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
@@ -15,16 +14,15 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import jalyss from "../assets/images/jalyss.png";
-
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-
 import Modal from "react-bootstrap/Modal";
 import { createPartcipant } from "../store/participantSlice";
 import { showErrorToast } from "../utils/toast";
 import Spinner from "react-bootstrap/Spinner";
-
-
+import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import Lottie from "react-lottie";
+import hob from "../assets/images/hob.jpg"
 
 const defaultTheme = createTheme();
 export default function Formulaire() {
@@ -36,6 +34,7 @@ export default function Formulaire() {
     email: "",
     birthday: "",
     work: "",
+    gender:""
   });
   const [show, setShow] = useState(false);
   const [disableButton, setDisableButton] = useState(false);
@@ -69,7 +68,7 @@ export default function Formulaire() {
         fullName: candidateInfo.fullName,
         phoneNumber: candidateInfo.phoneNumber,
         birthday: candidateInfo.birthday,
-        work: candidateInfo.work,
+        work: candidateInfo.work
       })
     ).then((res) => {
       if (res.error) {
@@ -90,14 +89,15 @@ export default function Formulaire() {
           sm={0}
           md={7}
           sx={{
-            backgroundImage: `url(${jalyss})`,
+            backgroundImage: `url(${hob})`,
             backgroundRepeat: "no-repeat",
             backgroundColor: (t) =>
               t.palette.mode === "light"
                 ? t.palette.grey[50]
                 : t.palette.grey[900],
             backgroundSize: "cover",
-            backgroundPosition: "center left",
+            backgroundPosition: "center bottom",
+            borderRadius: 5
           }}
         />
 
@@ -113,14 +113,14 @@ export default function Formulaire() {
           <div
             className="position-fixed w-100 h-100 d-md-none"
             style={{
-              backgroundImage: `url(${jalyss})`,
+              backgroundImage: `url(${hob})`,
               backgroundRepeat: "no-repeat",
               backgroundColor: (t) =>
                 t.palette.mode === "light"
                   ? t.palette.grey[50]
                   : t.palette.grey[900],
               backgroundSize: "cover",
-              backgroundPosition: "center left",
+              backgroundPosition: "center top"
             }}
           >
             <Box
@@ -133,11 +133,27 @@ export default function Formulaire() {
                 justifyContent: "center",
                 backgroundColor: "white",
                 padding: 5,
-                borderRadius: 3,
+                borderRadius: 3
               }}
             >
-              <Avatar sx={{ m: 1, bgcolor: "#48184c" }}></Avatar>
-              <Typography component="h1" variant="h5">
+              <Lottie
+                options={{
+                  loop: true,
+                  autoplay: true,
+                  animationData: lovinHeart,
+                  rendererSettings: {
+                    preserveAspectRatio: "xMidYMid slice"
+                  }
+                }}
+                height={180}
+                width={180}
+                style={{
+                  position: "fixed",
+                  top: "2%",
+                  zIndex: 5
+                }}
+              />
+              <Typography component="h1" variant="h5" sx={{ mt: 5 }}>
                 سجل الآن 
               </Typography>
               <Box
@@ -158,13 +174,13 @@ export default function Formulaire() {
                   autoFocus
                   sx={{
                     "& .MuiInputLabel-root.Mui-focused": {
-                      color: "purple",
+                      color: "purple"
                     },
                     "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
                       {
-                        borderColor: "purple",
+                        borderColor: "purple"
                       },
-                    direction: "rtl",
+                    direction: "rtl"
                   }}
                   onChange={handleInputChange}
                 />
@@ -176,13 +192,13 @@ export default function Formulaire() {
                       label="تاريج الميلاد"
                       sx={{
                         "& .MuiInputLabel-root.Mui-focused": {
-                          color: "purple",
+                          color: "purple"
                         },
                         "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
                           {
-                            borderColor: "purple",
+                            borderColor: "purple"
                           },
-                        width: "100%",
+                        width: "100%"
                       }}
                       onChange={handleInputChange}
                     />
@@ -201,12 +217,12 @@ export default function Formulaire() {
                   dir="rtl"
                   sx={{
                     "& .MuiInputLabel-root.Mui-focused": {
-                      color: "purple",
+                      color: "purple"
                     },
                     "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
                       {
-                        borderColor: "purple",
-                      },
+                        borderColor: "purple"
+                      }
                   }}
                   onChange={handleInputChange}
                 />
@@ -223,12 +239,12 @@ export default function Formulaire() {
                   dir="rtl"
                   sx={{
                     "& .MuiInputLabel-root.Mui-focused": {
-                      color: "purple",
+                      color: "purple"
                     },
                     "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
                       {
-                        borderColor: "purple",
-                      },
+                        borderColor: "purple"
+                      }
                   }}
                   onChange={handleInputChange}
                 />
@@ -245,12 +261,12 @@ export default function Formulaire() {
                   dir="rtl"
                   sx={{
                     "& .MuiInputLabel-root.Mui-focused": {
-                      color: "purple",
+                      color: "purple"
                     },
                     "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
                       {
-                        borderColor: "purple",
-                      },
+                        borderColor: "purple"
+                      }
                   }}
                   onChange={handleInputChange}
                 />
@@ -259,10 +275,10 @@ export default function Formulaire() {
                   className="btn btn-light w-100 mt-4 "
                   type="submit"
                   variant="contained"
-                  style={{ backgroundColor: "#48184c", color: "white" }}
+                  style={{ backgroundColor: "#F7305C", color: "white" }}
                   onClick={handleSubmit}
                 >
-                  {disableButton&&<Spinner animation="border" />} سجل
+                  {disableButton && <Spinner animation="border" />} سجل
                 </button>
               </Box>
             </Box>
@@ -278,11 +294,27 @@ export default function Formulaire() {
                 justifyContent: "center",
                 backgroundColor: "white",
                 padding: 5,
-                borderRadius: 3,
+                borderRadius: 3
               }}
             >
-              <Avatar sx={{ m: 1, bgcolor: "#48184c" }}></Avatar>
-              <Typography component="h1" variant="h5">
+              <Lottie
+                options={{
+                  loop: true,
+                  autoplay: true,
+                  animationData: lovinHeart,
+                  rendererSettings: {
+                    preserveAspectRatio: "xMidYMid slice"
+                  }
+                }}
+                height={180}
+                width={180}
+                style={{
+                  position: "fixed",
+                  top: "2%",
+                  zIndex: 5
+                }}
+              />
+              <Typography component="h1" variant="h5" sx={{ mt: 5 }}>
                 سجل الآن 
               </Typography>
               <Box
@@ -303,13 +335,13 @@ export default function Formulaire() {
                   autoFocus
                   sx={{
                     "& .MuiInputLabel-root.Mui-focused": {
-                      color: "purple",
+                      color: "purple"
                     },
                     "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
                       {
-                        borderColor: "purple",
+                        borderColor: "purple"
                       },
-                    direction: "rtl",
+                    direction: "rtl"
                   }}
                   onChange={handleInputChange}
                 />
@@ -321,13 +353,13 @@ export default function Formulaire() {
                       label="تاريج الميلاد"
                       sx={{
                         "& .MuiInputLabel-root.Mui-focused": {
-                          color: "purple",
+                          color: "purple"
                         },
                         "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
                           {
-                            borderColor: "purple",
+                            borderColor: "purple"
                           },
-                        width: "100%",
+                        width: "100%"
                       }}
                       onChange={handleInputChange}
                     />
@@ -346,15 +378,45 @@ export default function Formulaire() {
                   dir="rtl"
                   sx={{
                     "& .MuiInputLabel-root.Mui-focused": {
-                      color: "purple",
+                      color: "purple"
                     },
                     "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
                       {
-                        borderColor: "purple",
-                      },
+                        borderColor: "purple"
+                      }
                   }}
                   onChange={handleInputChange}
                 />
+                <FormControl
+                  fullWidth
+                  margin="normal"
+                  
+                  sx={{
+                    "& .MuiInputLabel-root.Mui-focused": {
+                      color: "purple"
+                    },
+                    "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                      {
+                        borderColor: "purple"
+                      }
+                  }}
+                >
+                  <InputLabel id="demo-simple-select-label" className="w-100">
+                    الجنس
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    name="gender"
+                    dir="rtl"
+                    value={candidateInfo.gender}
+                    label="الجنس"
+                    onChange={handleInputChange}
+                  >
+                    <MenuItem value={"ذكر"}>ذكر</MenuItem>
+                    <MenuItem value={"انثى"}>انثى</MenuItem>
+                  </Select>
+                </FormControl>
                 <TextField
                   margin="normal"
                   required
@@ -368,12 +430,12 @@ export default function Formulaire() {
                   dir="rtl"
                   sx={{
                     "& .MuiInputLabel-root.Mui-focused": {
-                      color: "purple",
+                      color: "purple"
                     },
                     "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
                       {
-                        borderColor: "purple",
-                      },
+                        borderColor: "purple"
+                      }
                   }}
                   onChange={handleInputChange}
                 />
@@ -390,12 +452,12 @@ export default function Formulaire() {
                   dir="rtl"
                   sx={{
                     "& .MuiInputLabel-root.Mui-focused": {
-                      color: "purple",
+                      color: "purple"
                     },
                     "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
                       {
-                        borderColor: "purple",
-                      },
+                        borderColor: "purple"
+                      }
                   }}
                   onChange={handleInputChange}
                 />
@@ -404,7 +466,7 @@ export default function Formulaire() {
                   className="btn btn-light w-100 mt-4 "
                   type="submit"
                   variant="contained"
-                  style={{ backgroundColor: "#48184c", color: "white" }}
+                  style={{ backgroundColor: "#F7305C", color: "white" }}
                   onClick={handleSubmit}
                   disabled={disableButton}
                 >
