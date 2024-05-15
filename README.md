@@ -13,6 +13,9 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
+
+  
+
 ## Description
 
  <p align="center">مكتبة الكترونبة مختصة في كتب تطوير الذات</p>
@@ -23,3 +26,24 @@ Jalyss Quizz is Created by [@Sfectoria](https://www.sfectoria.com/).
 <p align="center">
 <img src="https://user-images.githubusercontent.com/74038190/212284087-bbe7e430-757e-4901-90bf-4cd2ce3e1852.gif" width="100">
 </p>
+
+# Installation 👨🏻‍💻
+
+> We recommend you use yarn
+
+ Install all packages
+
+```bash
+yarn  
+```
+Run Development Server
+
+```bash
+yarn start
+```
+
+Build your project
+
+```bash
+yarn build
+```
