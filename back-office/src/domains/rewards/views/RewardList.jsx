@@ -2,13 +2,20 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 
 import { showErrorToast, showSuccessToast } from "../../../utils/toast";
-import { AiFillDelete, AiFillEdit, AiOutlineEye } from "react-icons/ai";
+import { AiFillDelete, AiFillEdit, AiOutlineEye, AiOutlineLock,AiOutlineUnlock } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { DataGrid, GridActionsCellItem } from "@mui/x-data-grid";
 import { Box } from "@mui/material";
+
+import Modal from "@mui/material/Modal";
+
+
+import TextField from "@mui/material/TextField";
+import CloseIcon from "@mui/icons-material/Close";
+import Autocomplete from "@mui/material/Autocomplete";
 import { Dialog, DialogContent, DialogTitle, Typography } from "@mui/material";
-import { fetchAllWheelProp } from '../../../store/wheelProp';
+import { fetchAllWheelProp, updateWheelProp } from '../../../store/wheelProp';
 import { buttonColor } from '../../../colors/buttonsColor';
 
 const RewardList = () => {
@@ -18,12 +25,30 @@ const RewardList = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [rows, setRows] = useState([]);
+    const [locked, setLocked] = useState(false);
     const [selectedProviderId, setSelectedProviderId] = useState("");
-  
+
+ 
     const toggleShow = () => {
       setBasicModal(!basicModal);
     };
   
+    const style = {
+      position: "absolute",
+      top: "50%",
+      left: "50%",
+      transform: "translate(-50%, -50%)",
+      width: 700,
+      bgcolor: "background.paper",
+      border: "2px solid #0076CE",
+      boxShadow: 24,
+      p: 4,
+      borderRadius: "10px",
+    };
+
+    const handleActiveWheelProp = (args) => {
+      dispatch(updateWheelProp(args))
+    }
     
   
     const handleDeleteProviderClick = () => {
@@ -45,13 +70,14 @@ const RewardList = () => {
     useEffect(() => {
       if (rewards?.wheelprop) {
         let aux = rewards?.wheelprop.map((e) => {
+          console.log(e.isActive,"this is from rows")
           return {
             id: e.id,
             label: e.label,
             slogan: e.slogan,
             reward: e.reward,
-            winners: e.winner.length,
-            
+            winners: e.winner?.length,
+            isActive:e.isActive
           };
         });
         setRows(aux);
@@ -60,6 +86,16 @@ const RewardList = () => {
     const [open, setOpen] = useState(false);
     const [selectedLogo, setSelectedLogo] = useState(null);
   
+    const [addedProgramme, setAddedprogramme] = React.useState({
+      name: "",
+      description: "",
+      categoryId: "",
+    });
+
+    const handleSubmit =() => {
+    
+      setOpen(false)
+     }
     const handleClick = (logo) => {
       setSelectedLogo(logo);
       setOpen(true);
@@ -87,7 +123,9 @@ const RewardList = () => {
         headerName: "Actions",
         width: 155,
         cellClassName: "actions",
-        getActions: ({ id }) => {
+        getActions: (params) => {
+          const {id , row} = params 
+          const {isActive} = row
           return [
             <GridActionsCellItem
               icon={<AiOutlineEye />}
@@ -104,7 +142,28 @@ const RewardList = () => {
                 setSelectedProviderId(id);
               }}
               color="error"
-            />,
+            />, <> {
+              !isActive? <GridActionsCellItem
+              icon={<AiOutlineLock />}
+              label="lock"
+              onClick={() => {
+                toggleShow();
+                setSelectedProviderId(id);
+                handleActiveWheelProp({id:id,body : {isActive:true}})
+              }}
+              color="error"
+            /> : <GridActionsCellItem
+            icon={<AiOutlineUnlock />}
+            label="unlock"
+            onClick={() => {
+              toggleShow();
+              setSelectedProviderId(id);
+              handleActiveWheelProp({id:id,body:{isActive:false}})
+            }}
+            color="success"
+          />
+            }
+            </>
           ];
         },
       },
@@ -120,8 +179,91 @@ const RewardList = () => {
              
              className='btn btn-primary mb-5'
              style={{backgroundColor:buttonColor,borderColor:buttonColor}}
-              onClick={() => alert("create")}
+              onClick={() => setOpen(true)}
             >Add Reward </button>
+                <Modal
+        keepMounted
+        open={open}
+        aria-labelledby="keep-mounted-modal-title"
+        aria-describedby="keep-mounted-modal-description"
+      >
+       
+        <Box sx={style}>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "flex-end",
+              cursor: "pointer",
+            }}
+            onClick={handleClose}
+          >
+            <CloseIcon
+              style={{
+                color: "white",
+                backgroundColor: "#0076CE",
+                borderRadius: "10px",
+                padding: "4px",
+              }}
+            />
+          </Box>
+
+          <Typography
+            id="keep-mounted-modal-title"
+            variant="h6"
+            component="h2"
+            sx={{ textAlign: "center", mb: 2 }}
+          >
+            Add Reward
+          </Typography>
+          <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
+            <Box sx={{ display: "flex", gap: 1 }}>
+              <TextField
+                id="outlined-basic"
+                label="slogan"
+                onChange={(e) => {
+                  setAddedprogramme((prev) => {
+                    return { ...prev, name: e.target.value };
+                  });
+                }}
+                variant="outlined"
+                sx={{ width: "50%" }}
+              />
+              <Autocomplete
+                onChange={(event, value) => {
+                  setAddedprogramme((prev) => {
+                    return { ...prev, categoryId: value.id };
+                  });
+                }}
+                disablePortal
+                id="combo-box-demo"
+                getOptionLabel={(option) => option.name}
+                options={[{name:"لغة الاتصال الجسدي"},{name:"لغة اعطاء الهدايا "},{name:"لغة كلمات الشكر والمدح"},{name:"لغة الوقت الجيد"},{name:"لغة أفعال الخدمة"}]}
+                sx={{ width: "50%" }}
+                renderInput={(params) => (
+                  <TextField {...params} label="label" />
+                )}
+              />
+            </Box>
+
+            <TextField
+              id="outlined-basic"
+              label="Reward"
+              onChange={(e) => {
+                setAddedprogramme((prev) => {
+                  return { ...prev, description: e.target.value };
+                });
+              }}
+              variant="outlined"
+              sx={{ width: "100%" }}
+            />
+          </Box>
+          <Button
+           className='btn btn-primary w-100 mt-3'
+          >
+            Save
+          </Button>
+        </Box>
+      </Modal>
             <Box sx={{ height: 400, width: "100%" }}>
               <DataGrid
                 rows={rows}

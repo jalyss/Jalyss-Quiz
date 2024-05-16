@@ -148,9 +148,9 @@ export default function Formulaire() {
                 height={180}
                 width={180}
                 style={{
-                  position: "fixed",
-                  top: "2%",
-                  zIndex: 5
+                  // position: "fixed",
+                  // top: "2%",
+                  // zIndex: 5
                 }}
               />
               <Typography component="h1" variant="h5" sx={{ mt: 5 }}>
@@ -309,9 +309,9 @@ export default function Formulaire() {
                 height={180}
                 width={180}
                 style={{
-                  position: "fixed",
-                  top: "2%",
-                  zIndex: 5
+                  // position: "fixed",
+                  // top: "2%",
+                  // zIndex: 5
                 }}
               />
               <Typography component="h1" variant="h5" sx={{ mt: 5 }}>

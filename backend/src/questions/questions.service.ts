@@ -16,6 +16,9 @@ export class QuestionsService {
 
   async findAll() {
     return this.prisma.question.findMany({
+      where: {
+isActive : true
+      },
       include : {
         answers : true,
         Level : true 

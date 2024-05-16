@@ -22,6 +22,19 @@ export const fetchAllWheelProp = createAsyncThunk(
   }
 );
 
+export const updateWheelProp = createAsyncThunk(
+  "updateWheelProp",async(args,{dispatch})=>{
+    try {
+      const {body,id} = args
+      const response = await axios.patch(`http://${url}/wheel-propositions/${id}`,body)
+      console.log(response.data)
+      dispatch(fetchAllWheelProp())
+    } catch (error) {
+      console.log(error);
+    }
+  }
+)
+
  const WheelSlice = createSlice({
   name: "Wheel",
   initialState: {

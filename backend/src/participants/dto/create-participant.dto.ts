@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { Gendre } from '@prisma/client';
 import { IsDate, IsEmail,IsNumber, IsString} from 'class-validator';
 
 
@@ -21,4 +22,6 @@ export class CreateParticipantDto {
     @ApiProperty()
     @IsNumber()
     wheelPropositionId? : number
+    @ApiProperty()
+    gender? : Gendre
 }
