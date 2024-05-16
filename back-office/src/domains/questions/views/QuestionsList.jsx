@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { showErrorToast, showSuccessToast } from "../../../utils/toast";
-import { AiFillDelete, AiFillEdit, AiOutlineEye } from "react-icons/ai";
+import { AiFillDelete, AiFillEdit, AiOutlineEye,AiOutlineLock,AiOutlineUnlock } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { DataGrid, GridActionsCellItem } from "@mui/x-data-grid";
@@ -93,7 +93,9 @@ const QuestionsList = () => {
       headerName: "Actions",
       width: 155,
       cellClassName: "actions",
-      getActions: ({ id }) => {
+      getActions: (params) => {
+        const {id , row} = params 
+        const {isActive} = row
         return [
           <GridActionsCellItem
             icon={<AiOutlineEye />}
@@ -110,7 +112,28 @@ const QuestionsList = () => {
               setSelectedProviderId(id);
             }}
             color="error"
-          />
+          />, <> {
+            !isActive? <GridActionsCellItem
+            icon={<AiOutlineLock />}
+            label="lock"
+            onClick={() => {
+              toggleShow();
+              setSelectedProviderId(id);
+              handleActiveWheelProp({id:id,body : {isActive:true}})
+            }}
+            color="error"
+          /> : <GridActionsCellItem
+          icon={<AiOutlineUnlock />}
+          label="unlock"
+          onClick={() => {
+            toggleShow();
+            setSelectedProviderId(id);
+            handleActiveWheelProp({id:id,body:{isActive:false}})
+          }}
+          color="success"
+        />
+          }
+          </>
         ];
       }
     }

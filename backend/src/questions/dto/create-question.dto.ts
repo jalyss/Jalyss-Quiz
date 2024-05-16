@@ -8,7 +8,7 @@ export class CreateQuestionDto {
     question : string
     @ApiProperty()
     @IsString()
-    imageUrl : string
+    imageUrl? : string
     @ApiProperty()
     @IsNumber()
     adminId? : number

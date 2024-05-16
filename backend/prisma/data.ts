@@ -1,495 +1,271 @@
 export const level = [
   { type: 'المستوى الأول' },
   { type: 'المستوى الثاني' },
-  { type: 'المستوى الثالث' },
-  
+  { type: 'المستوى الثالث' }
 ];
 
 export const questions = [
-  
   {
-    question: 'العادات السبع للأشخاص ذوي الفعالية العالية هو كتاب يتكلم عن؟',
+    question: 'كيف يمكن التعبير عن الحب؟',
+    levelId: 1,
+    isActive: true,
+    adminId: 1,
+    imageUrl: ''
+  },
+  {
+    question: 'وفقًا لغاري تشابمان، ما هو مفتاح العلاقة الناجحة؟',
+    imageUrl: '',
+    levelId: 1,
+    isActive: true,
+    adminId: 1
+  },
+  {
+    question:
+      'ما الذي يُرجح أن يجعل شخصًا لديه لغة حب "كلمات التشجيع" يشعر بالتقدير؟',
+    imageUrl: '',
+    levelId: 1,
+    isActive: true,
+    adminId: 1
+  },
 
-    levelId: 1,
-    adminId: 1,
-    imageUrl:
-      'https://scontent.ftun1-2.fna.fbcdn.net/v/t1.6435-9/119715893_617969462207053_1358538194778102790_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=-rxOaiB_MNQAb5QKb-U&_nc_ht=scontent.ftun1-2.fna&oh=00_AfCeFKlEyOLPZZGEzn97V7muDytPSyQhg5oafODu2rhNIA&oe=66423812',
-  },
-  {
-    question: 'مؤلف الكتاب هو؟',
-    imageUrl:
-      'https://scontent.ftun1-2.fna.fbcdn.net/v/t1.6435-9/119715893_617969462207053_1358538194778102790_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=-rxOaiB_MNQAb5QKb-U&_nc_ht=scontent.ftun1-2.fna&oh=00_AfCeFKlEyOLPZZGEzn97V7muDytPSyQhg5oafODu2rhNIA&oe=66423812',
-
-    levelId: 1,
-    adminId: 1,
-  },
-  {
-    question: 'عدد العادات التي تكلم عنها الكتاب ؟',
-    imageUrl:
-      'https://scontent.ftun1-2.fna.fbcdn.net/v/t1.6435-9/119715893_617969462207053_1358538194778102790_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=-rxOaiB_MNQAb5QKb-U&_nc_ht=scontent.ftun1-2.fna&oh=00_AfCeFKlEyOLPZZGEzn97V7muDytPSyQhg5oafODu2rhNIA&oe=66423812',
-
-    levelId: 1,
-    adminId: 1,
-  },
-  {
-    question:
-      'تطبيق هذا الكتاب ينحصر في الحياة العملية و ليس في الحياة الشخصية',
-    imageUrl:
-      'https://scontent.ftun1-2.fna.fbcdn.net/v/t1.6435-9/119715893_617969462207053_1358538194778102790_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=-rxOaiB_MNQAb5QKb-U&_nc_ht=scontent.ftun1-2.fna&oh=00_AfCeFKlEyOLPZZGEzn97V7muDytPSyQhg5oafODu2rhNIA&oe=66423812',
-
-    levelId: 1,
-    adminId: 1,
-  },
-  {
-    levelId: 1,
-    adminId: 1,
-    question: 'الكتاب موجه لفئة الأثرياء و رجال الأعمال؟',
-    imageUrl:
-      'https://scontent.ftun1-2.fna.fbcdn.net/v/t1.6435-9/119715893_617969462207053_1358538194778102790_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=-rxOaiB_MNQAb5QKb-U&_nc_ht=scontent.ftun1-2.fna&oh=00_AfCeFKlEyOLPZZGEzn97V7muDytPSyQhg5oafODu2rhNIA&oe=66423812',
-  },
-  {
-    levelId: 1,
-    adminId: 1,
-    question: 'في العادة الأخيرة يشجع الكاتب على؟',
-    imageUrl:
-      'https://scontent.ftun1-2.fna.fbcdn.net/v/t1.6435-9/119715893_617969462207053_1358538194778102790_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=-rxOaiB_MNQAb5QKb-U&_nc_ht=scontent.ftun1-2.fna&oh=00_AfCeFKlEyOLPZZGEzn97V7muDytPSyQhg5oafODu2rhNIA&oe=66423812',
-  },
-  {
-    levelId: 1,
-    adminId: 1,
-    question: 'دار النشر العربية التي ترجمت ونشرت الكتاب؟',
-    imageUrl:
-      'https://scontent.ftun1-2.fna.fbcdn.net/v/t1.6435-9/119715893_617969462207053_1358538194778102790_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=-rxOaiB_MNQAb5QKb-U&_nc_ht=scontent.ftun1-2.fna&oh=00_AfCeFKlEyOLPZZGEzn97V7muDytPSyQhg5oafODu2rhNIA&oe=66423812',
-  },
   {
     levelId: 2,
-    adminId: 1,
-    question: 'ما هي العادة التي تركز على تحمل مسؤولية اختياراتنا وأفعالنا؟',
-    imageUrl:
-      'https://scontent.ftun1-2.fna.fbcdn.net/v/t1.6435-9/119715893_617969462207053_1358538194778102790_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=-rxOaiB_MNQAb5QKb-U&_nc_ht=scontent.ftun1-2.fna&oh=00_AfCeFKlEyOLPZZGEzn97V7muDytPSyQhg5oafODu2rhNIA&oe=66423812',
-  },
-  {
-    levelId: 2,
-    adminId: 1,
-    question: 'ما هو مبدأ العادة الخامسة؟',
-    imageUrl:
-      'https://scontent.ftun1-2.fna.fbcdn.net/v/t1.6435-9/119715893_617969462207053_1358538194778102790_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=-rxOaiB_MNQAb5QKb-U&_nc_ht=scontent.ftun1-2.fna&oh=00_AfCeFKlEyOLPZZGEzn97V7muDytPSyQhg5oafODu2rhNIA&oe=66423812',
-  },
-  {
-    levelId: 2,
-    adminId: 1,
-    question: 'ما هو اسم العادة السادسة؟',
-    imageUrl:
-      'https://scontent.ftun1-2.fna.fbcdn.net/v/t1.6435-9/119715893_617969462207053_1358538194778102790_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=-rxOaiB_MNQAb5QKb-U&_nc_ht=scontent.ftun1-2.fna&oh=00_AfCeFKlEyOLPZZGEzn97V7muDytPSyQhg5oafODu2rhNIA&oe=66423812',
-  },
-  {
-    levelId: 2,
+    isActive: true,
     adminId: 1,
     question:
-      "تشجع العادة السابعة،'صقل المنشار'، على التجديد في أي أبعاد؟ (اختر كل الإجابات التي تنطبق)",
-    imageUrl:
-      'https://scontent.ftun1-2.fna.fbcdn.net/v/t1.6435-9/119715893_617969462207053_1358538194778102790_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=-rxOaiB_MNQAb5QKb-U&_nc_ht=scontent.ftun1-2.fna&oh=00_AfCeFKlEyOLPZZGEzn97V7muDytPSyQhg5oafODu2rhNIA&oe=66423812',
+      'شخص تٌعد "أفعال الخدمة" لغة حبه الأساسية، قد يشعر بالحب أكثر عندما يقوم شريكه بما يلي:',
+    imageUrl: ''
   },
   {
     levelId: 2,
+    isActive: true,
     adminId: 1,
     question:
-      'أي عادة تشجع على ترتيب المهام بناءً على الأهمية بدلاً من الإلحاح؟',
-    imageUrl:
-      'https://scontent.ftun1-2.fna.fbcdn.net/v/t1.6435-9/119715893_617969462207053_1358538194778102790_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=-rxOaiB_MNQAb5QKb-U&_nc_ht=scontent.ftun1-2.fna&oh=00_AfCeFKlEyOLPZZGEzn97V7muDytPSyQhg5oafODu2rhNIA&oe=66423812',
+      'ما هو العيب المحتمل في التركيز فقط على إعطاء شريكك ما تظن أنه يريده، بدلاً من التركيز على لغة حبه؟',
+    imageUrl: ''
   },
   {
     levelId: 2,
+    isActive: true,
     adminId: 1,
-    question: ' العادة 2 تشجعك على التخطيط لمستقبلك؟ ',
-    imageUrl:
-      'https://scontent.ftun1-2.fna.fbcdn.net/v/t1.6435-9/119715893_617969462207053_1358538194778102790_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=-rxOaiB_MNQAb5QKb-U&_nc_ht=scontent.ftun1-2.fna&oh=00_AfCeFKlEyOLPZZGEzn97V7muDytPSyQhg5oafODu2rhNIA&oe=66423812',
-  },
-  {
-    levelId: 2,
-    adminId: 1,
-    question: 'العادة 1 هي عن فرض السيطرة والقوة على الآخرين؟ ',
-    imageUrl:
-      'https://scontent.ftun1-2.fna.fbcdn.net/v/t1.6435-9/119715893_617969462207053_1358538194778102790_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=-rxOaiB_MNQAb5QKb-U&_nc_ht=scontent.ftun1-2.fna&oh=00_AfCeFKlEyOLPZZGEzn97V7muDytPSyQhg5oafODu2rhNIA&oe=66423812',
+    question: 'يمكن أن يكون إطار عمل لغات الحب الخمس مفيدًا لـ:',
+    imageUrl: ''
   },
   {
     levelId: 3,
+    isActive: false,
     adminId: 1,
     question:
-      'في نهاية الكتاب يقول الكاتب أن تطبيق هذه العادات هي أمر سهل للغاية على عكس ما يعتقده الناس؟ ',
-    imageUrl:
-      'https://scontent.ftun1-2.fna.fbcdn.net/v/t1.6435-9/119715893_617969462207053_1358538194778102790_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=-rxOaiB_MNQAb5QKb-U&_nc_ht=scontent.ftun1-2.fna&oh=00_AfCeFKlEyOLPZZGEzn97V7muDytPSyQhg5oafODu2rhNIA&oe=66423812',
+      'لغات الحب الخمس هي أفعال الخدمة، كلمات التشجيع، استقبال الهدايا، الوقت الجيد، واللمسة الجسدية',
+    imageUrl: ''
   },
   {
     levelId: 3,
-    adminId: 1,
-    question: ' يوصي الكتاب بتحديد أهداف قصيرة المدى فقط؟',
-    imageUrl:
-      'https://scontent.ftun1-2.fna.fbcdn.net/v/t1.6435-9/119715893_617969462207053_1358538194778102790_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=-rxOaiB_MNQAb5QKb-U&_nc_ht=scontent.ftun1-2.fna&oh=00_AfCeFKlEyOLPZZGEzn97V7muDytPSyQhg5oafODu2rhNIA&oe=66423812',
-  },
-  {
-    levelId: 3,
+    isActive: true,
     adminId: 1,
     question:
-      'يقسم الكاتب المهام إلى أربعة أقسام: أي قسم يجب أن تعطيه الأولوية؟',
-    imageUrl:
-      'https://scontent.ftun1-2.fna.fbcdn.net/v/t1.6435-9/119715893_617969462207053_1358538194778102790_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=-rxOaiB_MNQAb5QKb-U&_nc_ht=scontent.ftun1-2.fna&oh=00_AfCeFKlEyOLPZZGEzn97V7muDytPSyQhg5oafODu2rhNIA&oe=66423812',
+      ': أهم شيء في العلاقة هو أن يكون لديك نفس لغة الحب التي لدى شريكك',
+    imageUrl: ''
   },
   {
     levelId: 3,
     adminId: 1,
-    question: 'ما هي العادة التي توصي بتخصيص وقت للراحة والاسترخاء؟',
-    imageUrl:
-      'https://scontent.ftun1-2.fna.fbcdn.net/v/t1.6435-9/119715893_617969462207053_1358538194778102790_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=-rxOaiB_MNQAb5QKb-U&_nc_ht=scontent.ftun1-2.fna&oh=00_AfCeFKlEyOLPZZGEzn97V7muDytPSyQhg5oafODu2rhNIA&oe=66423812',
+    isActive: true,
+    question:
+      'وفقًا للكتاب، فإن أفضل طريقة لإظهار الحب هي تقديم هدايا باهظة الثمن. ',
+    imageUrl: ''
   },
   {
     levelId: 3,
     adminId: 1,
-    question: ' ما هي العقلية التي يوصي بها كوفي للقيادة الفعّالة؟',
-    imageUrl:
-      'https://scontent.ftun1-2.fna.fbcdn.net/v/t1.6435-9/119715893_617969462207053_1358538194778102790_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=-rxOaiB_MNQAb5QKb-U&_nc_ht=scontent.ftun1-2.fna&oh=00_AfCeFKlEyOLPZZGEzn97V7muDytPSyQhg5oafODu2rhNIA&oe=66423812',
+    isActive: true,
+    question: 'يمكن أن يساعد فهم لغة حب شريكك على تحسين التواصل في علاقتك. ',
+    imageUrl: ''
   },
   {
     levelId: 3,
+    isActive: true,
     adminId: 1,
-    question: ' العادة الخامسة: اسمع أولا لفهم الآخرين ثم ليفهموك تشجع على ؟',
-    imageUrl:
-      'https://scontent.ftun1-2.fna.fbcdn.net/v/t1.6435-9/119715893_617969462207053_1358538194778102790_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=-rxOaiB_MNQAb5QKb-U&_nc_ht=scontent.ftun1-2.fna&oh=00_AfCeFKlEyOLPZZGEzn97V7muDytPSyQhg5oafODu2rhNIA&oe=66423812',
-  },
-  {
-    levelId: 3,
-    adminId: 1,
-    question: 'أي هذه العادات هي التي تنميّ الاستقلالية وضبط النفس؟',
-    imageUrl:
-      'https://scontent.ftun1-2.fna.fbcdn.net/v/t1.6435-9/119715893_617969462207053_1358538194778102790_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=-rxOaiB_MNQAb5QKb-U&_nc_ht=scontent.ftun1-2.fna&oh=00_AfCeFKlEyOLPZZGEzn97V7muDytPSyQhg5oafODu2rhNIA&oe=66423812',
+    question: 'إطار عمل لغات الحب الخمس ينطبق فقط على العلاقات الرومانسية. ',
+    imageUrl: ''
   },
 ];
 
 export const answer = [
   {
-    answer: 'عادات لتطوير الشخصية والمهارات ',
+    answer: 'الاتصال الجسدي',
+    isTrue: false,
+    questionId: 1
+  },
+  {
+    answer: 'أعمال خدمية  ',
+    isTrue: false,
+    questionId: 1
+  },
+  {
+    answer: 'قضاء أوقات ممتعة ',
+    isTrue: false,
+    questionId: 1
+  },
+  {
+    answer: 'اعطاء الهدايا ',
+    isTrue: false,
+    questionId: 1
+  },
+  {
+    answer: 'كلمات الشكر والمدح ',
+    isTrue: false,
+    questionId: 1
+  },
+  {
+    answer: ' كل ما سبق  ',
     isTrue: true,
-    questionId: 1,
+    questionId: 1
   },
   {
-    answer: 'عادات صحيّة',
+    answer: '.أن يكون لديك نفس لغة الحب التي لدى شريكك',
     isTrue: false,
-    questionId: 1,
+    questionId: 2
   },
   {
-    answer: 'عادات من أجل علاقات شخصية أحسن',
-    isTrue: false,
-    questionId: 1,
-  },
-  {
-    answer: 'عادات وتقاليد الشعوب القديمة',
-    isTrue: false,
-    questionId: 1,
-  },
-  {
-    answer: 'شين كوفي',
-    isTrue: false,
-    questionId: 2,
-  },
-  {
-    answer: 'ستيفن كوفي ',
+    answer: 'فهم لغة حب شريكك والتحدث بها',
     isTrue: true,
-    questionId: 2,
+    questionId: 2
   },
   {
-    answer: 'كوفي عنان',
+    answer: 'مفاجأة شريكك باستمرار بالهدايا. ',
     isTrue: false,
-    questionId: 2,
+    questionId: 2
   },
   {
-    answer: 'براين ترايسي',
+    answer: 'تلقي هدية مدروسة',
     isTrue: false,
-    questionId: 2,
+    questionId: 3
   },
   {
-    answer: '5',
+    answer: 'قضاء وقت ممتع بالقيام بالأشياء التي يحبها. ',
     isTrue: false,
-    questionId: 3,
+    questionId: 3
   },
   {
-    answer: '3',
-    isTrue: false,
-    questionId: 3,
-  },
-  {
-    answer: '7',
+    answer: 'سماع المديح والتعبير عن الحب',
     isTrue: true,
-    questionId: 3,
+    questionId: 3
   },
   {
-    answer: '10',
+    answer: 'أن يقوم شريكه بأعمال المنزل.',
     isTrue: false,
-    questionId: 3,
+    questionId: 3
   },
   {
-    answer: 'صح',
+    answer: 'يكتب له قصيدة صادقة',
     isTrue: false,
-    questionId: 4,
+    questionId: 4
   },
   {
-    answer: 'خطأ',
+    answer: 'يقوم بتدليكه بعد يوم طويل.',
+    isTrue: false,
+    questionId: 4
+  },
+  {
+    answer: 'يأخذ زمام المبادرة في القيام بالمهام دون أن يُطلب منه',
     isTrue: true,
-    questionId: 4,
+    questionId: 4
   },
   {
-    answer: 'خطأ',
+    answer: 'يفاجئه بتقديمه تذاكر لحفل موسيقي',
+    isTrue: false,
+    questionId: 4
+  },
+  {
+    answer: 'قد لا يجعله يشعر بالحب والتقدير ',
     isTrue: true,
-    questionId: 5,
+    questionId: 5
   },
   {
-    answer: 'صح',
+    answer: 'قد يكون شراء الهدايا باستمرار مكلفًا',
     isTrue: false,
-    questionId: 5,
+    questionId: 5
   },
   {
-    answer: 'التركيز على المزيد من التدريب والانضباط',
+    answer: 'يدل على قلة الجهد والإبداع ',
     isTrue: false,
-    questionId: 6,
+    questionId: 5
   },
   {
-    answer: ' تخصيص وقت للاهتمام بالذات ',
+    answer: 'يمكن أن يؤدي إلى خلافات حول ماهية الحب "الحقيقي". ',
+    isTrue: false,
+    questionId: 5
+  },
+  {
+    answer: ' العلاقات الرومانسية فقط ',
+    isTrue: false,
+    questionId: 6
+  },
+  {
+    answer: ' جميع أنواع العلاقات الحميمة، بما في ذلك الصداقات والعائلة ',
     isTrue: true,
-    questionId: 6,
+    questionId: 6
   },
   {
-    answer: 'العبيكان',
+    answer: '  تقييم التوافق قبل المواعدة مع شخص ما ',
     isTrue: false,
-    questionId: 7,
+    questionId: 6
   },
   {
-    answer: 'دار الخيال ',
+    answer: ' لا شيء مما سبق.',
     isTrue: false,
-    questionId: 7,
-  },
-  {
-    answer: 'سراس للنشر',
-    isTrue: false,
-    questionId: 7,
-  },
-  {
-    answer: 'مكتبة جرير ',
-    isTrue: true,
-    questionId: 7,
-  },
-  {
-    answer: 'كن مبادرا ',
-    isTrue: true,
-    questionId: 8,
-  },
-  {
-    answer: 'ابدأ والهدف في ذهنك',
-    isTrue: false,
-    questionId: 8,
-  },
-  {
-    answer: 'المنفعة المتبادلة',
-    isTrue: false,
-    questionId: 8,
-  },
-  {
-    answer: 'التواصل الفعّال يتطلب الاستماع أولا قبل الحديث ',
-    isTrue: true,
-    questionId: 9,
-  },
-  {
-    answer: 'الاستقلالية هي وسيلة لتحقيق أهدافك',
-    isTrue: false,
-    questionId: 9,
-  },
-  {
-    answer: 'تحديد نفسك من خلال القيام بالأشياء التي تحبها',
-    isTrue: false,
-    questionId: 9,
-  },
-  {
-    answer: 'اشحذ المنشار',
-    isTrue: false,
-    questionId: 10,
-  },
-  {
-    answer: 'التآزر',
-    isTrue: true,
-    questionId: 10,
-  },
-  {
-    answer: 'الفوز الشخصي',
-    isTrue: false,
-    questionId: 10,
-  },
-  {
-    answer: ' البدنية',
-    isTrue: false,
-    questionId: 11,
-  },
-  {
-    answer: 'العقلية',
-    isTrue: false,
-    questionId: 11,
-  },
-  {
-    answer: 'الاجتماعية / العاطفية',
-    isTrue: false,
-    questionId: 11,
-  },
-  {
-    answer: 'كل ما سبق ',
-    isTrue: true,
-    questionId: 11,
-  },
-  {
-    answer: 'كن مبادرا',
-    isTrue: false,
-    questionId: 12,
-  },
-  {
-    answer: 'العادة الثالثة: ابدأ بالأهم فالأهم ',
-    isTrue: true,
-    questionId: 12,
-  },
-  {
-    answer: 'العادة الثانية: ابدأ والهدف في ذهنك',
-    isTrue: false,
-    questionId: 12,
-  },
-  {
-    answer: 'العادة الرابعة: فكر بالمنفعة المتبادلة',
-    isTrue: false,
-    questionId: 12,
+    questionId: 6
   },
   {
     answer: 'صح',
     isTrue: true,
-    questionId: 13,
+    questionId: 7
   },
   {
     answer: 'خطأ',
     isTrue: false,
-    questionId: 13,
+    questionId: 7
   },
   {
-    answer: 'خطأ',
+    answer: ' خطأ',
     isTrue: true,
-    questionId: 14,
+    questionId: 8
+  },
+  {
+    answer: ' صح',
+    isTrue: false,
+    questionId: 8
   },
   {
     answer: 'صح',
     isTrue: false,
-    questionId: 14,
+    questionId: 9
+  },
+  {
+    answer: ' خطأ',
+    isTrue: true,
+    questionId: 9
+  },
+  {
+    answer: ' خطأ',
+    isTrue: false,
+    questionId: 10
   },
   {
     answer: 'صح',
     isTrue: false,
-    questionId: 15,
+    questionId: 10
   },
   {
     answer: 'خطأ',
     isTrue: true,
-    questionId: 15,
+    questionId: 11
   },
   {
-    answer: 'صح',
-    isTrue: true,
-    questionId: 16,
-  },
-  {
-    answer: 'خطأ',
+    answer: ' صح ',
     isTrue: false,
-    questionId: 16,
-  },
-  {
-    answer: 'عاجل وغير مهم',
-    isTrue: false,
-    questionId: 17,
-  },
-  {
-    answer: 'عاجل ومهم',
-    isTrue: true,
-    questionId: 17,
-  },
-  {
-    answer: 'غير عاجل لكن مهم',
-    isTrue: true,
-    questionId: 17,
-  },
-  {
-    answer: 'غير عاجل وغير مهم',
-    isTrue: false,
-    questionId: 17,
-  },
-  {
-    answer: 'العادة الأولى: كن استباقيًا',
-    isTrue: false,
-    questionId: 18,
-  },
-  {
-    answer: 'العادة الثانية: ابدأ بالنهاية في الاعتبار',
-    isTrue: false,
-    questionId: 18,
-  },
-  {
-    answer: 'العادة السابعة: شحذ المنشار',
-    isTrue: true,
-    questionId: 18,
-  },
-  {
-    answer: 'المنفعة المتبادلة ',
-    isTrue: true,
-    questionId: 19,
-  },
-  {
-    answer: 'الخسارة المتبادلة',
-    isTrue: false,
-    questionId: 19,
-  },
-  {
-    answer: 'المنفعة الفردية',
-    isTrue: false,
-    questionId: 19,
-  },
-  {
-    answer: 'التحدث',
-    isTrue: false,
-    questionId: 20,
-  },
-  {
-    answer: 'الاستماع',
-    isTrue: true,
-    questionId: 20,
-  },
-  {
-    answer: 'الكتابة',
-    isTrue: false,
-    questionId: 20,
-  },
-  {
-    answer: 'التفاوض',
-    isTrue: false,
-    questionId: 20,
-  },
-  {
-    answer: 'كن مبادرا – شحذ المنشار – التآزر ',
-    isTrue: false,
-    questionId: 21,
-  },
-  {
-    answer: 'كن مبادرا – ابدأ والهدف في ذهنك – الأهم ثم المهم',
-    isTrue: true,
-    questionId: 21,
-  },
-  {
-    answer: 'شحذ المنشار – التآزر – المنفعة المتبادلة',
-    isTrue: false,
-    questionId: 21,
-  },
-  {
-    answer: 'افهم الآخرين أولا – شحذ المنشار – المنفعة المتبادلة',
-    isTrue: false,
-    questionId: 21,
+    questionId: 11
   },
 ];
 
@@ -497,37 +273,37 @@ export const prop = [
   {
     label: 'العادة 1 كن مبادرا',
     slogan: 'تحفزّ وللنجاح اقفز',
-    reward: 'اربح 50% في دورة من الدورات التدريبية لجليس',
+    reward: 'اربح 50% في دورة من الدورات التدريبية لجليس'
   },
   {
-    label:'العادة 2 ابدأ والهدف في ذهنك',
+    label: 'العادة 2 ابدأ والهدف في ذهنك',
     slogan: 'نظم وقتك مع أجندا جليس',
-    reward: 'أجندا جليس',
+    reward: 'أجندا جليس'
   },
   {
-    label:'العادة 3 الأهم ثم المهم',
+    label: 'العادة 3 الأهم ثم المهم',
     slogan: 'اربح خطة استراتيجية مع جليس',
-    reward: 'اربح 50% في دورة من الدورات التدريبية لجليس',
+    reward: 'اربح 50% في دورة من الدورات التدريبية لجليس'
   },
   {
-    label:'العادة 4 المنفعة المتبادلة',
+    label: 'العادة 4 المنفعة المتبادلة',
     slogan: 'خير الناس أنفعهم للناس',
-    reward: 'قسيمة شراء 50 د مع اخذ صورة داخل جناح جليس في المعرض',
+    reward: 'قسيمة شراء 50 د مع اخذ صورة داخل جناح جليس في المعرض'
   },
   {
-    label:'العادة 5 التواصل',
+    label: 'العادة 5 التواصل',
     slogan: 'نأخذ فاصل للتواصل',
-    reward: 'اربح استشارة مجانية في التواصل',
+    reward: 'اربح استشارة مجانية في التواصل'
   },
   {
-    label:'العادة 6 التآزر',
+    label: 'العادة 6 التآزر',
     slogan: 'اهدي لصديقك',
-    reward: 'اهدي لصديقك هدية من جليسكم',
+    reward: 'اهدي لصديقك هدية من جليسكم'
   },
   {
-    label:'العادة 7 اشحذ المنشار',
+    label: 'العادة 7 اشحذ المنشار',
     slogan: 'جدد وقوّي نفسك',
     reward: `50% رحلة أو اشتراك لمدة شهر قاعة رياضة
-    اشتراك spotifiy Premium لمدة شهر`,
+    اشتراك spotifiy Premium لمدة شهر`
   },
 ];
