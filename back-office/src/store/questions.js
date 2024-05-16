@@ -14,6 +14,19 @@ export const fetchQuestions = createAsyncThunk(
   }
 );
 
+const updateActiveQuestion = createAsyncThunk(
+  "updateActiveQuestion",async(args,{dispatch}) => {
+const {body,id} = args
+try {
+  const response = await axios.patch(`http://${url}/questions/${id}`,body)
+  dispatch(fetchQuestions())
+  return response.data
+} catch (error) {
+  console.log(error)
+}
+  }
+)
+
  const questionSlice = createSlice({
   name: "question",
   initialState: {

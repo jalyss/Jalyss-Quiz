@@ -20,6 +20,9 @@ export class LevelsService {
     let levels = await this.prisma.level.findMany({
       include : {
         question:{
+          where : {
+            isActive : true
+          },
          include : {
           answers : true,
           Level:true
