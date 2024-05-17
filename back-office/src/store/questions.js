@@ -14,7 +14,7 @@ export const fetchQuestions = createAsyncThunk(
   }
 );
 
-const updateActiveQuestion = createAsyncThunk(
+export const updateActiveQuestion = createAsyncThunk(
   "updateActiveQuestion",async(args,{dispatch}) => {
 const {body,id} = args
 try {
