@@ -17,9 +17,9 @@ export class WheelPropositionsService {
 
   async findAll() {
     return this.prisma.wheelProposition.findMany({
-      include : {
-      winner : true
-      }
+      include: {
+        winner: true,
+      },
     });
   }
   async findAllIsActive() {
@@ -35,11 +35,11 @@ export class WheelPropositionsService {
     updateWheelPropositionDto: UpdateWheelPropositionDto,
   ) {
     return await this.prisma.wheelProposition.update({
-      where : {
-        id
+      where: {
+        id,
       },
-      data : updateWheelPropositionDto
-    })
+      data: updateWheelPropositionDto,
+    });
   }
 
   async remove(id: number) {
