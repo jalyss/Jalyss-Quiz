@@ -120,6 +120,12 @@ const RewardList = () => {
       width: 155,
       editable: false
     },
+    {
+      field: "isActive",
+      headerName: "Active Status",
+      width: 155,
+      editable: false
+    },
 
     {
       field: "actions",

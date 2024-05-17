@@ -21,7 +21,7 @@ function WheelWinner({ setOpen, setPrize }) {
       aux.push(
         {
           option: e?.label,
-          style: { backgroundColor: "#00b849", textColor: "white" },
+          style: { backgroundColor: "#ff3c3b", textColor: "white" },
           ...e
         },
         {

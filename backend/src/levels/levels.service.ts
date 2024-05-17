@@ -6,31 +6,32 @@ import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
 export class LevelsService {
-  constructor(private readonly prisma:PrismaService){}
+  constructor(private readonly prisma: PrismaService) {}
 
- async create(createLevelDto: CreateLevelDto) {
+  async create(createLevelDto: CreateLevelDto) {
     return await this.prisma.level.create({
-      data:createLevelDto
-    })
+      data: createLevelDto,
+    });
   }
 
-  async findAll(level:number) {
-  const randomNumber = Math.floor((Math.random()**2)*4)
-
+  async findAll(level: number) {
     let levels = await this.prisma.level.findMany({
-      include : {
-        question:{
-          where : {
-            isActive : true
+      include: {
+        question: {
+          where: {
+            isActive: true,
           },
-         include : {
-          answers : true,
-          Level:true
-         }
-        }
-      }
-    })
-    return levels[level]?.question[randomNumber]
+          include: {
+            answers: true,
+            Level: true,
+          },
+        },
+      },
+    });
+    // automating random question
+    return levels[level]?.question[
+      Math.floor(Math.random() ** 2 * (levels[level]?.question?.length + 1))
+    ];
   }
 
   async findOne(id: number) {
@@ -39,14 +40,14 @@ export class LevelsService {
 
   async update(id: number, updateLevelDto: UpdateLevelDto) {
     return await this.prisma.level.update({
-      where : {
-        id
-      } , 
-      data : updateLevelDto
-    })
+      where: {
+        id,
+      },
+      data: updateLevelDto,
+    });
   }
 
-  async  remove(id: number) {
+  async remove(id: number) {
     return `This action removes a #${id} level`;
   }
 }
