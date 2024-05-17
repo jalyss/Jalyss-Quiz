@@ -25,16 +25,6 @@ const QuestionsList = () => {
     setBasicModal(!basicModal);
   };
 
-  const handleDeleteProviderClick = () => {
-    //   dispatch(removeProvider(selectedProviderId)).then(res => {
-    //     if (res.error) {
-    //       showErrorToast(res.error.message)
-    //     } else {
-    //       showSuccessToast('Provider has been deleted')
-    //       toggleShow()
-    //     }
-    //   })
-  };
 
   useEffect(() => {
       dispatch(fetchQuestions());
@@ -48,7 +38,8 @@ const QuestionsList = () => {
           question: e.question,
           answer: e.answers.find(e=>e.isTrue===true)?.answer,
           Number_of_answers: e.answers.length,
-          Level:e.Level.type
+          Level:e.Level.type,
+          isActive:e.isActive
         };
       });
       setRows(aux);
@@ -94,8 +85,9 @@ const QuestionsList = () => {
       width: 155,
       cellClassName: "actions",
       getActions: (params) => {
-        const {id , row} = params 
+        const {id ,row} = params 
         const {isActive} = row
+        console.log(row,"this is the active question")
         return [
           <GridActionsCellItem
             icon={<AiOutlineEye />}

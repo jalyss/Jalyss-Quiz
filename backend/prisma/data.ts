@@ -254,7 +254,7 @@ export const answer = [
   },
   {
     answer: 'صح',
-    isTrue: false,
+    isTrue: true,
     questionId: 10
   },
   {

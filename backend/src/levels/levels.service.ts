@@ -15,7 +15,7 @@ export class LevelsService {
   }
 
   async findAll(level:number) {
-  const randomNumber = Math.floor((Math.random()**2)*8)
+  const randomNumber = Math.floor((Math.random()**2)*4)
 
     let levels = await this.prisma.level.findMany({
       include : {

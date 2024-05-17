@@ -61,7 +61,7 @@ input::placeholder {
   justify-content: center;
   display: flex;
   align-items: center;
-  border: solid 1px #48184c;
+  border: solid 1px #ff142b;
   cursor: pointer;
   transition: ease 1s;
 }

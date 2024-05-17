@@ -21,7 +21,7 @@ function WheelWinner({ setOpen, setPrize }) {
       aux.push(
         {
           option: e?.label,
-          style: { backgroundColor: "#49BEFF", textColor: "white" },
+          style: { backgroundColor: "#00b849", textColor: "white" },
           ...e
         },
         {
@@ -52,7 +52,7 @@ function WheelWinner({ setOpen, setPrize }) {
             fontSize={14}
             fontWeight={"bold"}
             radiusLineWidth={2}
-            outerBorderColor="#49BEFF"
+            outerBorderColor="#E24A2B"
             radiusLineColor="white"
             onStopSpinning={() => {
               setMustSpin(false);
@@ -76,7 +76,7 @@ function WheelWinner({ setOpen, setPrize }) {
           <div className="d-flex justify-content-center">
             <button
               className="btn btn-light mt-5 w-50 fs-5"
-              style={{ backgroundColor: "#49BEFF", color: "white" }}
+              style={{ backgroundColor: "#00b849", color: "white" }}
               onClick={handleSpinClick}
             >
               ابدأ
