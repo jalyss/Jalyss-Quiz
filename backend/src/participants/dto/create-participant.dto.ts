@@ -24,4 +24,6 @@ export class CreateParticipantDto {
     wheelPropositionId? : number
     @ApiProperty()
     gender? : Gendre
+    @ApiProperty()
+    app? : string
 }
