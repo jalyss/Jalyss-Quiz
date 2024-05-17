@@ -1,3 +1,5 @@
+
+
 export const level = [
   { type: 'المستوى الأول' },
   { type: 'المستوى الثاني' },
@@ -10,14 +12,46 @@ export const questions = [
     levelId: 1,
     isActive: true,
     adminId: 1,
-    imageUrl: ''
+    imageUrl: '',
+    answers : [{
+      answer: 'التعبير عن الحب بلغات أخرى مثل الفرنسية مثلا',
+      isTrue: false
+    },
+    {
+      answer: 'الأشخاص الذين نعبر عن حبنا لهم كالصديق والوالدين والزوج/الزوجة',
+      isTrue: false
+    },
+    {
+      answer: 'الطرق التي نعبر بها عن الحب كالهدايا والكلمات وغيرها ',
+      isTrue: true
+    },
+    {
+      answer: 'الأوقات والأماكن التي نعبر فيها عن الحب',
+      isTrue: false
+    }]
   },
   {
     question:'حسب الكتاب، كم عدد الطرق التي  يمكن بها التعبير عن الحب؟',
     imageUrl: '',
     levelId: 1,
     isActive: true,
-    adminId: 1
+    adminId: 1,
+    answers : [{
+      answer: 'أربع طرق',
+      isTrue: false
+    },
+    {
+      answer: 'خمس طرق ',
+      isTrue: true
+    },
+    {
+      answer: 'سبعة طرق',
+      isTrue: false
+    },
+    {
+      answer: 'طريقة واحدة',
+      isTrue: false
+    }]
   },
   {
     question:
@@ -25,28 +59,96 @@ export const questions = [
     imageUrl: '',
     levelId: 1,
     isActive: true,
-    adminId: 1
+    adminId: 1,
+    answers : [
+      {
+        answer: 'تقديم الخدمات',
+        isTrue: false
+      },
+      {
+        answer: 'اعطاء الهدايا ',
+        isTrue: false
+      },
+      {
+        answer: 'ترك الشخص وحيدا لفترة ',
+        isTrue: true
+      },
+      {
+        answer: 'القاء كلمات التشجيع والشكر',
+        isTrue: false
+      }
+    ]
   },
   {
     question:' وفقًا لغاري تشابمان، ما هو مفتاح العلاقة الناجحة؟',
     imageUrl: '',
     levelId: 1,
     isActive: true,
-    adminId: 1
+    adminId: 1,
+    answers : [
+      {
+        answer: 'أن يكون لديك نفس لغة الحب التي لدى شريكك.',
+        isTrue: false
+      },
+      {
+        answer: 'فهم لغة حب شريكك والتحدث بها',
+        isTrue: true
+      },
+      {
+        answer: 'مفاجأة شريكك باستمرار بالهدايا',
+        isTrue: false
+      },
+      {
+        answer: 'تجاهل المشكلات التي يعاني منها',
+        isTrue: false
+      }
+    ]
   },
   {
     question:'ما الذي يُرجح أن يجعل شخصًا لديه لغة حب "كلمات التشجيع" يشعر بالتقدير؟',
     imageUrl: '',
     levelId: 1,
     isActive: true,
-    adminId: 1
+    adminId: 1,
+    answers : [{
+      answer: 'تلقي هدية مدروسة',
+      isTrue: false
+    },
+    {
+      answer: 'قضاء وقت ممتع بالقيام بالأشياء التي يحبها',
+      isTrue: false
+    },
+    {
+      answer: 'سماع المديح والتعبير عن الحب',
+      isTrue: true
+    },
+    {
+      answer: 'أن يقوم شريكه بأعمال المنزل',
+      isTrue: false
+    }]
   },
   {
     question:'شخص تٌعد "أفعال الخدمة" لغة حبه الأساسية، قد يشعر بالحب أكثر عندما يقوم شريكه بما يلي',
     imageUrl: '',
     levelId: 1,
     isActive: true,
-    adminId: 1
+    adminId: 1,
+    answers : [{
+      answer: 'يكتب له قصيدة صادقة',
+      isTrue: false
+    },
+    {
+      answer: 'يقوم بتدليكه بعد يوم طويل',
+      isTrue: false
+    },
+    {
+      answer: 'يأخذ زمام المبادرة في القيام بالمهام دون أن يُطلب منه',
+      isTrue: true
+    },
+    {
+      answer: 'يفاجئه بتقديمه تذاكر لحفل موسيقي',
+      isTrue: false
+    }]
   },
   {
     question:
@@ -54,7 +156,17 @@ export const questions = [
     imageUrl: '',
     levelId: 1,
     isActive: true,
-    adminId: 1
+    adminId: 1,
+    answers : [
+      {
+        answer: ' صح ',
+        isTrue: false
+      },
+      {
+        answer: ' خطأ ',
+        isTrue: true
+      }
+    ]
   },
   {
     question:
@@ -63,14 +175,34 @@ export const questions = [
     imageUrl: '',
     levelId: 1,
     isActive: true,
-    adminId: 1
+    adminId: 1,
+    answers : [
+      {
+        answer: 'صح',
+        isTrue: true
+      },
+      {
+        answer: 'خطأ',
+        isTrue: false
+      }
+    ]
   },
   {
     question:'يمكن أن يساعد فهم لغة حب شريكك على تحسين التواصل في علاقتك.',
     imageUrl: '',
     levelId: 1,
     isActive: true,
-    adminId: 1
+    adminId: 1,
+    answers : [
+      {
+        answer: 'صح ',
+        isTrue: true
+      },
+      {
+        answer: 'خطأ ',
+        isTrue: false
+      }
+    ]
   },
 
   {
@@ -79,7 +211,25 @@ export const questions = [
     adminId: 1,
     question:
     'كيف يمكن أن نعرف لغة الحب الخاصة بنا؟',
-    imageUrl: ''
+    imageUrl: '',
+    answers : [
+      {
+        answer: 'تمن خلال التفكير في ما يجعلنا تشعر بالحب والتقدير',
+        isTrue: true
+      },
+      {
+        answer: 'إجراء اختبار شخصية ',
+        isTrue: false
+      },
+      {
+        answer: 'تحليل علاقتنا السابقة',
+        isTrue: false
+      },
+      {
+        answer: 'لا شيء مما سبق ',
+        isTrue: false
+      }
+    ]
   },
   {
     levelId: 2,
@@ -87,14 +237,49 @@ export const questions = [
     adminId: 1,
     question:
       'يمكن أن يكون إطار عمل لغات الحب الخمس مفيدًا لـ:',
-    imageUrl: ''
+    imageUrl: '',
+    answers : [
+      {
+        answer: 'العلاقات الرومانسية فقط',
+        isTrue: false
+      },
+      {
+        answer:'جميع أنواع العلاقات الحميمة، بما في ذلك الصداقات والعائلة',
+        isTrue: true
+      },
+      {
+        answer: 'تقييم التوافق قبل المواعدة مع شخص ما',
+        isTrue: false
+      },
+      {
+        answer: 'لا شيء مما سبق',   isTrue: false
+      }
+    ]
   },
   {
     levelId: 2,
     isActive: true,
     adminId: 1,
     question: 'ما هو العيب المحتمل في التركيز فقط على إعطاء شريكك ما تظن أنه يريده، بدلاً من التركيز على لغة حبه؟',
-    imageUrl: ''
+    imageUrl: '',
+    answers : [
+      {
+        answer: 'قد لا يجعله يشعر بالحب والتقدير',
+        isTrue: true
+      },
+      {
+        answer: 'قد يكون شراء الهدايا باستمرار مكلفًا',
+        isTrue: false
+      },
+      {
+        answer: 'يدل على قلة الجهد والإبداع',
+        isTrue: false
+      },
+      {
+        answer: 'يمكن أن يؤدي إلى خلافات حول ماهية الحب "الحقيقي".',
+        isTrue: true
+      }
+    ]
   },
   {
     levelId: 2,
@@ -102,7 +287,17 @@ export const questions = [
     adminId: 1,
     question:
       ' لا ينطبق مفهوم لغات الحب على الأطفال ',
-    imageUrl: ''
+    imageUrl: '',
+    answers : [
+      {
+        answer: ' صح ',
+        isTrue: false
+      },
+      {
+        answer: ' خطأ',
+        isTrue: true
+      }
+    ]
   },
   {
     levelId: 2,
@@ -111,505 +306,254 @@ export const questions = [
     question:
       'يؤكد الكتاب على أن كل الناس لديهم نفس لغة الحب.',
     imageUrl: ''
+    ,answers : [ {
+      answer: 'صح',
+      isTrue: false
+    },
+    {
+      answer: 'خطأ',
+      isTrue: true
+    }]
   },
   {
     levelId: 2,
     adminId: 1,
     isActive: true,
     question:'ما هي أسهل لغة حب يمكن تعلّمها حسب الكاتب',
-    imageUrl: ''
+    imageUrl: '',
+    answers : [
+      {
+        answer: 'الاتصال الجسدي',
+        isTrue: false
+      },
+      {
+        answer: 'تقديم الهدايا ',
+        isTrue: true
+      },
+      {
+        answer: 'تخصيص الوقت',
+        isTrue: false
+      },
+      {
+        answer: 'كلمات التشجيع',
+        isTrue: false
+      }
+    ]
   },
   {
     levelId: 2,
     adminId: 1,
     isActive: true,
     question: ' أي من هذه الاختيارات هي لغة "الاتصال الجسدي" ',
-    imageUrl: ''
+    imageUrl: '',
+    answers : [
+      {
+        answer: 'الذهاب لقضاء وقت في السينما ',
+        isTrue: false
+      },
+      {
+        answer: 'شراء تذاكر لحفل موسيقي',
+        isTrue: true
+      },
+      {
+        answer: 'تقبيل جبهة الرأس ',
+        isTrue: true
+      },
+      {
+        answer: 'غسل صحون الطعام بعد الأكل',
+        isTrue: false
+      }
+    ]
   },
   {
     levelId: 2,
     isActive: true,
     adminId: 1,
     question: 'لغة كلمات التشجيع لها أكثر من طريقة ووسيلة ',
-    imageUrl: ''
+    imageUrl: '',
+    answers : [
+      {
+        answer: 'صح',
+        isTrue: true
+      },
+      {
+        answer: 'خطأ',
+        isTrue: true
+      }
+    ]
+    
   },
   {
     levelId: 3,
     isActive: true,
     adminId: 1,
     question: ' الخطأ الشائع الذي يقع فيه معظم الأزواج هو',
-    imageUrl: ''
+    imageUrl: '',
+    answers : [
+      {
+        answer: 'لا يتكلمون لغة الحب التي يفضلها شريكهم',
+        isTrue: true
+      },
+      {
+        answer: 'يركزون على لغة حب معيّنة ويتجاهلون البقية',
+        isTrue: false
+      },
+      {
+        answer: 'شراء هدايا غالية جدا',
+        isTrue: false
+      },
+      {
+        answer: 'كل ما سبق',
+        isTrue: false
+      }
+    ]
   },
   {
     levelId: 3,
     isActive: true,
     adminId: 1,
     question: ' يؤكد الكتاب على أن',
-    imageUrl: ''
+    imageUrl: '',
+    answers : [
+      {
+        answer: 'أن الأفعال أهم من الكلمات ',
+        isTrue: false
+      },
+      {
+        answer: 'أن التعبير عن الحب يكون أفضل بالاتصال الجسدي',
+        isTrue: false
+      },
+      {
+        answer: 'أن لغات الحب الخمس هي ثابتة دائما ولا تتغير',
+        isTrue: false
+      },
+      {
+        answer: 'أهمية فهم كيف ومتى يشعر شريكك بالحب',
+        isTrue: false
+      },
+    ]
   },
   {
     levelId: 3,
     isActive: true,
     adminId: 1,
     question: ' لا يمكن أن التعامل والتواصل إلا بلغة حب واحدة',
-    imageUrl: ''
+    imageUrl: '',
+    answers : [
+      {
+        answer: 'صح',
+        isTrue: false
+      },
+      {
+        answer: 'خطأ',
+        isTrue: true
+      }
+    ]
   },
   {
     levelId: 3,
     isActive: true,
     adminId: 1,
     question: ' عندما يمتلك الثنائي لغتي حب مختلفة فإنّه من المحبذ',
-    imageUrl: ''
+    imageUrl: '',
+    answers : [
+      {
+        answer: 'التركيز بشكل منفرد على لغتهم الخاصة ',
+        isTrue: false
+      },
+      {
+        answer: 'تعلم لغة حب الشريك الآخر ومحاولة فهمها',
+        isTrue: true
+      },
+      {
+        answer: 'الافتراق لأن العلاقة لن تدوم',
+        isTrue: false
+      },
+      {
+        answer: 'تجنب التعبير عن الحب ',
+        isTrue: false
+      }
+    ]
   },
   {
     levelId: 3,
     isActive: true,
     adminId: 1,
     question: ' أهم شيء في العلاقة هو أن يكون لديك نفس لغة الحب التي لدى شريكك',
-    imageUrl: ''
+    imageUrl: '',
+    answers : [
+      {
+        answer: 'صح',
+        isTrue: false
+      },
+      {
+        answer: 'خطأ',
+        isTrue: true
+      }
+    ]
   },
   {
     levelId: 3,
     isActive: true,
     adminId: 1,
     question: ' وفقًا للكتاب، فإن أفضل طريقة لإظهار الحب هي تقديم هدايا باهظة الثمن',
-    imageUrl: ''
+    imageUrl: '',
+    answers : [
+      {
+        answer: 'صح',
+        isTrue: false
+      },
+      {
+        answer: 'خطأ',
+        isTrue: true
+      }
+    ]
   },
   {
     levelId: 3,
     isActive: true,
     adminId: 1,
     question: ' < أي من هذه الاختيارات هي لغة < تكريس الوقت',
-    imageUrl: ''
+    imageUrl: '',
+    answers : [
+      {
+        answer: 'الخروج معا للنزهة',
+        isTrue: false
+      },
+      {
+        answer: 'التكلم والتواصل والانصات',
+        isTrue: false
+      },
+      {
+        answer: 'القيام بنشاط يفضلّه الشخص الذي تحبه',
+        isTrue: false
+      },
+      {
+        answer: 'كل ما سبق ',
+        isTrue: true
+      }
+    ]
   },
-  {
-    levelId: 3,
-    isActive: true,
-    adminId: 1,
-    question: ' التكلم والتواصل والانصات',
-    imageUrl: ''
-  },
+  
   {
     levelId: 3,
     isActive: true,
     adminId: 1,
     question: ' يعتبر الكتاب من بين الكتب الأفضل مبيعا في العالم',
-    imageUrl: ''
+    imageUrl: '',
+    answers : [
+      {
+        answer: 'صح',
+        isTrue: true
+      },
+      {
+        answer: 'خطأ',
+        isTrue: false
+      }
+    ]
   },
 ];
 
-export const answer = [
-  {
-    answer: 'التعبير عن الحب بلغات أخرى مثل الفرنسية مثلا',
-    isTrue: false,
-    questionId: 1
-  },
-  {
-    answer: 'الأشخاص الذين نعبر عن حبنا لهم كالصديق والوالدين والزوج/الزوجة',
-    isTrue: false,
-    questionId: 1
-  },
-  {
-    answer: 'الطرق التي نعبر بها عن الحب كالهدايا والكلمات وغيرها ',
-    isTrue: true,
-    questionId: 1
-  },
-  {
-    answer: 'الأوقات والأماكن التي نعبر فيها عن الحب',
-    isTrue: false,
-    questionId: 1
-  },
-  {
-    answer: 'أربع طرق',
-    isTrue: false,
-    questionId: 2
-  },
-  {
-    answer: 'خمس طرق ',
-    isTrue: true,
-    questionId: 2
-  },
-  {
-    answer: 'سبعة طرق',
-    isTrue: false,
-    questionId: 2
-  },
-  {
-    answer: 'طريقة واحدة',
-    isTrue: false,
-    questionId: 2
-  },
-  {
-    answer: 'تقديم الخدمات',
-    isTrue: false,
-    questionId: 3
-  },
-  {
-    answer: 'اعطاء الهدايا ',
-    isTrue: false,
-    questionId: 3
-  },
-  {
-    answer: 'ترك الشخص وحيدا لفترة ',
-    isTrue: true,
-    questionId: 3
-  },
-  {
-    answer: 'القاء كلمات التشجيع والشكر',
-    isTrue: false,
-    questionId: 3
-  },
-  {
-    answer: 'أن يكون لديك نفس لغة الحب التي لدى شريكك.',
-    isTrue: false,
-    questionId: 4
-  },
-  {
-    answer: 'فهم لغة حب شريكك والتحدث بها',
-    isTrue: true,
-    questionId: 4
-  },
-  {
-    answer: 'مفاجأة شريكك باستمرار بالهدايا',
-    isTrue: false,
-    questionId: 4
-  },
-  {
-    answer: 'تجاهل المشكلات التي يعاني منها',
-    isTrue: false,
-    questionId: 4
-  },
-  {
-    answer: 'تلقي هدية مدروسة',
-    isTrue: false,
-    questionId: 5
-  },
-  {
-    answer: 'قضاء وقت ممتع بالقيام بالأشياء التي يحبها',
-    isTrue: false,
-    questionId: 5
-  },
-  {
-    answer: 'سماع المديح والتعبير عن الحب',
-    isTrue: true,
-    questionId: 5
-  },
-  {
-    answer: 'أن يقوم شريكه بأعمال المنزل',
-    isTrue: false,
-    questionId: 5
-  },
-  {
-    answer: 'يكتب له قصيدة صادقة',
-    isTrue: false,
-    questionId: 6
-  },
-  {
-    answer: 'يقوم بتدليكه بعد يوم طويل',
-    isTrue: false,
-    questionId: 6
-  },
-  {
-    answer: 'يأخذ زمام المبادرة في القيام بالمهام دون أن يُطلب منه',
-    isTrue: true,
-    questionId: 6
-  },
-  {
-    answer: 'يفاجئه بتقديمه تذاكر لحفل موسيقي',
-    isTrue: false,
-    questionId: 6
-  },
-  {
-    answer: '   صح            ',
-    isTrue: false,
-    questionId: 7
-  },
-  {
-    answer: ' خطأ ',
-    isTrue: true,
-    questionId: 7
-  },
-  {
-    answer: 'صح',
-    isTrue: true,
-    questionId: 8
-  },
-  {
-    answer: 'خطأ',
-    isTrue: false,
-    questionId: 8
-  },
-  {
-    answer: 'صح ',
-    isTrue: true,
-    questionId: 9
-  },
-  {
-    answer: 'خطأ ',
-    isTrue: false,
-    questionId: 9
-  },
-  {
-    answer: 'تمن خلال التفكير في ما يجعلنا تشعر بالحب والتقدير',
-    isTrue: true,
-    questionId: 10
-  },
-  {
-    answer: 'إجراء اختبار شخصية ',
-    isTrue: false,
-    questionId: 10
-  },
-  {
-    answer: 'تحليل علاقتنا السابقة',
-    isTrue: false,
-    questionId: 10
-  },
-  {
-    answer: 'لا شيء مما سبق ',
-    isTrue: false,
-    questionId: 10
-  },
-  {
-    answer: 'العلاقات الرومانسية فقط',
-    isTrue: false,
-    questionId: 11
-  },
-  {
-    answer:'جميع أنواع العلاقات الحميمة، بما في ذلك الصداقات والعائلة',
-    isTrue: true,
-    questionId: 11
-  },
-  {
-    answer: 'تقييم التوافق قبل المواعدة مع شخص ما',
-    isTrue: false,
-    questionId: 11
-  },
-  {
-    answer: 'لا شيء مما سبق',   isTrue: false,
-    questionId: 11
-  },
-  {
-    answer: 'قد لا يجعله يشعر بالحب والتقدير',
-    isTrue: true,
-    questionId: 12
-  },
-  {
-    answer: 'قد يكون شراء الهدايا باستمرار مكلفًا',
-    isTrue: false,
-    questionId: 12
-  },
-  {
-    answer: 'يدل على قلة الجهد والإبداع',
-    isTrue: false,
-    questionId: 12
-  },
-  {
-    answer: 'يمكن أن يؤدي إلى خلافات حول ماهية الحب "الحقيقي".',
-    isTrue: true,
-    questionId: 12
-  },
-  {
-    answer: ' صح        ',
-    isTrue: false,
-    questionId: 13
-  },
-  {
-    answer: ' خطأ',
-    isTrue: true,
-    questionId: 13
-  },
-  {
-    answer: 'صح',
-    isTrue: false,
-    questionId: 14
-  },
-  {
-    answer: 'خطأ',
-    isTrue: true,
-    questionId: 14
-  },
-  {
-    answer: 'صح',
-    isTrue: true,
-    questionId: 15
-  },
-  {
-    answer: 'خطأ',
-    isTrue: false,
-    questionId: 15
-  },
-  {
-    answer: 'الاتصال الجسدي',
-    isTrue: false,
-    questionId: 16
-  },
-  {
-    answer: 'تقديم الهدايا ',
-    isTrue: true,
-    questionId: 16
-  },
-  {
-    answer: 'تخصيص الوقت',
-    isTrue: false,
-    questionId: 16
-  },
-  {
-    answer: 'كلمات التشجيع',
-    isTrue: false,
-    questionId: 16
-  },
-  {
-    answer: 'الذهاب لقضاء وقت في السينما ',
-    isTrue: false,
-    questionId: 17
-  },
-  {
-    answer: 'شراء تذاكر لحفل موسيقي',
-    isTrue: true,
-    questionId: 17
-  },
-  {
-    answer: 'تقبيل جبهة الرأس ',
-    isTrue: true,
-    questionId: 17
-  },
-  {
-    answer: 'غسل صحون الطعام بعد الأكل',
-    isTrue: false,
-    questionId: 17
-  },
-  {
-    answer: 'صح',
-    isTrue: true,
-    questionId: 18
-  },
-  {
-    answer: 'خطأ',
-    isTrue: false,
-    questionId: 18
-  },
-  {
-    answer: 'لا يتكلمون لغة الحب التي يفضلها شريكهم',
-    isTrue: true,
-    questionId: 19
-  },
-  {
-    answer: 'يركزون على لغة حب معيّنة ويتجاهلون البقية',
-    isTrue: false,
-    questionId: 19
-  },
-  {
-    answer: 'شراء هدايا غالية جدا',
-    isTrue: false,
-    questionId: 19
-  },
-  {
-    answer: 'كل ما سبق',
-    isTrue: false,
-    questionId: 19
-  },
-  {
-    answer: 'أن الأفعال أهم من الكلمات ',
-    isTrue: false,
-    questionId: 20
-  },
-  {
-    answer: 'أن التعبير عن الحب يكون أفضل بالاتصال الجسدي',
-    isTrue: false,
-    questionId: 20
-  },
-  {
-    answer: 'أن لغات الحب الخمس هي ثابتة دائما ولا تتغير',
-    isTrue: false,
-    questionId: 20
-  },
-  {
-    answer: 'أهمية فهم كيف ومتى يشعر شريكك بالحب',
-    isTrue: false,
-    questionId: 20
-  },
-  {
-    answer: 'صح',
-    isTrue: false,
-    questionId: 21
-  },
-  {
-    answer: 'خطأ',
-    isTrue: true,
-    questionId: 21
-  },
-  {
-    answer: 'التركيز بشكل منفرد على لغتهم الخاصة ',
-    isTrue: false,
-    questionId: 22
-  },
-  {
-    answer: 'تعلم لغة حب الشريك الآخر ومحاولة فهمها',
-    isTrue: true,
-    questionId: 22
-  },
-  {
-    answer: 'الافتراق لأن العلاقة لن تدوم',
-    isTrue: false,
-    questionId: 22
-  },
-  {
-    answer: 'تجنب التعبير عن الحب ',
-    isTrue: false,
-    questionId: 22
-  },
-  {
-    answer: 'صح',
-    isTrue: false,
-    questionId: 23
-  },
-  {
-    answer: 'خطأ',
-    isTrue: true,
-    questionId: 23
-  },
-  {
-    answer: 'صح',
-    isTrue: false,
-    questionId: 24
-  },
-  {
-    answer: 'خطأ',
-    isTrue: true,
-    questionId: 24
-  },
-  {
-    answer: 'الخروج معا للنزهة',
-    isTrue: false,
-    questionId: 25
-  },
-  {
-    answer: 'التكلم والتواصل والانصات',
-    isTrue: false,
-    questionId: 25
-  },
-  {
-    answer: 'القيام بنشاط يفضلّه الشخص الذي تحبه',
-    isTrue: false,
-    questionId: 25
-  },
-  {
-    answer: 'كل ما سبق ',
-    isTrue: true,
-    questionId: 25
-  },
-  {
-    answer: 'صح',
-    isTrue: true,
-    questionId: 26
-  },
-  {
-    answer: 'خطأ',
-    isTrue: false,
-    questionId: 26
-  }
-  
-];
 
 export const prop = [
   {
