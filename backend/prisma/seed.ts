@@ -1,32 +1,39 @@
+
 import { PrismaClient } from '@prisma/client';
-import * as bcrypt from 'bcrypt';
-import { answer, level, prop, questions } from './data';
+
+import { level, prop, questions } from './data';
 
 // initialize Prisma Client
 const prisma = new PrismaClient();
 
 async function main() {
-  const salt = await bcrypt.genSalt();
-  const admin = await prisma.admin.create({
-    data: {
-      email: 'basma@jalyss.com',
-      password: await bcrypt.hash('jalyss7', salt),
-      fullName: 'بسمة كريم',
-    },
+  const admin = await prisma.admin.findUnique({
+    where : {
+      email : "basma@jalyss.com"
+    }
   });
 
-  const levels = await prisma.level.createMany({
-    data: level,
-  });
-  const questionss = await prisma.question.createMany({
-    data: questions,
-  });
-  const wheelRewards = await prisma.wheelProposition.createMany({
-    data: prop,
-  });
-  const answers = await prisma.answer.createMany({
-    data: answer,
-  });
+
+
+  const questionss = await Promise.all(
+    questions.map(async (e) => {
+      return await prisma.question.create({
+        data: {
+          question: e.question,
+          levelId: e.levelId,
+          imageUrl: e.imageUrl,
+          adminId: admin.id,
+          answers: {
+            create: e.answers.map((answer) => {
+              return answer;
+            }),
+          },
+        },
+      });
+    }),
+  );
+
+
 }
 
 // execute the main function

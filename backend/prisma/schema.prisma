@@ -41,7 +41,7 @@ model Question {
   Level             Level?                @relation(fields: [levelId], references: [id])
   levelId           Int?
   answers           Answer[]
-  isActive Boolean       @default(false)
+  isActive Boolean       @default(true)
 }
 
 model Answer {
