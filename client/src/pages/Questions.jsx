@@ -6,7 +6,7 @@ import WModal from "../Modals/Wmodal";
 import WheelWinner from "./Wheel";
 import Lottie from "react-lottie";
 import winner from "../lotties/Animation - 1713232910020.json";
-
+import heart from "../lotties/hearts.json"
 import Wheelmodal from "../Modals/WheelModal";
 export default function Questions() {
   const [clicked, setClicked] = useState(false);
@@ -27,7 +27,7 @@ export default function Questions() {
   const defaultOptionsWinner = {
     loop: true,
     autoplay: true,
-    animationData: winner,
+    animationData: heart,
     rendererSettings: {
       preserveAspectRatio: "xMidYMid slice",
     },
@@ -52,7 +52,7 @@ export default function Questions() {
             <div
               className="progress-bar "
               role="progressbar"
-              style={{ width: progress, background: "#5D87FF" }}
+              style={{ width: progress, background: "#00b849" }}
               aria-valuenow="25"
               aria-valuemin="0"
               aria-valuemax="100"
@@ -133,8 +133,8 @@ export default function Questions() {
             {openWM && prize?.reward && (
               <Lottie
                 options={defaultOptionsWinner}
-                height={200}
-                width={200}
+                height={400}
+                width={400}
                 style={{
                   position: "fixed",
                   top: "2%",

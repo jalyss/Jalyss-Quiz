@@ -4,6 +4,7 @@ import Modal from "@mui/material/Modal";
 import Typography from "@mui/material/Typography";
 import Lottie from "react-lottie";
 import party from "../lotties/party.json";
+import heart from "../lotties/LoadingHeart.json"
 
 const defaultOptionsParty = {
   loop: true,
@@ -62,7 +63,7 @@ export default function Wheelmodal({ handleClose, open, prize }) {
             sx={{ mt: 2, textAlign: "center" }}
           >
             {prize?.reward && (
-              <Lottie options={defaultOptionsParty} height={70} width={70} />
+              <Lottie options={defaultOptionsParty} height={90} width={90} />
             )}
             <button
               className="btn btn-light fs-5 m-3"

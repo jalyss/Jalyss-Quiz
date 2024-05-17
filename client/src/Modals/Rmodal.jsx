@@ -2,7 +2,8 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Typography from "@mui/material/Typography";
-
+import Lottie from "react-lottie";
+import heart from "../lotties/clapHeart.json"
 const style = {
   position: "absolute",
   top: "50%",
@@ -44,7 +45,24 @@ export default function Rmodal({
             component="h2"
             sx={{ textAlign: "center", fontSize: 30 }}
           >
-            {niveau!==2?"احسنت 🥳 لقد اصبت ، انقر للتنتقل للمستوى التالي":`ان ستيفن كوفي فخور جدا الان 🥇
+               <Lottie
+                options={{
+                  loop: true,
+                  autoplay: true,
+                  animationData: heart,
+                  rendererSettings: {
+                    preserveAspectRatio: "xMidYMid slice",
+                  },
+                }}
+                height={200}
+                width={200}
+                style={{
+                  position: "fixed",
+                  top: "2%",
+                  zIndex: 5,
+                }}
+              />
+            {niveau!==2?"احسنت 🥳 لقد اصبت ، انقر للتنتقل للمستوى التالي":`ان غاري تشابمان فخور جدا الان 🥇
 انقر لتلعب و تفوز بجائزة`}
           </Typography>
           <Typography
