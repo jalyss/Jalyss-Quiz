@@ -85,12 +85,17 @@ input::placeholder {
   width: 100% !important;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 786px) {
 
   body {
-    background: url("https://img.freepik.com/premium-photo/pink-cloth-soft-smooth-texture-romantic-love-theme-background-valentine-wallpaper-product-display_741309-438.jpg");
+    background: url("../images/hob.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     height: 110vh;
+  }
+  .title {
+    letter-spacing: 5px;
+    font-family: "Caveat", cursive !important;
+    color: white;
   }
 }

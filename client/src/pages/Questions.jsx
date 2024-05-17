@@ -11,7 +11,7 @@ import Wheelmodal from "../Modals/WheelModal";
 export default function Questions() {
   const [clicked, setClicked] = useState(false);
   const [niveau, setNiveau] = useState(0);
-  const [progress, setProgress] = useState("33%");
+  const [progress, setProgress] = useState("0%");
   const [openR, setOpenR] = React.useState(false);
   const handleCloseR = () => setOpenR(false);
   const [openWM, setOpenWM] = React.useState(false);
@@ -69,6 +69,7 @@ export default function Questions() {
                   whiteSpace: "no-wrap",
                   direction: "rtl",
                   color: "#000",
+
                 }}
               >
                 {questions?.question}

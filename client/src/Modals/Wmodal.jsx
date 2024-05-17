@@ -65,7 +65,7 @@ export default function WModal({ handleClose, open }) {
                 window.location.reload();
               }}
             >
-              العودة الى الرئيسية{">"}
+              العودة الى الرئيسية
             </button>
           </Typography>
         </Box>

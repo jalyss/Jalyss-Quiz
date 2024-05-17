@@ -111,7 +111,7 @@ export default function Formulaire() {
           square
         >
           <div
-            className="position-fixed w-100 h-100 d-md-none"
+            className=" w-100 h-100 d-md-none p-4"
             style={{
               backgroundImage: `url(${hob})`,
               backgroundRepeat: "no-repeat",
@@ -125,14 +125,14 @@ export default function Formulaire() {
           >
             <Box
               sx={{
-                my: 8,
+                my: 0,
                 mx: 4,
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
                 justifyContent: "center",
                 backgroundColor: "white",
-                padding: 5,
+                padding: 5  ,
                 borderRadius: 3
               }}
             >
@@ -226,6 +226,36 @@ export default function Formulaire() {
                   }}
                   onChange={handleInputChange}
                 />
+                    <FormControl
+                  fullWidth
+                  margin="normal"
+                  
+                  sx={{
+                    "& .MuiInputLabel-root.Mui-focused": {
+                      color: "purple"
+                    },
+                    "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                      {
+                        borderColor: "purple"
+                      }
+                  }}
+                >
+                  <InputLabel id="demo-simple-select-label" className="w-100">
+                    الجنس
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    name="gender"
+                    dir="rtl"
+                    value={candidateInfo.gender}
+                    label="الجنس"
+                    onChange={handleInputChange}
+                  >
+                    <MenuItem value={"ذكر"}>ذكر</MenuItem>
+                    <MenuItem value={"انثى"}>انثى</MenuItem>
+                  </Select>
+                </FormControl>
                 <TextField
                   margin="normal"
                   required
@@ -309,12 +339,10 @@ export default function Formulaire() {
                 height={180}
                 width={180}
                 style={{
-                  // position: "fixed",
-                  // top: "2%",
-                  // zIndex: 5
+                
                 }}
               />
-              <Typography component="h1" variant="h5" sx={{ mt: 5 }}>
+              <Typography component="h1" variant="h5" sx={{ mt: 2 }}>
                 سجل الآن 
               </Typography>
               <Box
