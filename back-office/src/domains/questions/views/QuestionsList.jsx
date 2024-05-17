@@ -8,7 +8,7 @@ import { Button } from "react-bootstrap";
 import { DataGrid, GridActionsCellItem } from "@mui/x-data-grid";
 import { Box, buttonGroupClasses, colors } from "@mui/material";
 import { Dialog, DialogContent, DialogTitle, Typography } from "@mui/material";
-import { fetchQuestions } from "../../../store/questions";
+import { fetchQuestions,updateActiveQuestion } from "../../../store/questions";
 import { buttonColor } from "../../../colors/buttonsColor";
 
 const QuestionsList = () => {
@@ -53,6 +53,9 @@ const QuestionsList = () => {
     setOpen(true);
   };
 
+  const handleActiveWheelProp = (args) => {
+    dispatch(updateActiveQuestion(args));
+  }
   const handleClose = () => {
     setOpen(false);
   };
@@ -87,7 +90,7 @@ const QuestionsList = () => {
       getActions: (params) => {
         const {id ,row} = params 
         const {isActive} = row
-        console.log(row,"this is the active question")
+        console.log(isActive,"this is the active question")
         return [
           <GridActionsCellItem
             icon={<AiOutlineEye />}
