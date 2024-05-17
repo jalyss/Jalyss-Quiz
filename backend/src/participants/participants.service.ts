@@ -11,7 +11,10 @@ export class ParticipantsService {
   async create(createParticipantDto: CreateParticipantDto) {
     const participant = await this.prisma.participant.findUnique({
       where: {
-        email: createParticipantDto.email,
+        app_email : {
+          email: createParticipantDto.email,
+          app: createParticipantDto.app
+        }
       },
     });
     console.log(participant);
