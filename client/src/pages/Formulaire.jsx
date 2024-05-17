@@ -68,7 +68,8 @@ export default function Formulaire() {
         fullName: candidateInfo.fullName,
         phoneNumber: candidateInfo.phoneNumber,
         birthday: candidateInfo.birthday,
-        work: candidateInfo.work
+        work: candidateInfo.work,
+        app : "5 Love Languages"
       })
     ).then((res) => {
       if (res.error) {
